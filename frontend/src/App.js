@@ -1,7 +1,11 @@
 import React from 'react';
 import HomePage from './components/homepage/homepage'
+import LoginForm from './components/loginForm/loginForm'
 import './App.css'
-import { Input } from 'semantic-ui-react'
+import { Input } from 'semantic-ui-react';
+import {
+  Link, BrowserRouter as Router, Switch, Route,
+} from 'react-router-dom';
 
 const InputExampleIconProps = () => (
   <Input className="searchBar"
@@ -16,18 +20,29 @@ const InputExampleIconProps = () => (
 
 function App() {
   return (
+    <>
+      <div className="App">
+        <header className="navbar">
+          <span>Logo</span>
+          {InputExampleIconProps()}
+          <Router>
 
-    <div className="App">
-      <header className="navbar">
-        <span>Logo</span>
-        {InputExampleIconProps()}
-        <button className="loginButton">Login</button>
-      </header>
-      <br></br>
-      <HomePage />
+            <Switch>
+              <Link to="/login">
+                <button className="loginButton">Log in</button>
+              </Link>
+            </Switch>
+            <Route path='/login'>
+              <LoginForm />
+            </Route>
+          </Router>
+        </header>
+        <br></br>
+        <HomePage />
 
-    </div>
+      </div>
 
+    </>
   );
 }
 

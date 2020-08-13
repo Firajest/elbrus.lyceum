@@ -3,7 +3,7 @@ import session from 'express-session';
 import sessionFileStore from 'session-file-store';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
-import path from 'path';
+// import path from 'path';
 
 import userRoute from './routes/user-route.js'
 
