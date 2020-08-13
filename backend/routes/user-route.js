@@ -38,17 +38,16 @@ route
   })
   // delete user
   .delete('/', async (req, res) => {
-    const { login, password, status } = req.body;
-
+    const { login, status } = req.body;
+    const userToDelete = {
+      login,
+      status,
+    };
     const adminStatus = req.session.user.status;
-    if (adminStatus === ('teacher' || 'chieftain')) {
-      const user = new User({
-        login,
-        status,
-        password: await bcrypt.hash(password, saltRounds),
-      });
-      await user.save();
-      res.json({ message: 'User has been created.' });
+    if (((adminStatus === ('teacher' || 'chieftain') && userToDelete.status === 'student'))
+      || ((adminStatus === 'chieftain') && (userToDelete.status === 'teacher' || 'student'))) {
+      await User.findOneAndRemove({ login: userToDelete.login });
+      res.json({ message: 'User has been deleted.' });
     } else res.json({ message: 'Something went wrong.' });
   });
 
