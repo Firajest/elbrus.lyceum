@@ -1,0 +1,12 @@
+.daysList{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  margin-left: 90%;
+  width: 14%;
+  margin-top: -60%;
+}
+#dayButton{
+  width: 100px;
+  background-color: dodgerblue;
+}
