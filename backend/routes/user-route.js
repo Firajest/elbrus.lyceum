@@ -13,7 +13,7 @@ route
       const { login, status } = user;
       req.session.user.login = login;
       req.session.user.status = status;
-      res.json({ message: 'Successful login' });
+      res.json({ message: 'Successful login', user: login, status });
     } else res.json({ message: 'Something went wrong. Check whether your username or password is correct.' });
   })
   .get('/logout', (req, res) => {
