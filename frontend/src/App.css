@@ -1,0 +1,20 @@
+.navbar{
+  display: flex;  
+  border: 1px solid black;
+  height: 50px;
+}
+.loginButton{
+margin-left: auto;
+}
+.searchBar{
+  align-self: center;
+  margin-left: 27%;
+  width: 30%;
+}
+.App{
+  display: flex;
+  flex-direction: column;
+}
+.phaseContainer{
+  width: 100%;
+}
