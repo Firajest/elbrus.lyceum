@@ -4,8 +4,7 @@ import {
   Link, BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
-import ShowWeeks from '../weeks/weeks'
-const ButtonExampleButton = (name) =>
+const dayButt = (name) =>
   <Button id="dayButton" className="dayButton">
     {name}
   </Button>
@@ -43,7 +42,7 @@ function ShowDays() {
             <Router>
               <Switch>
                 <div className='dayList'>
-                  {ButtonExampleButton(day.day)}
+                  {dayButt(day.day)}
                 </div>
               </Switch>
             </Router>

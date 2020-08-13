@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Input, Button } from 'semantic-ui-react';
-import './loginForm.css';
+// import '../';
 
 // const LoginButton = () => <Button type="submit" id="loginSubmitButton" className="loginButton" >Log in</Button>
 

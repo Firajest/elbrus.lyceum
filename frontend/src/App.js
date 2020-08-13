@@ -26,7 +26,6 @@ function App() {
           <span>Logo</span>
           {InputExampleIconProps()}
           <Router>
-
             <Switch>
               <Link to="/login">
                 <button className="loginButton">Log in</button>
