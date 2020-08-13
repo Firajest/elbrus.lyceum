@@ -4,19 +4,19 @@ import sessionFileStore from 'session-file-store';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
 // import path from 'path';
+import userRoute from './routes/user-route.js';
+import dataRoute from './routes/data-route';
 
-import userRoute from './routes/user-route.js'
-
-const FileStore = sessionFileStore(session);
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+const FileStore = sessionFileStore(session);
 
 // Подключаем mongoose.
 mongoose.connect('mongodb://localhost:27017/lyceum', { useNewUrlParser: true, useUnifiedTopology: true });
-
-app.use(cookieParser());
 
 // SESSION
 app.use(session({
@@ -40,9 +40,10 @@ app.use((req, res, next) => {
 
 /// ////////////////////////////////////here will be ROUTES
 app.use('/user', userRoute);
+app.use('/data', dataRoute);
 /// ///////////////////////////////////////ROUTES end here
 
 // start server
-app.listen(process.env.PORT ?? 3000);
+app.listen(process.env.PORT ?? 3001);
 
 export default app;

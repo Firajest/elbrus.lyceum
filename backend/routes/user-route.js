@@ -24,6 +24,7 @@ route
   })
   // create user
   .put('/new', async (req, res) => {
+    // ДОБАВИТЬ ПРОВЕРКУ СТАТУСА ЮЗЕРА ---------------------------------------------------------
     const { login, password, status } = req.body;
     const userCheck = await User.findOne({ login });
     if (!userCheck) {
