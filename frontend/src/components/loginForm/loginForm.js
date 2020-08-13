@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input, Button } from 'semantic-ui-react';
-import './loginForm.css';
+// import '../';
 
 // const LoginButton = () => <Button type="submit" id="loginSubmitButton" className="loginButton" >Log in</Button>
 
@@ -19,7 +19,7 @@ function LoginForm() {
       <form onSubmit={(event) => testFunc(event)} >
         <Input type="text" placeholder="Login" />
         <Input type="password" placeholder="Password" />
-        <button type="submit" id="loginSubmitButton" className="loginButton" >Log in</button>
+        <button type="submit" id="loginSubmitButton" className="loginButton">Log in</button>
       </form>
     </>
   )

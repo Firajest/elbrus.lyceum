@@ -1,11 +1,13 @@
 .phaseContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: stretch;
   border: 1px solid black;
-  width: 14%;
+  width: 10px;
+  position: relative;
 }
 #phaseButton{
   background-color: dodgerblue;
-
 }
+
 

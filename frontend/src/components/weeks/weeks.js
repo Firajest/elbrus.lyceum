@@ -25,25 +25,28 @@ const weekDb = [
 function ShowWeeks() {
   return (
     <>
-      <div className='weeksList' >
-        <Router>
-          {weekDb.map((week) => {
-            return (
-              <span >
-                <Link to="/days">
-                  {ButtonExampleButton(week.week)}
-                </Link>
-                <br></br>
-              </span>
-            )
-          })}
-          <Switch>
-            <Route path='/days'>
-              <ShowDays></ShowDays>
-            </Route>
-          </Switch>
-        </Router>
-      </div>
+      <Router>
+        <div className='weeksList'>
+          <div>
+            {weekDb.map((week) => {
+              return (
+                <span >
+                  <Link to="/days">
+                    {ButtonExampleButton(week.week)}
+                  </Link>
+                  <br></br>
+                </span>
+              )
+            })}
+          </div>
+        </div>
+        <Switch>
+          <Route path='/days'>
+            <ShowDays></ShowDays>
+          </Route>
+        </Switch>
+      </Router>
+
     </>
   )
 }

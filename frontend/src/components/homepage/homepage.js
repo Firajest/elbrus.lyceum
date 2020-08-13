@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import ShowWeeks from '../weeks/weeks'
+import ShowDays from '../days/days'
 
 const phaseDb = [{
   phase: 'phase1'
@@ -26,18 +27,20 @@ const ButtonExampleButton = (name) =>
 function HomePage() {
   return (
     <>
-      <div className="phaseContainer" >
+      <div className="phaseContainer">
         <Router>
-          {phaseDb.map((phase) => {
-            return (
-              <span >
-                <Link to="/weeks">
-                  {ButtonExampleButton(phase.phase)}
-                </Link>
-                <br></br>
-              </span>
-            )
-          })}
+          <div className='phases'>
+            {phaseDb.map((phase) => {
+              return (
+                <span className='weekElement'>
+                  <Link to="/weeks">
+                    {ButtonExampleButton(phase.phase)}
+                  </Link>
+                  <br></br>
+                </span>
+              )
+            })}
+          </div>
           <Switch>
             <Route path='/weeks'>
               <ShowWeeks></ShowWeeks>
