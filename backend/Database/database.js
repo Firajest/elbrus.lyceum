@@ -32,7 +32,7 @@ const User = new mongoose.Schema({
     type: String,
     required: true,
   },
-  status: ['superadmin', 'admin', 'student'],
+  status: String,
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now },
 });
