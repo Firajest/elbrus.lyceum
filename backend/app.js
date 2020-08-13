@@ -5,6 +5,8 @@ import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
 import path from 'path';
 
+import userRoute from './routes/user-route.js'
+
 const FileStore = sessionFileStore(session);
 const app = express();
 
@@ -29,7 +31,7 @@ app.use(session({
 app.use((req, res, next) => {
   if (req.session.user) {
     res.locals.login = req.session.user.login;
-    console.log(res.locals);
+    // console.log(res.locals);
     // next();
   }
   next();
@@ -37,7 +39,7 @@ app.use((req, res, next) => {
 });
 
 /// ////////////////////////////////////here will be ROUTES
-
+app.use('/user', userRoute);
 /// ///////////////////////////////////////ROUTES end here
 
 // start server
