@@ -17,7 +17,8 @@ import ViewInfo from './redux/reducers/IndexReducer'
 const InputExampleIconProps = () => (
   <Input className="searchBar"
     icon={{ name: 'search', circular: true, link: true }}
-    placeholder='Search...'
+    placeholder='Search by tag'
+    id='searchBar'
   />
 )
 
