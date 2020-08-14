@@ -93,7 +93,10 @@ export function statusFailed() {
   return {
     type: STATUS_FAILURE,
     payload: {
-      message:' Something went wrong. Check whether your username or password is correct.',
+      message: ' Something went wrong. Check whether your username or password is correct.',
+    }
+  }
+}
 export function choosePhase(id) {
   return {
     type: CHOOSE_PHASE,
