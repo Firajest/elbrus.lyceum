@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './homepage.css'
 import '../weeks/weeks.css'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector, } from 'react-redux'
 import {
   Link, BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import ShowWeeks from '../weeks/weeks'
-import ShowDays from '../days/days'
+import { ReactReduxContext } from 'react-redux'
 import getPhases from '../../redux/thunks/phases'
 
 const phaseDb = [{
@@ -23,9 +23,20 @@ const phaseDb = [{
 
 
 function HomePage() {
+  const phases = useSelector((state) => {
+    console.log(state.data)
+    return state.data
+  })
+  useEffect(() => {
+    dispatch(getPhases())
+    return () => {
+      console.log('!!!')
+    }
+  }, [])
+  console.log(phases[0])
   const dispatch = useDispatch()
   const ButtonExampleButton = (name) =>
-    <Button id="phaseButton" className="phaseButton" onClick={() => dispatch(getPhases())}>
+    <Button id="phaseButton" className="phaseButton" >
       {name}
     </Button>
   return (
@@ -33,11 +44,11 @@ function HomePage() {
       <div className="phaseContainer">
         <Router>
           <div className='phases'>
-            {phaseDb.map((phase) => {
+            {phases[0] && phases[0].map((phase) => {
               return (
                 <span className='weekElement'>
-                  <Link to="/weeks">
-                    {ButtonExampleButton(phase.phase)}
+                  <Link to={`/${phase.name}/weeks`}>
+                    {ButtonExampleButton(phase.name)}
                   </Link>
                   <br></br>
                 </span>

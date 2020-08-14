@@ -10,10 +10,11 @@ margin-left: auto;
 }
 .searchBar{
   align-self: center;
-  margin-left: 27%;
   width: 30%;
-  background-color: rgb(247, 242, 255);
-  border-radius: 30px;
+  background-color: rgb(63,37,166);;
+}
+#searchBar{
+  border-radius: 50px;
 }
 .App{
   display: flex;
