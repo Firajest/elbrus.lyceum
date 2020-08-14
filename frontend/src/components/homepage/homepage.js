@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import {
   Link, BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
+import Button from '@material-ui/core/Button';
 import ShowWeeks from '../weeks/weeks'
 import ShowDays from '../days/days'
 import getPhases from '../../redux/thunks/phases'

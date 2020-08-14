@@ -6,25 +6,25 @@ import {
 const route = express.Router();
 
 route.get('/phases', async (req, res) => {
-  const phases = getPh();
+  const phases = await getPh();
   res.json({ phases });
 });
 
 route.get('/phases/:id', async (req, res) => {
   const { id } = req.params;
-  const weeks = getWeek(id);
+  const weeks = await getWeek(id);
   res.json({ weeks });
 });
 
 route.get('/week/:id', async (req, res) => {
   const { id } = req.params;
-  const days = getDays(id);
+  const days = await getDays(id);
   res.json({ days });
 });
 
 route.get('/day/:id', async (req, res) => {
   const { id } = req.params;
-  const day = getDay(id);
+  const day = await getDay(id);
   res.json({ day });
 });
 
