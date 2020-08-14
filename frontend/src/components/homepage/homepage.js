@@ -1,14 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './homepage.css'
 import '../weeks/weeks.css'
-import { useDispatch, useSelector, } from 'react-redux'
 import {
   Link, BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import ShowWeeks from '../weeks/weeks'
-import { ReactReduxContext } from 'react-redux'
-import getPhases from '../../redux/thunks/phases'
+import ShowDays from '../days/days'
 
 const phaseDb = [{
   phase: 'phase1'
@@ -20,35 +18,23 @@ const phaseDb = [{
   phase: 'phase3'
 }]
 
+const ButtonExampleButton = (name) =>
+  <Button id="phaseButton" className="phaseButton">
+    {name}
+  </Button>
 
 
 function HomePage() {
-  const phases = useSelector((state) => {
-    console.log(state.data)
-    return state.data
-  })
-  useEffect(() => {
-    dispatch(getPhases())
-    return () => {
-      console.log('!!!')
-    }
-  }, [])
-  console.log(phases[0])
-  const dispatch = useDispatch()
-  const ButtonExampleButton = (name) =>
-    <Button id="phaseButton" className="phaseButton" >
-      {name}
-    </Button>
   return (
     <>
       <div className="phaseContainer">
         <Router>
           <div className='phases'>
-            {phases[0] && phases[0].map((phase) => {
+            {phaseDb.map((phase) => {
               return (
                 <span className='weekElement'>
-                  <Link to={`/${phase.name}/weeks`}>
-                    {ButtonExampleButton(phase.name)}
+                  <Link to="/weeks">
+                    {ButtonExampleButton(phase.phase)}
                   </Link>
                   <br></br>
                 </span>
