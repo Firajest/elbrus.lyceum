@@ -42,7 +42,7 @@ function CreateUserForm() {
     <>
       <form onSubmit={(event) => createUser(event)}>
         <Input name="name" type="text" placeholder="ФИО" onChange={(event) => setInputName(event.target.value)} />
-        <Input name="email" type="email" placeholder="Email" onChange={(event) => setInputEmail(event.target.value)}/>
+        <Input name="email" type="email" placeholder="Email" onChange={(event) => setInputEmail(event.target.value)} />
         <select placeholder="Select user's status" onChange={(event) => setSelectValue(event.target.value)}>
           <option value='student' selected='selected'>Student</option>
           <option value='teacher'>Teacher</option>

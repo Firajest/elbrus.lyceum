@@ -1,7 +1,7 @@
 import express from 'express';
 import {
   getPh, getWeek, getDays, getDay,
-} from '../Database/database';
+} from '../Database/database.js';
 
 const route = express.Router();
 
