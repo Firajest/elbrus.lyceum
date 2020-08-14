@@ -1,5 +1,5 @@
 import express from 'express';
-import { PhaseModel, WeekModel, DayModel } from '../Database/database';
+import { PhaseModel, WeekModel, DayModel } from '../Database/database.js';
 
 const route = express.Router();
 
