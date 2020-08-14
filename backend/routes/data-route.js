@@ -1,10 +1,10 @@
 import express from 'express';
-import { PhaseModel, WeekModel, DayModel } from '../Database/database';
+import { PhaseModel, WeekModel, DayModel } from '../Database/database.js';
 
 const route = express.Router();
 
 route.get('/phases', async (req, res) => {
-  const phases = PhaseModel.find();
+  const phases = await PhaseModel.find();
   res.json({ phases });
 });
 

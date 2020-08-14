@@ -1,6 +1,6 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
-import User from '../models/user.js';
+// import User from '../models/user.js';
 
 const saltRounds = 10;
 const route = express.Router();
@@ -28,7 +28,7 @@ route
     const { login, password, status } = req.body;
     const userCheck = await User.findOne({ login });
     if (!userCheck) {
-      
+
       const user = new User({
         login,
         status,
