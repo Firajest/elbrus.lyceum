@@ -1,6 +1,7 @@
 import React from 'react';
 import HomePage from './components/homepage/homepage'
 import LoginForm from './components/loginForm/loginForm'
+import NewUserForm from './components/newUserForm/newUserForm'
 import './App.css'
 import { Input } from 'semantic-ui-react';
 import {
@@ -14,10 +15,6 @@ const InputExampleIconProps = () => (
   />
 )
 
-
-
-
-
 function App() {
   return (
     <>
@@ -28,7 +25,7 @@ function App() {
           <Router>
             <Switch>
               <Link to="/login">
-                <button className="loginButton">Log in</button>
+                <button className="loginButton">Sign in</button>
               </Link>
             </Switch>
             <Route path='/login'>
@@ -40,7 +37,7 @@ function App() {
         <HomePage />
 
       </div>
-
+<NewUserForm />
     </>
   );
 }
