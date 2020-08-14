@@ -20,7 +20,7 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Ошибка соединения с MongoDB'));
 
 const User = new mongoose.Schema({
-  name: {
+  name: { // ФИО
     type: String,
     required: true,
   },
