@@ -16,7 +16,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-
 route
   .post('/login', async (req, res) => {
     const user = await UserModel.findOne({ email: req.body.email });
@@ -25,7 +24,7 @@ route
       const { email, status } = user;
       req.session.user.email = email;
       req.session.user.status = status;
-      res.json({ message: 'Successful login', user: email, status });
+      res.json({ message: 'Successful login', user: req.session.user.email, status: req.session.user.status });
     } else res.json({ message: 'Something went wrong. Check whether your username or password is correct.' });
   })
   .get('/logout', (req, res) => {
@@ -37,6 +36,13 @@ route
   // create user
   .put('/new', async (req, res) => {
     try {
+      // const user = new UserModel({
+      //   name: 'admin', // ФИО
+      //   email: 'boma385@gmail.com',
+      //   status: 'chieftain',
+      //   password: await bcrypt.hash('admin', saltRounds),
+      // });
+      // await user.save();
       const {
         password, status, name, email,
       } = req.body;
@@ -50,9 +56,9 @@ route
           to: `${email}`,
           subject: 'Аккаунт для Эльбрус Лектория',
           text: `Привет, ${name}!
-          Твой аккаунт от Эльбрус Лектория:
-          Логин: ${email}
-          Пароль: ${password}`,
+                  Твой аккаунт от Эльбрус Лектория:
+                    Логин: ${email}
+                    Пароль: ${password}`,
         };
         transporter.sendMail(send, (error, info) => {
           if (error) {
