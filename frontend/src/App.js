@@ -8,6 +8,11 @@ import {
   Link, BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
 import Logo from './ElbrusBootCamp-logo-RGB.svg'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import thunk from 'redux-thunk'
+import ViewInfo from './redux/reducers/IndexReducer'
 
 const InputExampleIconProps = () => (
   <Input className="searchBar"
@@ -17,6 +22,10 @@ const InputExampleIconProps = () => (
 )
 
 function App() {
+  const store = createStore(
+    ViewInfo,
+    composeWithDevTools(applyMiddleware(thunk))
+  )
   return (
     <>
       <div className="App">
@@ -38,7 +47,7 @@ function App() {
         <HomePage />
 
       </div>
-<NewUserForm />
+      <NewUserForm />
     </>
   );
 }
