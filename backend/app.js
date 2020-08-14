@@ -2,7 +2,7 @@ import express from 'express';
 import session from 'express-session';
 import sessionFileStore from 'session-file-store';
 import cookieParser from 'cookie-parser';
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
 // import path from 'path';
 import userRoute from './routes/user-route.js';
 import dataRoute from './routes/data-route.js';
@@ -14,10 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const FileStore = sessionFileStore(session);
-// ---------------------------------------------------------------------- ЗАМЕНИТЬ НА АТЛАС
-// Подключаем mongoose.
-mongoose.connect('mongodb://localhost:27017/lyceum', { useNewUrlParser: true, useUnifiedTopology: true });
-// ----------------------------------------------------------------------
+
 // SESSION
 app.use(session({
   store: new FileStore(),
