@@ -11,12 +11,13 @@ function CreateUserForm() {
   // );
 
 
-  const [inputLogin, setInputLogin] = useState('');
-  const [selectValue, setSelectValue] = useState('');
+  const [inputName, setInputName] = useState('');
+  const [inputEmail, setInputEmail] = useState('');
+  const [selectValue, setSelectValue] = useState('student');
 
   function createUser(event) {
     event.preventDefault();
-    console.log(event.target, inputLogin, selectValue);
+    console.log(event.target, inputName, selectValue, inputEmail);
 
     (async () => {
       const data = await fetch('/user/new', {
@@ -25,7 +26,8 @@ function CreateUserForm() {
           'Content-type': 'application/json',
         },
         body: JSON.stringify({
-          login: inputLogin,
+          email: inputEmail,
+          name: inputName, //ФИО
           password: Math.random().toString(36).substring(7),
           status: selectValue,
         }),
@@ -33,13 +35,15 @@ function CreateUserForm() {
       const response = await data.json();
       console.log(response);
     })()
+    
   }
 
 
   return (
     <>
       <form onSubmit={(event) => createUser(event)}>
-        <Input name="login" type="text" placeholder="Login" onChange={(event) => setInputLogin(event.target.value)} />
+        <Input name="name" type="text" placeholder="ФИО" onChange={(event) => setInputName(event.target.value)} />
+        <Input name="email" type="email" placeholder="Email" onChange={(event) => setInputEmail(event.target.value)} />
         <select placeholder="Select user's status" onChange={(event) => setSelectValue(event.target.value)}>
           <option value='student' selected='selected'>Student</option>
           <option value='teacher'>Teacher</option>
