@@ -1,6 +1,6 @@
 import { GET_PHASES_SUCCESS, GET_PHASES_FAILURE, GET_PHASES_REQUEST } from "../actionTypes"
 
-const initialState = { data: [], loading: false }
+const initialState = { data: [], loading: false, userStatus: '' }
 export default function ViewInfo(state = initialState, action) {
   const { type, payload } = action
   switch (type) {
@@ -52,6 +52,24 @@ export default function ViewInfo(state = initialState, action) {
       return {
         ...state,
         loading: false
+      }
+      case 'STATUS_REQUEST':
+      return {
+        ...state,
+        userStatus: '',
+        message: 'Checking status',
+      }
+      case 'STATUS_SUCCESS':
+      return {
+        ...state,
+        userStatus: payload.status,
+        message: 'STATUS_SUCCESS',
+      }
+      case 'STATUS_FAILURE':
+      return {
+        ...state,
+        userStatus: '',
+        message: 'STATUS_FAILURE',
       }
     default:
       return state
