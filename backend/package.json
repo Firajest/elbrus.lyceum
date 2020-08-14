@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^7.4.0",
+    "eslint": "^7.6.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "nodemon": "^2.0.4"
@@ -19,10 +19,14 @@
   "dependencies": {
     "bcrypt": "^5.0.0",
     "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "faker": "^4.1.0",
     "hbs": "^4.1.1",
+    "mongodb": "^3.6.0",
     "mongoose": "^5.9.20",
+    "nodemailer": "^6.4.11",
     "path": "^0.12.7",
     "session-file-store": "^1.4.0"
   }
