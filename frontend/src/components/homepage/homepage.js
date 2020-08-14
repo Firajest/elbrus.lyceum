@@ -1,12 +1,14 @@
 import React from 'react'
 import './homepage.css'
 import '../weeks/weeks.css'
+import { useDispatch } from 'react-redux'
 import {
   Link, BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import ShowWeeks from '../weeks/weeks'
 import ShowDays from '../days/days'
+import getPhases from '../../redux/thunks/phases'
 
 const phaseDb = [{
   phase: 'phase1'
@@ -18,13 +20,14 @@ const phaseDb = [{
   phase: 'phase3'
 }]
 
-const ButtonExampleButton = (name) =>
-  <Button id="phaseButton" className="phaseButton">
-    {name}
-  </Button>
 
 
 function HomePage() {
+  const dispatch = useDispatch()
+  const ButtonExampleButton = (name) =>
+    <Button id="phaseButton" className="phaseButton" onClick={() => dispatch(getPhases())}>
+      {name}
+    </Button>
   return (
     <>
       <div className="phaseContainer">
