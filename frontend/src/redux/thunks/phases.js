@@ -9,7 +9,6 @@ function getPhases() {
     dispatch(getPhasesRequest())
     try {
       const response = await (await fetch('/data/phases')).json()
-      console.log(await response.phases)
       dispatch(getPhasesSuccess(response.phases))
     }
     catch (e) {
