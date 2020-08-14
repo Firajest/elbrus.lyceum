@@ -6,25 +6,38 @@ import {
 } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import ShowWeeks from '../weeks/weeks'
-import ShowDays from '../days/days'
-
-const phaseDb = [{
-  phase: 'phase1'
-},
-{
-  phase: 'phase2'
-},
-{
-  phase: 'phase3'
-}]
-
-const ButtonExampleButton = (name) =>
-  <Button id="phaseButton" className="phaseButton">
-    {name}
-  </Button>
-
+import getPhases from '../../redux/thunks/phases'
+import { choosePhase } from '../../redux/actionCreators'
+import getWeeks from '../../redux/thunks/weeks'
 
 function HomePage() {
+  const phases = useSelector((state) => {
+    return state.data
+  })
+  const weeks = useSelector((state) => {
+    return state.phase
+  })
+  useEffect(() => {
+    dispatch(getPhases())
+    return () => {
+      console.log('!!!')
+    }
+  }, [])
+
+
+  const dispatch = useDispatch()
+
+  function weeksInfo(id) {
+    dispatch(choosePhase(id))
+    dispatch(getWeeks(id))
+  }
+
+  const ButtonExampleButton = (name, id) =>
+    <Button id="phaseButton" className="phaseButton"
+      onClick={() => weeksInfo(id)}>
+      {name}
+    </Button>
+
   return (
     <>
       <div className="phaseContainer">
@@ -33,8 +46,9 @@ function HomePage() {
             {phaseDb.map((phase) => {
               return (
                 <span className='weekElement'>
-                  <Link to="/weeks">
-                    {ButtonExampleButton(phase.phase)}
+
+                  <Link to={`/phases/weeks`}>
+                    {ButtonExampleButton(phase.name, phase._id)}
                   </Link>
                   <br></br>
                 </span>
@@ -42,7 +56,7 @@ function HomePage() {
             })}
           </div>
           <Switch>
-            <Route path='/weeks'>
+            <Route path='/phases/weeks'>
               <ShowWeeks></ShowWeeks>
             </Route>
           </Switch>

@@ -17,7 +17,7 @@ function CreateUserForm() {
 
   function createUser(event) {
     event.preventDefault();
-    console.log(event.target, inputName, selectValue, inputEmail);
+    // console.log(event.target, inputName, selectValue, inputEmail);
 
     (async () => {
       const data = await fetch('/user/new', {
@@ -33,9 +33,10 @@ function CreateUserForm() {
         }),
       });
       const response = await data.json();
-      console.log(response);
+      // console.log(response);
     })()
-    
+    setInputEmail('');
+    setInputName('');
   }
 
 
