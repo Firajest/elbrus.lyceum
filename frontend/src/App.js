@@ -7,6 +7,7 @@ import { Input } from 'semantic-ui-react';
 import {
   Link, BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
+import Logo from './ElbrusBootCamp-logo-RGB.svg'
 
 const InputExampleIconProps = () => (
   <Input className="searchBar"
@@ -20,7 +21,7 @@ function App() {
     <>
       <div className="App">
         <header className="navbar">
-          <span>Logo</span>
+          <img src={Logo} className="logo" />
           {InputExampleIconProps()}
           <Router>
             <Switch>
