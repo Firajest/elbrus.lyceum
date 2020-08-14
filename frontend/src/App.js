@@ -27,7 +27,7 @@ function App() {
     composeWithDevTools(applyMiddleware(thunk))
   )
   return (
-    <>
+    <Provider store={store}>
       <div className="App">
         <header className="navbar">
           <img src={Logo} className="logo" />
@@ -45,10 +45,9 @@ function App() {
         </header>
         <br></br>
         <HomePage />
-
       </div>
       <NewUserForm />
-    </>
+    </Provider>
   );
 }
 

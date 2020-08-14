@@ -17,9 +17,12 @@ export function getPhasesSuccess(name) {
     }
   }
 }
-export function getPhasesFailure() {
+export function getPhasesFailure(error) {
   return {
     type: GET_PHASES_FAILURE,
+    payload: {
+      error
+    }
   }
 }
 
@@ -36,9 +39,12 @@ export function getWeeksSuccess(name) {
     }
   }
 }
-export function getWeeksFailure() {
+export function getWeeksFailure(error) {
   return {
     type: GET_WEEKS_FAILURE,
+    payload: {
+      error
+    }
   }
 }
 
@@ -55,8 +61,11 @@ export function getDaysSuccess(name) {
     }
   }
 }
-export function getDaysFailure() {
+export function getDaysFailure(error) {
   return {
     type: GET_DAYS_FAILURE,
+    payload: {
+      error
+    }
   }
 }

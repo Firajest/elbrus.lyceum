@@ -1,8 +1,3 @@
-import {
-  getPhasesRequest, getPhasesSuccess, getPhasesFailure,
-  getWeeksRequest, getWeeksSuccess, getWeeksFailure,
-  getDaysRequest, getDaysSuccess, getDaysFailure,
-} from '../actionCreators'
 
 const initialState = { data: [], loading: false }
 export default function ViewInfo(state = initialState, action) {
@@ -17,7 +12,7 @@ export default function ViewInfo(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        data: payload.name
+        data: [...state, payload.name]
       }
     case 'GET_PHASE_FAILURE':
       return {
