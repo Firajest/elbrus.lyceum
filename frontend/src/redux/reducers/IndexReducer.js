@@ -1,6 +1,10 @@
-import { GET_PHASES_SUCCESS, GET_PHASES_FAILURE, GET_PHASES_REQUEST } from "../actionTypes"
+import {
+  GET_PHASES_SUCCESS, GET_PHASES_FAILURE, GET_PHASES_REQUEST, GET_WEEKS_SUCCESS, GET_WEEKS_FAILURE, GET_WEEKS_REQUEST,
+  GET_DAYS_SUCCESS, GET_DAYS_FAILURE, GET_DAYS_REQUEST,
+  CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY
+} from "../actionTypes"
 
-const initialState = { data: [], loading: false }
+const initialState = { data: [], loading: false, phase: '', week: '', day: '' }
 export default function ViewInfo(state = initialState, action) {
   const { type, payload } = action
   switch (type) {
@@ -10,48 +14,62 @@ export default function ViewInfo(state = initialState, action) {
         loading: true
       }
     case GET_PHASES_SUCCESS:
-      console.log(payload)
       return {
         ...state,
         loading: false,
-        data: [...state.data, payload.name]
+        data: [...state.data, payload.name],
       }
     case GET_PHASES_FAILURE:
       return {
         ...state,
         loading: false
       }
-    case 'GET_WEEKS_REQUEST':
+    case GET_WEEKS_REQUEST:
       return {
         ...state,
         loading: true
       }
-    case 'GET_WEEKS_SUCCESS':
+    case GET_WEEKS_SUCCESS:
       return {
         ...state,
         loading: false,
         data: [...state.data, payload.name]
       }
-    case 'GET_WEEKS_FAILURE':
+    case GET_WEEKS_FAILURE:
       return {
         ...state,
         loading: false
       }
-    case 'GET_DAYS_REQUEST':
+    case GET_DAYS_REQUEST:
       return {
         ...state,
         loading: true
       }
-    case 'GET_DAYS_SUCCESS':
+    case GET_DAYS_SUCCESS:
       return {
         ...state,
         loading: false,
         data: [...state.data, payload.name]
       }
-    case 'GET_DAYS_FAILURE':
+    case GET_DAYS_FAILURE:
       return {
         ...state,
         loading: false
+      }
+    case CHOOSE_PHASE:
+      return {
+        ...state,
+        phase: payload.id
+      }
+    case CHOOSE_WEEK:
+      return {
+        ...state,
+        week: payload.id
+      }
+    case CHOOSE_DAY:
+      return {
+        ...state,
+        day: payload.id
       }
     default:
       return state

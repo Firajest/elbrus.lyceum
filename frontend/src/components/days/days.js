@@ -3,6 +3,7 @@ import './days.css'
 import {
   Link, BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom'
+import { useDispatch, useSelector, } from 'react-redux'
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -37,14 +38,22 @@ const dayDb = [
   },
 ]
 
+
+
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 function ShowDays() {
+  const dispatch = useDispatch()
+  const days = useSelector((state) => {
+    return state.data
+  })
+  console.log(days)
+
   const dayButt = (name) =>
     <Button id="dayButton" className="dayButton" onClick={handleClickOpen}>
-      {name.day}
+      {name}
     </Button>
 
   const [open, setOpen] = React.useState(false);
@@ -61,12 +70,12 @@ function ShowDays() {
   return (
     <>
       <div className='daysList' >
-        {dayDb.map((day) => {
+        {days[2] && days[2].map((day) => {
           return (
             <Router>
               <Switch>
                 <div className='dayList'>
-                  {dayButt(day)}
+                  {dayButt(day.name)}
                 </div>
               </Switch>
             </Router>
