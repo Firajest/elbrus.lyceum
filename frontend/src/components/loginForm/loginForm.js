@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Input, Button } from 'semantic-ui-react';
+import { Input } from 'semantic-ui-react';
+import Button from '@material-ui/core/Button';
 // import '../';
 // const LoginButton = () => <Button type="submit" id="loginSubmitButton" className="loginButton" >Log in</Button>
 

@@ -3,7 +3,7 @@ import './weeks.css'
 import {
   Link, BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
+import Button from '@material-ui/core/Button';
 import ShowDays from '../days/days'
 const ButtonExampleButton = (name) =>
   <Button id="weekButton" className="weekButton">
