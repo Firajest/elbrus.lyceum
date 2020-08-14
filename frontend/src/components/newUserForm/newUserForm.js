@@ -35,7 +35,8 @@ function CreateUserForm() {
       const response = await data.json();
       // console.log(response);
     })()
-
+    setInputEmail('');
+    setInputName('');
   }
 
 
