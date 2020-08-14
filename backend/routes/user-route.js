@@ -28,12 +28,14 @@ route
     const { login, password, status } = req.body;
     const userCheck = await User.findOne({ login });
     if (!userCheck) {
+      
       const user = new User({
         login,
         status,
         password: await bcrypt.hash(password, saltRounds),
       });
       await user.save();
+      console.log(user);
       res.json({ message: 'User has been created.' });
     } else res.json({ message: 'Something went wrong.' });
   })
