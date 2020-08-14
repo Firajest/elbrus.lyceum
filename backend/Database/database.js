@@ -405,7 +405,7 @@ export async function getWeek(phID) {
 }
 
 export async function getDays(weekID) {
-  const day = await DayModel.findOne({ week: weekID });
+  const day = await DayModel.find({ week: weekID });
   return day;
 }
 
