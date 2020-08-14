@@ -13,7 +13,7 @@ function CreateUserForm() {
 
   const [inputName, setInputName] = useState('');
   const [inputEmail, setInputEmail] = useState('');
-  const [selectValue, setSelectValue] = useState('');
+  const [selectValue, setSelectValue] = useState('student');
 
   function createUser(event) {
     event.preventDefault();
@@ -35,6 +35,7 @@ function CreateUserForm() {
       const response = await data.json();
       console.log(response);
     })()
+    
   }
 
 
