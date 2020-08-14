@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './homepage.css'
 import '../weeks/weeks.css'
-import { useDispatch, useSelector, } from 'react-redux'
 import {
   Link, BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom'
@@ -38,14 +37,16 @@ function HomePage() {
       onClick={() => weeksInfo(id)}>
       {name}
     </Button>
+
   return (
     <>
       <div className="phaseContainer">
         <Router>
           <div className='phases'>
-            {phases[0] && phases[0].map((phase) => {
+            {phaseDb.map((phase) => {
               return (
                 <span className='weekElement'>
+
                   <Link to={`/phases/weeks`}>
                     {ButtonExampleButton(phase.name, phase._id)}
                   </Link>
