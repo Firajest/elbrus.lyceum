@@ -2,6 +2,7 @@ import React from 'react';
 import HomePage from './components/homepage/homepage'
 import LoginForm from './components/loginForm/loginForm'
 import NewUserForm from './components/newUserForm/newUserForm'
+import Logout from './components/logout/logout'
 import './App.css'
 import { Input } from 'semantic-ui-react';
 import {
@@ -9,7 +10,7 @@ import {
 } from 'react-router-dom';
 import Logo from './ElbrusBootCamp-logo-RGB.svg'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import { Provider } from 'react-redux'
+import { Provider, useSelector } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 import ViewInfo from './redux/reducers/IndexReducer'
@@ -43,6 +44,7 @@ function App() {
               <LoginForm />
             </Route>
           </Router>
+          <Logout />
         </header>
         <br></br>
         <HomePage />
