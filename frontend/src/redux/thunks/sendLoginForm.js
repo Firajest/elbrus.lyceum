@@ -20,8 +20,8 @@ function statusCheck(inputEmail, inputPassword) {
       });
       const response = await data.json();
       console.log(response);
-      if (response.status) {
-        dispatch(statusSucceeded(response.status));
+      if (response.user) {
+        dispatch(statusSucceeded(response.user, response.cookie));
       } else dispatch(statusFailed())
     }
     catch {

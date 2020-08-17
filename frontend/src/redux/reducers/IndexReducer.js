@@ -1,6 +1,14 @@
 import {
   GET_PHASES_SUCCESS, GET_PHASES_FAILURE, GET_PHASES_REQUEST, GET_WEEKS_SUCCESS, GET_WEEKS_FAILURE, GET_WEEKS_REQUEST,
   GET_DAYS_SUCCESS, GET_DAYS_FAILURE, GET_DAYS_REQUEST,
+  CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILURE,
+} from "../actionTypes"
+
+const initialState = { data: [], loading: false, phase: '', week: '', day: '', userStatus: '' }
+
   GET_DAY_SUCCESS, GET_DAY_FAILURE, GET_DAY_REQUEST,
   CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY
 } from "../actionTypes"
@@ -66,7 +74,8 @@ export default function ViewInfo(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        data: [...state.data, payload.name]
+        data: [...state.data, payload.name],
+        singleDay: payload
       }
     case GET_DAY_FAILURE:
       return {
@@ -84,6 +93,7 @@ export default function ViewInfo(state = initialState, action) {
       return {
         ...state,
         userStatus: payload.status,
+        cookie: payload.cookie,
         message: 'STATUS_SUCCESS',
       }
     case 'STATUS_FAILURE':
@@ -107,7 +117,26 @@ export default function ViewInfo(state = initialState, action) {
         ...state,
         day: payload.id
       }
+      case LOGOUT_REQUEST:
+      return {
+        ...state,
+        message: 'Checking LOGOUT_REQUEST',
+      }
+      case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        userStatus: '',
+        cookie: '',
+        message: payload.message,
+      }
+      case LOGOUT_FAILURE:
+      return {
+        ...state,
+        userStatus: '',
+        message: 'LOGOUT_FAILURE',
+      }
     default:
       return state
   }
 }
+

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './days.css'
 import {
-  Link, BrowserRouter as Router, Switch, Route,
+  BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom'
 import { useDispatch, useSelector, } from 'react-redux'
 import Button from '@material-ui/core/Button';
@@ -12,6 +12,10 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import CancelIcon from '@material-ui/icons/Cancel';
+import Link from '@material-ui/core/Link';
+import { chooseDay } from '../../redux/actionCreators';
+import getDays from '../../redux/thunks/days';
+import getDay from '../../redux/thunks/day';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -24,16 +28,21 @@ function ShowDays() {
   const days = useSelector((state) => {
     return state.data
   })
-  console.log(days)
+  const singleDay = useSelector((state) => {
+    return state.singleDay
+  })
 
-  const dayButt = (name) =>
-    <Button id="dayButton" className="dayButton" onClick={handleClickOpen}>
-      {name}
+  const dayButt = (day) =>
+    <Button id="dayButton" className="dayButton" onClick={() => handleClickOpen(day)}>
+      {day.name}
     </Button>
 
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
+  function handleClickOpen(day) {
+    console.log(day);
+    dispatch(getDay(day._id))
+    dispatch(chooseDay(day._id))
     setOpen(true);
   };
 
@@ -50,7 +59,7 @@ function ShowDays() {
             <Router>
               <Switch>
                 <div className='dayList'>
-                  {dayButt(day.name)}
+                  {dayButt(day)}
                 </div>
               </Switch>
             </Router>
@@ -66,10 +75,11 @@ function ShowDays() {
           aria-labelledby="alert-dialog-slide-title"
           aria-describedby="alert-dialog-slide-description"
         >
-          <DialogTitle id="alert-dialog-slide-title"></DialogTitle>
+          <DialogTitle id="alert-dialog-slide-title">{singleDay.name}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-
+              <iframe width="560" height="315" src={singleDay.linkYT} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <Link href={singleDay.linkPres}>Презентация</Link>
             </DialogContentText>
           </DialogContent>
           <DialogActions>

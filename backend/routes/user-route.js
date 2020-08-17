@@ -21,16 +21,15 @@ route
     const user = await UserModel.findOne({ email: req.body.email });
     if ((user) && (await bcrypt.compare(req.body.password, user.password))) {
       req.session.user = user;
-      const { email, status } = user;
-      req.session.user.email = email;
-      req.session.user.status = status;
-      res.json({ message: 'Successful login', user: req.session.user.email, status: req.session.user.status });
+      req.session.user.password = '';
+      res.json({ message: 'Successful login', user: req.session.user, cookie: req.session.cookie });
     } else res.json({ message: 'Something went wrong. Check whether your username or password is correct.' });
   })
-  .get('/logout', (req, res) => {
+  .post('/logout', (req, res) => {
+    const { cookie } = req.body;
     req.session.destroy(() => {
       res.clearCookie('user_sid', { path: '/' });
-      res.json({ message: 'Successful logout' });
+      res.json({ message: 'Successful logout', status: '' });
     });
   })
   // create user

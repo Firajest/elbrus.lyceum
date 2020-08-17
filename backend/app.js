@@ -23,7 +23,7 @@ app.use(session({
   maxAge: 10 * 1000,
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false, expire: 10 * 1000 },
+  cookie: { secure: false, expires: 10 * 1000 },
 }));
 
 app.use((req, res, next) => {
