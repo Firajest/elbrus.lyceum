@@ -79,12 +79,10 @@ export function getDayRequest() {
     type: GET_DAY_REQUEST,
   }
 }
-export function getDaySuccess(name) {
+export function getDaySuccess(day) {
   return {
     type: GET_DAY_SUCCESS,
-    payload: {
-      name,
-    }
+    payload: day
   }
 }
 export function getDayFailure(error) {
