@@ -1,10 +1,11 @@
 import {
   GET_PHASES_SUCCESS, GET_PHASES_FAILURE, GET_PHASES_REQUEST, GET_WEEKS_SUCCESS, GET_WEEKS_FAILURE, GET_WEEKS_REQUEST,
   GET_DAYS_SUCCESS, GET_DAYS_FAILURE, GET_DAYS_REQUEST,
+  GET_DAY_SUCCESS, GET_DAY_FAILURE, GET_DAY_REQUEST,
   CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY
 } from "../actionTypes"
 
-const initialState = { data: [], loading: false, phase: '', week: '', day: '', userStatus: '' }
+const initialState = { data: [], loading: false, phase: '', week: '', day: '', singleDay: {}, userStatus: '' }
 export default function ViewInfo(state = initialState, action) {
   const { type, payload } = action
   switch (type) {
@@ -56,6 +57,23 @@ export default function ViewInfo(state = initialState, action) {
         ...state,
         loading: false
       }
+    case GET_DAY_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+    case GET_DAY_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        data: [...state.data, payload.name]
+      }
+    case GET_DAY_FAILURE:
+      return {
+        ...state,
+        loading: false
+      }
+
     case 'STATUS_REQUEST':
       return {
         ...state,
