@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './days.css'
 import {
-  Link, BrowserRouter as Router, Switch, Route,
+  BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom'
 import { useDispatch, useSelector, } from 'react-redux'
 import Button from '@material-ui/core/Button';
@@ -12,53 +12,57 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import CancelIcon from '@material-ui/icons/Cancel';
-
-
-const dayDb = [
-  {
-    day: 'day1'
-  },
-  {
-    day: 'day2'
-  },
-  {
-    day: 'day3'
-  },
-  {
-    day: 'day4'
-  },
-  {
-    day: 'day5'
-  },
-  {
-    day: 'day6'
-  },
-  {
-    day: 'day7'
-  },
-]
-
+import Link from '@material-ui/core/Link';
+import { chooseDay } from '../../redux/actionCreators';
+import getDays from '../../redux/thunks/days';
+import getDay from '../../redux/thunks/day';
+import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
+const TestButton = withStyles((theme) => ({
+  root: {
+    backgroundColor: 'rgb(63,37,166)',
+    color: 'rgb(133, 227,251)',
+    marginBottom: '5%',
+    marginLeft: '20%',
+    height: '75px',
+    width: '450px',
+    fontFamily: 'Rostin',
+    fontSize: '18px',
+    order: '5px solid rgb(63,37,166)',
+    '&:hover': {
+      color: '#FFBC5B',
+      backgroundColor: '#4520AB',
+      border: '5px solid #FFBC5B'
+    },
+  },
+}))(Button);
+
 function ShowDays() {
+
   const dispatch = useDispatch()
   const days = useSelector((state) => {
-    return state.data
+    return state.data.days
   })
-  console.log(days)
+  const singleDay = useSelector((state) => {
+    return state.singleDay
+  })
 
-  const dayButt = (name) =>
-    <Button id="dayButton" className="dayButton" onClick={handleClickOpen}>
-      {name}
+  const dayButt = (day) =>
+    <Button id="dayButton" className="dayButton" onClick={() => handleClickOpen(day)}>
+      {day.name}
     </Button>
 
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
+  function handleClickOpen(day) {
+    console.log(day);
+    dispatch(getDay(day._id))
+    dispatch(chooseDay(day._id))
     setOpen(true);
   };
 
@@ -70,12 +74,12 @@ function ShowDays() {
   return (
     <>
       <div className='daysList' >
-        {days[2] && days[2].map((day) => {
+        {days && days.map((day) => {
           return (
             <Router>
               <Switch>
                 <div className='dayList'>
-                  {dayButt(day.name)}
+                  <TestButton onClick={() => handleClickOpen(day)}>{day.name}</TestButton>
                 </div>
               </Switch>
             </Router>
@@ -91,10 +95,11 @@ function ShowDays() {
           aria-labelledby="alert-dialog-slide-title"
           aria-describedby="alert-dialog-slide-description"
         >
-          <DialogTitle id="alert-dialog-slide-title"></DialogTitle>
+          <DialogTitle id="alert-dialog-slide-title">{singleDay.name}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-
+              <iframe width="560" height="315" src={singleDay.linkYT} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <Link href={singleDay.linkPres}>Презентация</Link>
             </DialogContentText>
           </DialogContent>
           <DialogActions>

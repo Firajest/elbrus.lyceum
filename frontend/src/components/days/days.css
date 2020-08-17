@@ -1,8 +1,19 @@
+.daysList{
+  justify-content: space-between;
+}
+
 #dayButton {
   background-color: rgb(63,37,166);
   color: rgb(133, 227,251);
-  margin-bottom: 5px;
+  margin-bottom: 5%;
   margin-left: 20%;
-  height: 50px;
+  height: 75px;
   width: 450px;
+  font-family: 'Rostin';
+  font-size: 18px;
+  box-shadow: 10px 10px 8px #FFBC5B;
+
+}
+#dayButton :hover {
+  border: 1px solid black;
 }

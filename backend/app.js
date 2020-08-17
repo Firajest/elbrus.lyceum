@@ -20,10 +20,10 @@ app.use(session({
   store: new FileStore(),
   key: 'user_sid',
   secret: 'qwer1tyuiop2asdfgh3jklzxc4vbnmASDQW5EZXCRF6VBGTYHNM78JUIKL9OP0',
-  maxAge: 10 * 1000,
+  maxAge: 1000 * 60 * 60 * 24 * 30 * 12,
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false, expire: 10 * 1000 },
+  cookie: { secure: false, expires: 1000 * 60 * 60 * 24 * 30 * 12 },
 }));
 
 app.use((req, res, next) => {
