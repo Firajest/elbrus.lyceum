@@ -2,14 +2,20 @@ import {
   GET_PHASES_SUCCESS, GET_PHASES_FAILURE, GET_PHASES_REQUEST, GET_WEEKS_SUCCESS, GET_WEEKS_FAILURE, GET_WEEKS_REQUEST,
   GET_DAYS_SUCCESS, GET_DAYS_FAILURE, GET_DAYS_REQUEST,
   CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY,
+
+  GET_DAY_SUCCESS, GET_DAY_FAILURE, GET_DAY_REQUEST,
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   LOGOUT_FAILURE,
-  GET_DAY_SUCCESS, GET_DAY_FAILURE, GET_DAY_REQUEST,
-}
-  from "../actionTypes"
 
-const initialState = { data: [], loading: false, phase: '', week: '', day: '', singleDay: {}, userStatus: '' }
+
+
+} from "../actionTypes"
+
+const initialState = { data: { phases: [], weeks: [], days: [], day: {} }, loading: false, phase: '', week: '', day: '', singleDay: {}, userStatus: '' }
+
+
+
 export default function ViewInfo(state = initialState, action) {
   const { type, payload } = action
   switch (type) {
@@ -22,7 +28,7 @@ export default function ViewInfo(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        data: [...state.data, payload.name],
+        data: { ...state.data, phases: payload.name },
       }
     case GET_PHASES_FAILURE:
       return {
@@ -38,7 +44,7 @@ export default function ViewInfo(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        data: [...state.data, payload.name]
+        data: { ...state.data, weeks: payload.name },
       }
     case GET_WEEKS_FAILURE:
       return {
@@ -54,7 +60,7 @@ export default function ViewInfo(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        data: [...state.data, payload.name]
+        data: { ...state.data, days: payload.name },
       }
     case GET_DAYS_FAILURE:
       return {
@@ -70,7 +76,7 @@ export default function ViewInfo(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        data: [...state.data, payload.name],
+        data: { ...state.data, day: payload.name },
         singleDay: payload
       }
     case GET_DAY_FAILURE:
@@ -80,23 +86,23 @@ export default function ViewInfo(state = initialState, action) {
       }
 
     case 'STATUS_REQUEST':
+
       return {
         ...state,
-        userStatus: '',
-        message: 'Checking status',
+        message: payload.message,
+        errorMessage: '',
       }
-    case 'STATUS_SUCCESS':
+    case STATUS_SUCCESS:
       return {
         ...state,
         userStatus: payload.status,
-        cookie: payload.cookie,
-        message: 'STATUS_SUCCESS',
+        message: payload.message,
+        errorMessage: '',
       }
-    case 'STATUS_FAILURE':
+    case STATUS_FAILURE:
       return {
         ...state,
-        userStatus: '',
-        message: 'STATUS_FAILURE',
+        errorMessage: payload.message,
       }
     case CHOOSE_PHASE:
       return {
@@ -117,22 +123,40 @@ export default function ViewInfo(state = initialState, action) {
       return {
         ...state,
         message: 'Checking LOGOUT_REQUEST',
+        errorMessage: '',
       }
     case LOGOUT_SUCCESS:
       return {
         ...state,
         userStatus: '',
-        cookie: '',
         message: payload.message,
+        errorMessage: '',
       }
     case LOGOUT_FAILURE:
       return {
         ...state,
-        userStatus: '',
-        message: 'LOGOUT_FAILURE',
+        errorMessage: payload.errorMessage,
+        message: '',
+      }
+    case CREATEUSER_REQUEST:
+      return {
+        ...state,
+        message: payload.message,
+        errorMessage: '',
+      }
+    case CREATEUSER_SUCCESS:
+      return {
+        ...state,
+        message: payload.message,
+        errorMessage: '',
+      }
+    case CREATEUSER_FAILURE:
+      return {
+        ...state,
+        errorMessage: payload.message,
+        message: ''
       }
     default:
       return state
   }
 }
-

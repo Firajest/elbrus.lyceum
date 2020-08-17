@@ -13,7 +13,7 @@ import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material
 function ShowWeeks() {
   const dispatch = useDispatch()
   const weeks = useSelector((state) => {
-    return state.data
+    return state.data.weeks
   })
   console.log(weeks)
 
@@ -51,7 +51,7 @@ function ShowWeeks() {
       <Router>
         <div className='weeksList'>
           <div>
-            {weeks[1] && weeks[1].map((week) => {
+            {weeks && weeks.map((week) => {
               return (
                 <span >
                   <Link to="/days">

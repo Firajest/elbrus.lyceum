@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Input } from 'semantic-ui-react';
 // import Button from '@material-ui/core/Button';
 import { useDispatch } from 'react-redux';
-import statusCheck from '../../redux/thunks/sendLoginForm'
+import SendLoginForm from '../../redux/thunks/sendLoginForm'
 
 // import '../';
 // const LoginButton = () => <Button type="submit" id="loginSubmitButton" className="loginButton" >Log in</Button>
@@ -17,7 +17,7 @@ function LoginForm() {
   function sendForm(event) {
     event.preventDefault();
     console.log(event.target, inputEmail, inputPassword);
-    dispatch(statusCheck(inputEmail, inputPassword));
+    dispatch(SendLoginForm(inputEmail, inputPassword));
     setInputEmail('');
     setInputPassword('');
   }

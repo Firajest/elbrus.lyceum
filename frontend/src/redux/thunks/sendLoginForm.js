@@ -4,7 +4,7 @@ import {
   statusFailed,
 } from '../actionCreators'
 
-function statusCheck(inputEmail, inputPassword) {
+function SendLoginForm(inputEmail, inputPassword) {
   return async (dispatch) => {
     dispatch(statusRequest());
     try {
@@ -21,13 +21,13 @@ function statusCheck(inputEmail, inputPassword) {
       const response = await data.json();
       console.log(response);
       if (response.user) {
-        dispatch(statusSucceeded(response.user, response.cookie));
-      } else dispatch(statusFailed())
+        dispatch(statusSucceeded(response.user, response.message));
+      } else dispatch(statusFailed(response.message))
     }
     catch {
-      dispatch(statusFailed())
+      dispatch(statusFailed('Oooops, something went wrong...'))
     }
   }
 }
 
-export default statusCheck
+export default SendLoginForm
