@@ -18,13 +18,12 @@ import getDays from '../../redux/thunks/days';
 import getDay from '../../redux/thunks/day';
 
 
-
-
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 function ShowDays() {
+
   const dispatch = useDispatch()
   const days = useSelector((state) => {
     return state.data

@@ -6,16 +6,21 @@
   width: 10px;
   position: relative;
   margin-top: 5%;
+  font-family: 'Rostin';
 }
 #phaseButton{
   background-color: rgb(63,37,166);
   color: rgb(133, 227,251);
-  margin-bottom: 5px;
+  margin-bottom: 5%;
   margin-left: 10%;
   height: 120px;
   width: 450px;
   font-family: 'Rostin';
+  font-size: 18px;
 }
-
+@font-face{
+  font-family: 'Rostin';
+  src: url('/frontend/public/RF-Rostin/RF-Rostin-Bold.ttf');
+}
 
 

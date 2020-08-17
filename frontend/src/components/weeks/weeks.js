@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import './weeks.css'
 import {
   Link, BrowserRouter as Router, Switch, Route,
@@ -6,15 +6,8 @@ import {
 import { useDispatch, useSelector, } from 'react-redux'
 import Button from '@material-ui/core/Button';
 import ShowDays from '../days/days'
-import getWeeks from '../../redux/thunks/weeks'
-import getPhases from '../../redux/thunks/phases'
 import getDays from '../../redux/thunks/days'
 import { chooseWeek } from '../../redux/actionCreators'
-
-
-
-
-
 
 function ShowWeeks() {
   const dispatch = useDispatch()
