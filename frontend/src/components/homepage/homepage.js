@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './homepage.css'
 import '../weeks/weeks.css'
 import {
   Link, BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom'
+import { useDispatch, useSelector, } from 'react-redux'
 import Button from '@material-ui/core/Button';
 import ShowWeeks from '../weeks/weeks'
 import getPhases from '../../redux/thunks/phases'
@@ -43,7 +44,7 @@ function HomePage() {
       <div className="phaseContainer">
         <Router>
           <div className='phases'>
-            {phaseDb.map((phase) => {
+            {phases[0] && phases[0].map((phase) => {
               return (
                 <span className='weekElement'>
 

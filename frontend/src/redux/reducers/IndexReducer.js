@@ -4,7 +4,7 @@ import {
   CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY
 } from "../actionTypes"
 
-const initialState = { data: [], loading: false, phase: '', week: '', day: '', userStatus: ''}
+const initialState = { data: [], loading: false, phase: '', week: '', day: '', userStatus: '' }
 export default function ViewInfo(state = initialState, action) {
   const { type, payload } = action
   switch (type) {
@@ -56,23 +56,24 @@ export default function ViewInfo(state = initialState, action) {
         ...state,
         loading: false
       }
-      case 'STATUS_REQUEST':
+    case 'STATUS_REQUEST':
       return {
         ...state,
         userStatus: '',
         message: 'Checking status',
       }
-      case 'STATUS_SUCCESS':
+    case 'STATUS_SUCCESS':
       return {
         ...state,
         userStatus: payload.status,
         message: 'STATUS_SUCCESS',
       }
-      case 'STATUS_FAILURE':
+    case 'STATUS_FAILURE':
       return {
         ...state,
         userStatus: '',
         message: 'STATUS_FAILURE',
+      }
     case CHOOSE_PHASE:
       return {
         ...state,
