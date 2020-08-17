@@ -10,10 +10,11 @@ import ShowWeeks from '../weeks/weeks'
 import getPhases from '../../redux/thunks/phases'
 import { choosePhase } from '../../redux/actionCreators'
 import getWeeks from '../../redux/thunks/weeks'
+import getDays from '../../redux/thunks/days'
 
 function HomePage() {
   const phases = useSelector((state) => {
-    return state.data
+    return state.data.phases
   })
   const weeks = useSelector((state) => {
     return state.phase
@@ -31,6 +32,7 @@ function HomePage() {
   function weeksInfo(id) {
     dispatch(choosePhase(id))
     dispatch(getWeeks(id))
+    dispatch(getDays(id))
   }
 
   const ButtonExampleButton = (name, id) =>
@@ -42,10 +44,9 @@ function HomePage() {
   return (
     <>
       <div className="phaseContainer">
-        Привет!
         <Router>
           <div className='phases'>
-            {phases[0] && phases[0].map((phase) => {
+            {phases && phases.map((phase) => {
               return (
                 <span className='weekElement' key={phase._id}>
                   <Link to={`/phases/weeks`}>

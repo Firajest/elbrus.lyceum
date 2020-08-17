@@ -26,7 +26,7 @@ function ShowDays() {
 
   const dispatch = useDispatch()
   const days = useSelector((state) => {
-    return state.data
+    return state.data.days
   })
   const singleDay = useSelector((state) => {
     return state.singleDay
@@ -54,7 +54,7 @@ function ShowDays() {
   return (
     <>
       <div className='daysList' >
-        {days[2] && days[2].map((day) => {
+        {days && days.map((day) => {
           return (
             <Router>
               <Switch>

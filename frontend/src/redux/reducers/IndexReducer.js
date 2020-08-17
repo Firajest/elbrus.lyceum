@@ -2,20 +2,16 @@ import {
   GET_PHASES_SUCCESS, GET_PHASES_FAILURE, GET_PHASES_REQUEST, GET_WEEKS_SUCCESS, GET_WEEKS_FAILURE, GET_WEEKS_REQUEST,
   GET_DAYS_SUCCESS, GET_DAYS_FAILURE, GET_DAYS_REQUEST,
   CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY,
-  LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE, STATUS_REQUEST, STATUS_SUCCESS, STATUS_FAILURE, CREATEUSER_REQUEST, CREATEUSER_SUCCESS, CREATEUSER_FAILURE,
-} from "../actionTypes"
-
-<<<<<<< HEAD
-const initialState = { data: [], loading: false, phase: '', week: '', day: '', userStatus: '', message: '', errorMessage: '' }
-=======
-const initialState = { data: [], loading: false, phase: '', week: '', day: '', userStatus: '' }
 
   GET_DAY_SUCCESS, GET_DAY_FAILURE, GET_DAY_REQUEST,
-  CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILURE,
 } from "../actionTypes"
 
-const initialState = { data: [], loading: false, phase: '', week: '', day: '', singleDay: {}, userStatus: '' }
->>>>>>> 1733e6f09689b8354dbfc2f13e36da947f3764c3
+const initialState = { data: { phases: [], weeks: [], days: [], day: {} }, loading: false, phase: '', week: '', day: '', singleDay: {}, userStatus: '' }
+
+
 export default function ViewInfo(state = initialState, action) {
   const { type, payload } = action
   switch (type) {
@@ -28,7 +24,7 @@ export default function ViewInfo(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        data: [...state.data, payload.name],
+        data: { ...state.data, phases: payload.name },
       }
     case GET_PHASES_FAILURE:
       return {
@@ -44,7 +40,7 @@ export default function ViewInfo(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        data: [...state.data, payload.name]
+        data: { ...state.data, weeks: payload.name },
       }
     case GET_WEEKS_FAILURE:
       return {
@@ -60,16 +56,13 @@ export default function ViewInfo(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        data: [...state.data, payload.name]
+        data: { ...state.data, days: payload.name },
       }
     case GET_DAYS_FAILURE:
       return {
         ...state,
         loading: false
       }
-<<<<<<< HEAD
-    case STATUS_REQUEST:
-=======
     case GET_DAY_REQUEST:
       return {
         ...state,
@@ -79,7 +72,7 @@ export default function ViewInfo(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        data: [...state.data, payload.name],
+        data: { ...state.data, day: payload.name },
         singleDay: payload
       }
     case GET_DAY_FAILURE:
@@ -89,7 +82,7 @@ export default function ViewInfo(state = initialState, action) {
       }
 
     case 'STATUS_REQUEST':
->>>>>>> 1733e6f09689b8354dbfc2f13e36da947f3764c3
+
       return {
         ...state,
         message: payload.message,
