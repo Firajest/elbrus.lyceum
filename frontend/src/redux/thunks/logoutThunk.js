@@ -4,7 +4,7 @@ import {
   logoutRequestFailed,
 } from '../actionCreators'
 
-function LogoutFunc(cookie) {
+function LogoutFunc() {
   return async (dispatch) => {
     dispatch(logoutRequest());
     try {
@@ -14,17 +14,17 @@ function LogoutFunc(cookie) {
           'Content-type': 'application/json',
         },
         body: JSON.stringify({
-          cookie,
+          // cookie,
         }),
       });
       const response = await data.json();
       console.log(response);
       if (response.message === 'Successful logout') {
-        dispatch(logoutRequestSuccessed(response.message, response.cookie));
-      } else dispatch(logoutRequestFailed())
+        dispatch(logoutRequestSuccessed(response.message));
+      } else dispatch(logoutRequestFailed(response.message))
     }
     catch {
-      dispatch(logoutRequestFailed())
+      dispatch(logoutRequestFailed('Cannot log out'))
     }
   }
 }
