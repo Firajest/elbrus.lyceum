@@ -101,7 +101,6 @@ export function statusFailed() {
     }
   }
 }
-
 export function choosePhase(id) {
   return {
     type: CHOOSE_PHASE,

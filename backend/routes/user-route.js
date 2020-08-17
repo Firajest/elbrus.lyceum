@@ -26,11 +26,12 @@ route
     } else res.json({ message: 'Something went wrong. Check whether your username or password is correct.' });
   })
   .post('/logout', (req, res) => {
-    const { cookie } = req.body;
-    req.session.destroy(() => {
-      res.clearCookie('user_sid', { path: '/' });
-      res.json({ message: 'Successful logout', status: '' });
-    });
+    if (req.session.user) {
+      req.session.destroy(() => {
+        res.clearCookie('user_sid', { path: '/' });
+        res.json({ message: 'Successful logout', status: '' });
+      });
+    } else res.json({ message: 'Something went wrong' });
   })
   // create user
   .put('/new', async (req, res) => {
@@ -47,17 +48,17 @@ route
       } = req.body;
       const adminStatus = req.session.user.status;
       const userCheck = await UserModel.findOne({ email });
-      if ((!userCheck && (adminStatus === 'chieftain' || 'teacher') && status === 'student')
-        || (!userCheck && adminStatus === 'chieftain')) {
+      if ((!userCheck && (adminStatus === 'chieftain' || 'teacher') && status === 'student' && req.session.user)
+        || (!userCheck && adminStatus === 'chieftain' && req.session.user)) {
         // ДОБАВИТЬ РАССЫЛКУ ПИСЕМ НОВЫМ ЮЗЕРАМ---------------------------------------------------
         const send = {
           from: `"Elbrus admin" <${req.session.user.email}>`,
           to: `${email}`,
           subject: 'Аккаунт для Эльбрус Лектория',
           text: `Привет, ${name}!
-                  Твой аккаунт от Эльбрус Лектория:
-                    Логин: ${email}
-                    Пароль: ${password}`,
+                 Твой аккаунт от Эльбрус Лектория:
+                 Логин: ${email}
+                 Пароль: ${password}`,
         };
         transporter.sendMail(send, (error, info) => {
           if (error) {
