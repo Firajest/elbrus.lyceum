@@ -6,7 +6,10 @@ import {
   STATUS_REQUEST,
   STATUS_SUCCESS,
   STATUS_FAILURE,
-  CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY
+  CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILURE,
 } from './actionTypes'
 
 export function getPhasesRequest() {
@@ -104,11 +107,12 @@ export function statusRequest() {
     }
   }
 }
-export function statusSucceeded(status) {
+export function statusSucceeded(status, cookie) {
   return {
     type: STATUS_SUCCESS,
     payload: {
-      status
+      status,
+      cookie
     }
   }
 }
@@ -142,5 +146,24 @@ export function chooseDay(id) {
     payload: {
       id
     }
+  }
+}
+export function logoutRequest() {
+  return {
+    type: LOGOUT_REQUEST,
+  }
+}
+export function logoutRequestSuccessed(cookie, message) {
+  return {
+    type: LOGOUT_SUCCESS,
+    payload: {
+      cookie,
+      message
+    }
+  }
+}
+export function logoutRequestFailed(id) {
+  return {
+    type: LOGOUT_FAILURE,
   }
 }
