@@ -5,13 +5,9 @@ import {
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   LOGOUT_FAILURE,
-} from "../actionTypes"
-
-const initialState = { data: [], loading: false, phase: '', week: '', day: '', userStatus: '' }
-
   GET_DAY_SUCCESS, GET_DAY_FAILURE, GET_DAY_REQUEST,
-  CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY
-} from "../actionTypes"
+}
+  from "../actionTypes"
 
 const initialState = { data: [], loading: false, phase: '', week: '', day: '', singleDay: {}, userStatus: '' }
 export default function ViewInfo(state = initialState, action) {
@@ -117,19 +113,19 @@ export default function ViewInfo(state = initialState, action) {
         ...state,
         day: payload.id
       }
-      case LOGOUT_REQUEST:
+    case LOGOUT_REQUEST:
       return {
         ...state,
         message: 'Checking LOGOUT_REQUEST',
       }
-      case LOGOUT_SUCCESS:
+    case LOGOUT_SUCCESS:
       return {
         ...state,
         userStatus: '',
         cookie: '',
         message: payload.message,
       }
-      case LOGOUT_FAILURE:
+    case LOGOUT_FAILURE:
       return {
         ...state,
         userStatus: '',
