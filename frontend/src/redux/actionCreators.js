@@ -2,6 +2,7 @@ import {
   GET_PHASES_REQUEST, GET_PHASES_SUCCESS, GET_PHASES_FAILURE,
   GET_WEEKS_REQUEST, GET_WEEKS_SUCCESS, GET_WEEKS_FAILURE,
   GET_DAYS_REQUEST, GET_DAYS_SUCCESS, GET_DAYS_FAILURE,
+  GET_DAY_REQUEST, GET_DAY_SUCCESS, GET_DAY_FAILURE,
   STATUS_REQUEST,
   STATUS_SUCCESS,
   STATUS_FAILURE,
@@ -73,6 +74,28 @@ export function getDaysFailure(error) {
     }
   }
 }
+export function getDayRequest() {
+  return {
+    type: GET_DAY_REQUEST,
+  }
+}
+export function getDaySuccess(name) {
+  return {
+    type: GET_DAY_SUCCESS,
+    payload: {
+      name,
+    }
+  }
+}
+export function getDayFailure(error) {
+  return {
+    type: GET_DAY_FAILURE,
+    payload: {
+      error
+    }
+  }
+}
+
 export function statusRequest() {
   return {
     type: STATUS_REQUEST,

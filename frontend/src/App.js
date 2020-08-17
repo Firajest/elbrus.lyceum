@@ -4,9 +4,6 @@ import LoginForm from './components/loginForm/loginForm'
 import NewUserForm from './components/newUserForm/newUserForm'
 import './App.css'
 import { Input } from 'semantic-ui-react';
-import {
-  Link, BrowserRouter as Router, Switch, Route,
-} from 'react-router-dom';
 import Logo from './ElbrusBootCamp-logo-RGB.svg'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -86,7 +83,7 @@ function App() {
         <header className="navbar">
           <img src={Logo} className="logo" />
           {InputExampleIconProps()}
-          <Button id="dayButton" className="dayButton" onClick={handleClickOpen}>
+          <Button id="loginButton" className="loginButton" onClick={handleClickOpen}>
             Login
           </Button>
         </header>
