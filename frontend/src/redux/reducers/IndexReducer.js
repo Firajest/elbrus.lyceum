@@ -7,9 +7,13 @@ import {
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   LOGOUT_FAILURE,
+
+
+
 } from "../actionTypes"
 
 const initialState = { data: { phases: [], weeks: [], days: [], day: {} }, loading: false, phase: '', week: '', day: '', singleDay: {}, userStatus: '' }
+
 
 
 export default function ViewInfo(state = initialState, action) {

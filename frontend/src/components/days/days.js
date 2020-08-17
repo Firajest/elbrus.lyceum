@@ -16,11 +16,31 @@ import Link from '@material-ui/core/Link';
 import { chooseDay } from '../../redux/actionCreators';
 import getDays from '../../redux/thunks/days';
 import getDay from '../../redux/thunks/day';
+import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+
+const TestButton = withStyles((theme) => ({
+  root: {
+    backgroundColor: 'rgb(63,37,166)',
+    color: 'rgb(133, 227,251)',
+    marginBottom: '5%',
+    marginLeft: '20%',
+    height: '75px',
+    width: '450px',
+    fontFamily: 'Rostin',
+    fontSize: '18px',
+    order: '5px solid rgb(63,37,166)',
+    '&:hover': {
+      color: '#FFBC5B',
+      backgroundColor: '#4520AB',
+      border: '5px solid #FFBC5B'
+    },
+  },
+}))(Button);
 
 function ShowDays() {
 
@@ -59,7 +79,7 @@ function ShowDays() {
             <Router>
               <Switch>
                 <div className='dayList'>
-                  {dayButt(day)}
+                  <TestButton onClick={() => handleClickOpen(day)}>{day.name}</TestButton>
                 </div>
               </Switch>
             </Router>
