@@ -41,10 +41,12 @@ margin-left: auto;
   height: 30%;
   font-family: 'Rostin';
 }
-
+*{
+  font-family: 'Rostin';
+}
 @font-face{
   font-family: 'Rostin';
-  src: 'frontend/public/RF-Rostin/RF-Rostin-Regular.ttf'
+  src: url('/RF-Rostin/RF-Rostin-Bold.ttf');
 }
 body{
   font-family: 'Rostin';

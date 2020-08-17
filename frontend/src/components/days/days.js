@@ -14,37 +14,12 @@ import Slide from '@material-ui/core/Slide';
 import CancelIcon from '@material-ui/icons/Cancel';
 
 
-const dayDb = [
-  {
-    day: 'day1'
-  },
-  {
-    day: 'day2'
-  },
-  {
-    day: 'day3'
-  },
-  {
-    day: 'day4'
-  },
-  {
-    day: 'day5'
-  },
-  {
-    day: 'day6'
-  },
-  {
-    day: 'day7'
-  },
-]
-
-
-
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 function ShowDays() {
+
   const dispatch = useDispatch()
   const days = useSelector((state) => {
     return state.data

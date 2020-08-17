@@ -1,7 +1,5 @@
 import {
   getPhasesRequest, getPhasesSuccess, getPhasesFailure,
-  getWeeksRequest, getWeeksSuccess, getWeeksFailure,
-  getDaysRequest, getDaysSuccess, getDaysFailure,
 } from '../actionCreators'
 
 function getPhases() {
