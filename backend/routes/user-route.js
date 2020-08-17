@@ -11,18 +11,25 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: 'boma385@gmail.com', // generated ethereal user
-    pass: 'Thunderbolt', // generated ethereal password
+    user: 'boma385@gmail.com',
+    pass: 'Thunderbolt',
   },
 });
 
 route
+  .get('/status', async (req, res) => {
+    // const allUsers = await UserModel.find({});
+    if (req.session.user) {
+      res.json({ status: req.session.user.status });
+    } else res.json({ message: 'User is not logged in' });
+  })
   .post('/login', async (req, res) => {
     const user = await UserModel.findOne({ email: req.body.email });
     if ((user) && (await bcrypt.compare(req.body.password, user.password))) {
       req.session.user = user;
       req.session.user.password = '';
-      res.json({ message: 'Successful login', user: req.session.user, cookie: req.session.cookie });
+      console.log(req.session.user);
+      res.json({ message: 'Successful login', user: req.session.user });
     } else res.json({ message: 'Something went wrong. Check whether your username or password is correct.' });
   })
   .post('/logout', (req, res) => {
@@ -76,7 +83,7 @@ route
         });
         await user.save();
         console.log(user);
-        res.json({ message: 'User has been created.' });
+        res.json({ message: 'User has been created.', user });
       } else res.json({ message: 'Something went wrong.' });
     } catch {
       res.json({ message: 'Something went wrong.' });
