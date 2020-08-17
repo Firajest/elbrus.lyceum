@@ -74,7 +74,8 @@ export default function ViewInfo(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        data: [...state.data, payload.name]
+        data: [...state.data, payload.name],
+        singleDay: payload
       }
     case GET_DAY_FAILURE:
       return {
