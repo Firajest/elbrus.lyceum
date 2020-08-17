@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import './homepage.css'
 import '../weeks/weeks.css'
-import { useDispatch, useSelector, } from 'react-redux'
 import {
   Link, BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom'
+import { useDispatch, useSelector, } from 'react-redux'
 import Button from '@material-ui/core/Button';
 import ShowWeeks from '../weeks/weeks'
 import getPhases from '../../redux/thunks/phases'
@@ -38,6 +38,7 @@ function HomePage() {
       onClick={() => weeksInfo(id)}>
       {name}
     </Button>
+
   return (
     <>
       <div className="phaseContainer">
@@ -46,6 +47,7 @@ function HomePage() {
             {phases[0] && phases[0].map((phase) => {
               return (
                 <span className='weekElement'>
+
                   <Link to={`/phases/weeks`}>
                     {ButtonExampleButton(phase.name, phase._id)}
                   </Link>

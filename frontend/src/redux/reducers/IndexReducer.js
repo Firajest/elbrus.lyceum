@@ -8,6 +8,12 @@ import {
 } from "../actionTypes"
 
 const initialState = { data: [], loading: false, phase: '', week: '', day: '', userStatus: '' }
+
+  GET_DAY_SUCCESS, GET_DAY_FAILURE, GET_DAY_REQUEST,
+  CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY
+} from "../actionTypes"
+
+const initialState = { data: [], loading: false, phase: '', week: '', day: '', singleDay: {}, userStatus: '' }
 export default function ViewInfo(state = initialState, action) {
   const { type, payload } = action
   switch (type) {
@@ -59,6 +65,23 @@ export default function ViewInfo(state = initialState, action) {
         ...state,
         loading: false
       }
+    case GET_DAY_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+    case GET_DAY_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        data: [...state.data, payload.name]
+      }
+    case GET_DAY_FAILURE:
+      return {
+        ...state,
+        loading: false
+      }
+
     case 'STATUS_REQUEST':
       return {
         ...state,
