@@ -1,8 +1,20 @@
 import {
   GET_PHASES_REQUEST, GET_PHASES_SUCCESS, GET_PHASES_FAILURE,
   GET_WEEKS_REQUEST, GET_WEEKS_SUCCESS, GET_WEEKS_FAILURE,
+<<<<<<< HEAD
   GET_DAYS_REQUEST, GET_DAYS_SUCCESS, GET_DAYS_FAILURE, STATUS_REQUEST, STATUS_SUCCESS, STATUS_FAILURE,
   CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY, LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE, CREATEUSER_REQUEST, CREATEUSER_SUCCESS, CREATEUSER_FAILURE,
+=======
+  GET_DAYS_REQUEST, GET_DAYS_SUCCESS, GET_DAYS_FAILURE,
+  GET_DAY_REQUEST, GET_DAY_SUCCESS, GET_DAY_FAILURE,
+  STATUS_REQUEST,
+  STATUS_SUCCESS,
+  STATUS_FAILURE,
+  CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILURE,
+>>>>>>> 1733e6f09689b8354dbfc2f13e36da947f3764c3
 } from './actionTypes'
 
 export function getPhasesRequest() {
@@ -70,6 +82,26 @@ export function getDaysFailure(error) {
     }
   }
 }
+export function getDayRequest() {
+  return {
+    type: GET_DAY_REQUEST,
+  }
+}
+export function getDaySuccess(day) {
+  return {
+    type: GET_DAY_SUCCESS,
+    payload: day
+  }
+}
+export function getDayFailure(error) {
+  return {
+    type: GET_DAY_FAILURE,
+    payload: {
+      error
+    }
+  }
+}
+
 export function statusRequest() {
   return {
     type: STATUS_REQUEST,

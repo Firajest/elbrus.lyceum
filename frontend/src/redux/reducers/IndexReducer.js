@@ -5,7 +5,17 @@ import {
   LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE, STATUS_REQUEST, STATUS_SUCCESS, STATUS_FAILURE, CREATEUSER_REQUEST, CREATEUSER_SUCCESS, CREATEUSER_FAILURE,
 } from "../actionTypes"
 
+<<<<<<< HEAD
 const initialState = { data: [], loading: false, phase: '', week: '', day: '', userStatus: '', message: '', errorMessage: '' }
+=======
+const initialState = { data: [], loading: false, phase: '', week: '', day: '', userStatus: '' }
+
+  GET_DAY_SUCCESS, GET_DAY_FAILURE, GET_DAY_REQUEST,
+  CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY
+} from "../actionTypes"
+
+const initialState = { data: [], loading: false, phase: '', week: '', day: '', singleDay: {}, userStatus: '' }
+>>>>>>> 1733e6f09689b8354dbfc2f13e36da947f3764c3
 export default function ViewInfo(state = initialState, action) {
   const { type, payload } = action
   switch (type) {
@@ -57,7 +67,29 @@ export default function ViewInfo(state = initialState, action) {
         ...state,
         loading: false
       }
+<<<<<<< HEAD
     case STATUS_REQUEST:
+=======
+    case GET_DAY_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+    case GET_DAY_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        data: [...state.data, payload.name],
+        singleDay: payload
+      }
+    case GET_DAY_FAILURE:
+      return {
+        ...state,
+        loading: false
+      }
+
+    case 'STATUS_REQUEST':
+>>>>>>> 1733e6f09689b8354dbfc2f13e36da947f3764c3
       return {
         ...state,
         message: payload.message,

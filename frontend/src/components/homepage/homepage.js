@@ -42,13 +42,14 @@ function HomePage() {
   return (
     <>
       <div className="phaseContainer">
+        Привет!
         <Router>
           <div className='phases'>
             {phases[0] && phases[0].map((phase) => {
               return (
-                <span className='weekElement'>
-
+                <span className='weekElement' key={phase._id}>
                   <Link to={`/phases/weeks`}>
+
                     {ButtonExampleButton(phase.name, phase._id)}
                   </Link>
                   <br></br>

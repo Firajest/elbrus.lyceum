@@ -7,9 +7,6 @@ import SendLoginForm from './redux/thunks/sendLoginForm'
 import Logout from './components/logout/logout'
 import './App.css'
 import { Input } from 'semantic-ui-react';
-import {
-  Link, BrowserRouter as Router, Switch, Route,
-} from 'react-router-dom';
 import Logo from './ElbrusBootCamp-logo-RGB.svg'
 import { Provider, useSelector, useDispatch } from 'react-redux'
 
