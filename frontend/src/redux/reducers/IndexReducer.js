@@ -13,9 +13,6 @@ import {
 } from "../actionTypes"
 
 const initialState = { data: { phases: [], weeks: [], days: [], day: {} }, loading: false, phase: '', week: '', day: '', singleDay: {}, userStatus: '' }
-
-
-
 export default function ViewInfo(state = initialState, action) {
   const { type, payload } = action
   switch (type) {

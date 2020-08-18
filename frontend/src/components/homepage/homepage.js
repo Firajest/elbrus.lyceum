@@ -17,6 +17,10 @@ import getDays from '../../redux/thunks/days'
 
 
 function HomePage() {
+  const state = useSelector((state) => {
+    return state
+  })
+  console.log(state);
   const phases = useSelector((state) => {
     return state.data.phases
   })
