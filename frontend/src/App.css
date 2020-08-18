@@ -31,9 +31,10 @@ margin-left: auto;
 .logo {
   vertical-align: top;
   width: 10em;
+  height: 8.5em;
 }
 #loginButton {
-  margin-top: 2%;
+  margin-top: 6%;
   width: 13%;
   color: #FFBC5B;
   border: 1px solid #FFBC5B;
@@ -51,4 +52,16 @@ margin-left: auto;
 }
 body{
   font-family: 'Rostin';
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .searchBar{
+      align-self: center;
+      width: 30%;
+      background-color: rgb(63,37,166);
+      margin-left: 5%;
+    }
 }

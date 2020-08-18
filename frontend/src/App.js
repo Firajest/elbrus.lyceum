@@ -17,6 +17,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import CancelIcon from '@material-ui/icons/Cancel';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
@@ -86,7 +87,9 @@ function App() {
       <Router>
         <div className="App">
           <header className="navbar">
-            <img src={Logo} alt="Tut budet logo" className="logo" />
+            <Link to='/'>
+              <img src={Logo} alt="Tut budet logo" className="logo" />
+            </Link>
             {InputExampleIconProps()}
             {userStatus ?
               <Logout /> : //MODEREATE OUTFIT
