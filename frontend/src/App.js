@@ -54,6 +54,7 @@ function App() {
       backgroundColor: 'rgb(63,37,166)',
       color: 'rgb(133, 227,251)',
       marginBottom: '5%',
+      borderRadius: '20px',
       marginLeft: '10%',
       height: '120px',
       width: '450px',

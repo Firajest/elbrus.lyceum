@@ -68,8 +68,9 @@ function HomePage() {
       marginLeft: '10%',
       height: '120px',
       width: '450px',
+      borderRadius: '20px',
       fontFamily: 'Rostin',
-      fontSize: '18px',
+      fontSize: '24px',
       border: '5px solid rgb(63,37,166)',
       '&:hover': {
         color: '#FFBC5B',
