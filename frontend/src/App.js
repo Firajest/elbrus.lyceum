@@ -109,8 +109,6 @@ function App() {
           </DialogActions>
         </Dialog>
 
-
-
         <Switch>
           <Route path='/chieftain'>
             <adminPage />
