@@ -10,7 +10,6 @@ function CreateUserForm() {
   const [inputEmail, setInputEmail] = useState('');
   const [selectValue, setSelectValue] = useState('student');
   const errorMessage = useSelector((state) => state.userInfo.errorMessage);
-  const message = useSelector((state) => state.userInfo.message);
 
   function createUser(event) {
     event.preventDefault();
@@ -23,6 +22,7 @@ function CreateUserForm() {
   return (
     <>
       <div id="newUserForm">
+        <p>Add new user</p>
         <form onSubmit={(event) => createUser(event)}>
           <Input name="name" type="text" placeholder="ФИО" onChange={(event) => setInputName(event.target.value)} value={inputName} />
           <Input name="email" type="email" placeholder="Email" onChange={(event) => setInputEmail(event.target.value)} value={inputEmail} />
@@ -32,7 +32,7 @@ function CreateUserForm() {
           </select>
           <button type="submit" id="createUserButton" className="createUserButton" >Create user</button>
         </form>
-        {(errorMessage && errorMessage) || (message && message)}
+        {(errorMessage && errorMessage)}
       </div>
     </>
   )
