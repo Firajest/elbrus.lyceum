@@ -76,16 +76,6 @@ function HomePage() {
         backgroundColor: '#4520AB',
         border: '5px solid #FFBC5B'
       },
-      '&:active': {
-        color: '#FFBC5B',
-        backgroundColor: '#4520AB',
-        border: '5px solid #FFBC5B'
-      },
-      '&:focus': {
-        color: '#FFBC5B',
-        backgroundColor: '#4520AB',
-        border: '5px solid #FFBC5B'
-      },
     },
 
   }),
