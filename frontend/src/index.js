@@ -21,15 +21,6 @@ const store = createStore(
   persistedState,
   composeWithDevTools(applyMiddleware(thunk)),
 )
-// const store = createStore(
-//   dataReducer,
-//   composeWithDevTools(applyMiddleware(thunk)),
-// )
-
-// store.subscribe(() => {
-//   const state = store.getState();
-//   window.localStorage.setItem('state', JSON.stringify(state));
-// });
 store.subscribe(() => {
   saveState({
     userInfo: store.getState().userInfo,

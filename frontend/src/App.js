@@ -3,6 +3,7 @@ import HomePage from './components/homepage/homepage'
 import NewUserForm from './components/newUserForm/newUserForm'
 import SendLoginForm from './redux/thunks/sendLoginForm'
 import Logout from './components/logout/logout'
+import AdminPage from './components/adminPage/chieftain'
 import './App.css'
 import { Input } from 'semantic-ui-react';
 import Logo from './ElbrusBootCamp-logo-RGB.svg'
@@ -17,8 +18,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import CancelIcon from '@material-ui/icons/Cancel';
 
-
-
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 const InputExampleIconProps = () => (
   <Input className="searchBar"
@@ -63,47 +63,58 @@ function App() {
 
   return (
     <>
-      <div className="App">
-        <header className="navbar">
-          <img src={Logo} alt="Tut budet logo" className="logo" />
-          {InputExampleIconProps()}
-          {userStatus ?
-            <Logout /> :
-            <Button id="loginButton" className="dayButton" onClick={handleClickOpen}>
-              Login
+      <Router>
+        <div className="App">
+          <header className="navbar">
+            <img src={Logo} alt="Tut budet logo" className="logo" />
+            {InputExampleIconProps()}
+            {userStatus ?
+              <Logout /> : //MODEREATE OUTFIT
+              <Button id="loginButton" className="dayButton" onClick={handleClickOpen}>
+                Login
           </Button>
-          }
-        </header>
-        <br></br>
-        {userStatus === 'chieftain' && <NewUserForm />}
-        <HomePage />
-      </div>
-      <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-slide-title"
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <DialogTitle id="alert-dialog-slide-title">Please verify your identity</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            <form onSubmit={(event) => sendForm(event)}>
-              <Input name="email" type="email" placeholder="Email" value={inputEmail} onChange={(event) => setInputEmail(event.target.value)} />
-              <Input name="password" type="password" placeholder="Password" value={inputPassword} onChange={(event) => setInputPassword(event.target.value)} />
-              <Button type="submit" id="loginSubmitButton" className="loginButton" >Log in</Button>
-              {errorMessage && <p><strong>{errorMessage}</strong></p>}
-            </form>
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            <CancelIcon />
+            }
+            {userStatus === 'chieftain' &&
+              <Link to='/chietain'>Lok'Tar, Warchief</Link>
+            }
+          </header>
+          <br></br>
+          {userStatus === 'chieftain' && <NewUserForm />}
+          <HomePage />
+        </div>
+        <Dialog
+          open={open}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-slide-title"
+          aria-describedby="alert-dialog-slide-description"
+        >
+          <DialogTitle id="alert-dialog-slide-title">Please verify your identity</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-slide-description">
+              <form onSubmit={(event) => sendForm(event)}>
+                <Input name="email" type="email" placeholder="Email" value={inputEmail} onChange={(event) => setInputEmail(event.target.value)} />
+                <Input name="password" type="password" placeholder="Password" value={inputPassword} onChange={(event) => setInputPassword(event.target.value)} />
+                <Button type="submit" id="loginSubmitButton" className="loginButton" >Log in</Button>
+                {errorMessage && <p><strong>{errorMessage}</strong></p>}
+              </form>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              <CancelIcon />
               Close
             </Button>
-        </DialogActions>
-      </Dialog>
+          </DialogActions>
+        </Dialog>
+
+        <Switch>
+          <Route path='/chieftain'>
+            <adminPage />
+          </Route>
+        </Switch>
+      </Router>
     </>
   );
 }
