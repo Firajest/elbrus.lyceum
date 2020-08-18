@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import './homepage.css'
 import '../weeks/weeks.css'
 import {
@@ -10,25 +10,14 @@ import ShowWeeks from '../weeks/weeks'
 import getPhases from '../../redux/thunks/phases'
 import { choosePhase } from '../../redux/actionCreators'
 import getWeeks from '../../redux/thunks/weeks'
-import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
-import ViewListIcon from '@material-ui/icons/ViewList';
-import ViewModuleIcon from '@material-ui/icons/ViewModule';
-import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
-import ToggleButton from '@material-ui/lab/ToggleButton';
 
-import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 import getDays from '../../redux/thunks/days'
 
 
 function HomePage() {
-  const [view, setView] = React.useState('list');
-  const handleChange = (event, nextView) => {
-    setView(nextView);
-  };
-
-
-  const [active, setActive] = useState('')
+  const dispatch = useDispatch()
   const phases = useSelector((state) => {
     return state.data.data.phases
   })
@@ -36,21 +25,12 @@ function HomePage() {
     return state.data.phase
   })
   useEffect(() => {
-    console.log(TestButton);
     dispatch(getPhases())
     return () => {
       console.log('!!!')
     }
-  }, [])
-  // useEffect(() => {
-  //   Te
-  //   return () => {
-  //     cleanup
-  //   }
-  // }, [weeks])
+  }, [dispatch])
 
-
-  const dispatch = useDispatch()
 
   function weeksInfo(id) {
     dispatch(choosePhase(id))
@@ -60,7 +40,7 @@ function HomePage() {
 
 
 
-  const TestButton = withStyles(() => ({
+  const PhaseButton = withStyles(() => ({
     root: {
       backgroundColor: 'rgb(63,37,166)',
       color: 'rgb(133, 227,251)',
@@ -71,6 +51,7 @@ function HomePage() {
       fontFamily: 'Rostin',
       fontSize: '18px',
       border: '5px solid rgb(63,37,166)',
+      borderRadius: '20px',
       '&:hover': {
         color: '#FFBC5B',
         backgroundColor: '#4520AB',
@@ -86,19 +67,16 @@ function HomePage() {
       <div className="phaseContainer">
         <Router>
           <div className='phases'>
-
             {phases && phases.map((phase) => {
               return (
                 <span className='weekElement' key={phase._id}>
                   <Link to={`/phases/weeks`}>
-
-                    <TestButton className={weeks === phase._id && "active"} id={phase._id} onClick={() => weeksInfo(phase._id)}>{phase.name}</TestButton>
+                    <PhaseButton className={weeks === phase._id && "active"} id={phase._id} onClick={() => weeksInfo(phase._id)}>{phase.name}</PhaseButton>
                   </Link>
                   <br></br>
                 </span>
               )
             })}
-
           </div>
           <Switch>
             <Route path='/phases/weeks'>
