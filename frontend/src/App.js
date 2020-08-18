@@ -36,7 +36,7 @@ function App() {
 
 
   const dispatch = useDispatch();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -68,16 +68,16 @@ function App() {
           <img src={Logo} alt="Tut budet logo" className="logo" />
           {InputExampleIconProps()}
           {userStatus ?
-            <Logout /> : //MODEREATE OUTFIT
+            <Logout /> :
             <Button id="loginButton" className="dayButton" onClick={handleClickOpen}>
               Login
           </Button>
           }
         </header>
         <br></br>
+        {userStatus === 'chieftain' && <NewUserForm />}
         <HomePage />
       </div>
-      <NewUserForm />
       <Dialog
         open={open}
         TransitionComponent={Transition}

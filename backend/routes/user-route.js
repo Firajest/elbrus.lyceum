@@ -34,7 +34,7 @@ route
       req.session.user.password = '';
       console.log(req.session.user);
       res.json({ message: 'Successful login', user: req.session.user });
-    } else res.json({ message: 'Something went wrong. Check whether your username or password is correct.' });
+    } else res.json({ message: 'Something went wrong. Check please whether your username or password is correct.' });
   })
   .post('/logout', (req, res) => {
     if (req.session.user) {
@@ -66,10 +66,11 @@ route
           from: `"Elbrus admin" <${req.session.user.email}>`,
           to: `${email}`,
           subject: 'Аккаунт для Эльбрус Лектория',
-          text: `Привет, ${name}!
-                 Твой аккаунт от Эльбрус Лектория:
-                 Логин: ${email}
-                 Пароль: ${password}`,
+          text: `
+          Привет, ${name}!
+          Твой аккаунт от Эльбрус Лектория:
+          Логин: ${email}
+          Пароль: ${password}`,
         };
         transporter.sendMail(send, (error, info) => {
           if (error) {
