@@ -30,11 +30,12 @@ function ShowWeeks() {
       backgroundColor: 'rgb(63,37,166)',
       color: 'rgb(133, 227,251)',
       marginBottom: '5%',
+      borderRadius: '20px',
       marginLeft: '15%',
       height: '120px',
       width: '450px',
       fontFamily: 'Rostin',
-      fontSize: '18px',
+      fontSize: '24px',
       border: '5px solid rgb(63,37,166)',
       borderRadius: '20px',
       '&:hover': {

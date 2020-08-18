@@ -2,26 +2,11 @@
   display: flex;
   /* border: 1px solid black; */
   flex-direction: row;
-  justify-content: stretch;
+  justify-content:center;
   width: 10px;
   position: relative;
   margin-top: 5%;
   font-family: 'Rostin';
-}
-# {
-  background-color: rgb(63,37,166);
-  color: rgb(133, 227,251);
-  margin-bottom: 5%;
-  margin-left: 10%;
-  height: 120px;
-  width: 450px;
-  font-family: 'Rostin';
-  font-size: 18px;
-  box-shadow: 10px 10px 8px rgb(133, 227,251);
-}
-
-.phaseButton :hover{
-  /* box-shadow: 10px 10px 8px rgb(133, 227,251); */
 }
 
 .active {
