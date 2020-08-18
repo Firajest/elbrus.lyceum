@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './weeks.css'
 import {
   Link, BrowserRouter as Router, Switch, Route,
@@ -8,15 +8,15 @@ import Button from '@material-ui/core/Button';
 import ShowDays from '../days/days'
 import getDays from '../../redux/thunks/days'
 import { chooseWeek } from '../../redux/actionCreators'
-import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 function ShowWeeks() {
   const dispatch = useDispatch()
   const weeks = useSelector((state) => {
-    return state.data.weeks
+    return state.data.data.weeks
   })
   const chosenWeek = useSelector((state) => {
-    return state.week
+    return state.data.week
   })
   console.log(weeks)
 
@@ -25,7 +25,7 @@ function ShowWeeks() {
     dispatch(getDays(id))
   }
 
-  const TestButton = withStyles((theme) => ({
+  const WeekButton = withStyles((theme) => ({
     root: {
       backgroundColor: 'rgb(63,37,166)',
       color: 'rgb(133, 227,251)',
@@ -37,6 +37,7 @@ function ShowWeeks() {
       fontFamily: 'Rostin',
       fontSize: '24px',
       border: '5px solid rgb(63,37,166)',
+      borderRadius: '20px',
       '&:hover': {
         color: '#FFBC5B',
         backgroundColor: '#4520AB',
@@ -45,11 +46,6 @@ function ShowWeeks() {
     },
   }))(Button);
 
-  const ButtonExampleButton = (name, id) =>
-    <Button id="weekButton" className="weekButton"
-      onClick={() => daysInfo(id)}>
-      {name}
-    </Button>
   return (
     <>
       <Router>
@@ -59,7 +55,7 @@ function ShowWeeks() {
               return (
                 <span >
                   <Link to="/days">
-                    <TestButton className={chosenWeek === week._id && "active"} onClick={() => daysInfo(week._id)}>{week.name}</TestButton>
+                    <WeekButton className={chosenWeek === week._id && "active"} onClick={() => daysInfo(week._id)}>{week.name}</WeekButton>
                   </Link>
                   <br></br>
                 </span>

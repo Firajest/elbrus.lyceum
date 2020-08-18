@@ -1,24 +1,28 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 import { UserModel } from '../Database/database.js';
+
+dotenv.config();
 
 const saltRounds = 10;
 const route = express.Router();
+const mail = process.env.MAIL_NAME.toString();
+const mailPass = process.env.MAIL_PASSWORD.toString();
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 465,
   secure: true,
   auth: {
-    user: 'boma385@gmail.com',
-    pass: 'Thunderbolt',
+    user: mail,
+    pass: mailPass,
   },
 });
 
 route
   .get('/status', async (req, res) => {
-    // const allUsers = await UserModel.find({});
     if (req.session.user) {
       res.json({ status: req.session.user.status });
     } else res.json({ message: 'User is not logged in' });
@@ -30,7 +34,7 @@ route
       req.session.user.password = '';
       console.log(req.session.user);
       res.json({ message: 'Successful login', user: req.session.user });
-    } else res.json({ message: 'Something went wrong. Check whether your username or password is correct.' });
+    } else res.json({ message: 'Something went wrong. Check please whether your username or password is correct.' });
   })
   .post('/logout', (req, res) => {
     if (req.session.user) {
@@ -62,10 +66,11 @@ route
           from: `"Elbrus admin" <${req.session.user.email}>`,
           to: `${email}`,
           subject: 'Аккаунт для Эльбрус Лектория',
-          text: `Привет, ${name}!
-                 Твой аккаунт от Эльбрус Лектория:
-                 Логин: ${email}
-                 Пароль: ${password}`,
+          text: `
+          Привет, ${name}!
+          Твой аккаунт от Эльбрус Лектория:
+          Логин: ${email}
+          Пароль: ${password}`,
         };
         transporter.sendMail(send, (error, info) => {
           if (error) {
@@ -84,7 +89,7 @@ route
         await user.save();
         console.log(user);
         res.json({ message: 'User has been created.', user });
-      } else res.json({ message: 'Something went wrong.' });
+      } else res.json({ message: 'Something went wrong. Maybe this email is already used.' });
     } catch {
       res.json({ message: 'Something went wrong.' });
     }

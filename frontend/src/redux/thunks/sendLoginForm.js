@@ -21,7 +21,7 @@ function SendLoginForm(inputEmail, inputPassword) {
       const response = await data.json();
       console.log(response);
       if (response.user) {
-        dispatch(statusSucceeded(response.user, response.message));
+        dispatch(statusSucceeded(response.user.status, response.message));
       } else dispatch(statusFailed(response.message))
     }
     catch {
