@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, } from 'react';
 import HomePage from './components/homepage/homepage'
 import NewUserForm from './components/newUserForm/newUserForm'
 import SendLoginForm from './redux/thunks/sendLoginForm'
@@ -7,7 +7,7 @@ import AdminPage from './components/adminPage/chieftain'
 import './App.css'
 import { Input } from 'semantic-ui-react';
 import Logo from './ElbrusBootCamp-logo-RGB.svg'
-import { Provider, useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -18,11 +18,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import CancelIcon from '@material-ui/icons/Cancel';
 
-import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
-
-import { green, purple } from '@material-ui/core/colors';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import { Switch } from '@material-ui/core';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 const InputExampleIconProps = () => (
   <Input className="searchBar"
@@ -50,34 +46,9 @@ function App() {
     setOpen(false);
   };
 
-  const TestButton = withStyles((theme) => ({
-    root: {
-      backgroundColor: 'rgb(63,37,166)',
-      color: 'rgb(133, 227,251)',
-      marginBottom: '5%',
-      marginLeft: '10%',
-      height: '120px',
-      width: '450px',
-      fontFamily: 'Rostin',
-      fontSize: '18px',
-      '&:hover': {
-        color: '#29EDFF',
-        backgroundColor: '#4520AB',
-        boxShadow: '10px 10px 8px rgb(133, 227,251);',
-      },
-    },
-  }))(Button);
-
-
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
 
-  // useEffect(() => {
-  //   dispatch(StatusCheck());
-  // })
-  // useEffect(() => {
-  //   dispatch(checkAllUsers());
-  // }, [])
 
   const userStatus = useSelector((state) => state.userInfo.userStatus)
   const errorMessage = useSelector((state) => state.userInfo.errorMessage ? state.userInfo.errorMessage : state.userInfo.message);
@@ -95,18 +66,16 @@ function App() {
       <Router>
         <div className="App">
           <header className="navbar">
-            <img src={Logo} className="logo" />
+            <img src={Logo} alt="Tut budet logo" className="logo" />
             {InputExampleIconProps()}
             {userStatus ?
-              <Logout /> :
+              <Logout /> : //MODEREATE OUTFIT
               <Button id="loginButton" className="dayButton" onClick={handleClickOpen}>
                 Login
           </Button>
             }
             {userStatus === 'chieftain' &&
-              <Link to='/chietain'>
-                <TestButton>Lok'Tar, Warchief</TestButton>
-              </Link>
+              <Link to='/chietain'>Lok'Tar, Warchief</Link>
             }
           </header>
           <br></br>
@@ -144,7 +113,7 @@ function App() {
 
         <Switch>
           <Route path='/chieftain'>
-            <adminPage></adminPage>
+            <adminPage />
           </Route>
         </Switch>
       </Router>
