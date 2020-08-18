@@ -8,14 +8,16 @@ dotenv.config();
 
 const saltRounds = 10;
 const route = express.Router();
+const mail = process.env.MAIL_NAME.toString();
+const mailPass = process.env.MAIL_PASSWORD.toString();
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 465,
   secure: true,
   auth: {
-    user: process.env.MAIL_NAME,
-    pass: process.env.MAIL_PASSWORD,
+    user: mail,
+    pass: mailPass,
   },
 });
 
@@ -86,7 +88,7 @@ route
         await user.save();
         console.log(user);
         res.json({ message: 'User has been created.', user });
-      } else res.json({ message: 'Something went wrong.' });
+      } else res.json({ message: 'Something went wrong. Maybe this email is already used.' });
     } catch {
       res.json({ message: 'Something went wrong.' });
     }

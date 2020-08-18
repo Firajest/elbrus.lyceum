@@ -11,4 +11,9 @@
   width: 450px;
   font-family: 'Rostin';
   font-size: 18px;
+  box-shadow: 10px 10px 8px #FFBC5B;
+
+}
+#dayButton :hover {
+  border: 1px solid black;
 }

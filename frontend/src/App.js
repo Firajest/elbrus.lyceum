@@ -19,6 +19,10 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import CancelIcon from '@material-ui/icons/Cancel';
 
+import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+
+import { green, purple } from '@material-ui/core/colors';
+
 const InputExampleIconProps = () => (
   <Input className="searchBar"
     icon={{ name: 'search', circular: true, link: true }}
@@ -45,6 +49,24 @@ function App() {
     setOpen(false);
   };
 
+  const TestButton = withStyles((theme) => ({
+    root: {
+      backgroundColor: 'rgb(63,37,166)',
+      color: 'rgb(133, 227,251)',
+      marginBottom: '5%',
+      marginLeft: '10%',
+      height: '120px',
+      width: '450px',
+      fontFamily: 'Rostin',
+      fontSize: '18px',
+      '&:hover': {
+        color: '#29EDFF',
+        backgroundColor: '#4520AB',
+        boxShadow: '10px 10px 8px rgb(133, 227,251);',
+      },
+    },
+  }))(Button);
+
 
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
@@ -56,8 +78,8 @@ function App() {
   //   dispatch(checkAllUsers());
   // }, [])
 
-  const userStatus = useSelector((state) => state.userStatus)
-  const errorMessage = useSelector((state) => state.errorMessage ? state.errorMessage : state.message);
+  const userStatus = useSelector((state) => state.userInfo.userStatus)
+  const errorMessage = useSelector((state) => state.userInfo.errorMessage ? state.userInfo.errorMessage : state.userInfo.message);
 
   function sendForm(event) {
     event.preventDefault();

@@ -5,7 +5,7 @@ import {
 const initialState = {
   userStatus: '',
   message: '',
-  errorMessage: ''
+  errorMessage: '',
 }
 export default function UserProps(state = initialState, action) {
   const { type, payload } = action

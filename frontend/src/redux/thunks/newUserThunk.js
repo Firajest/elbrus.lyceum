@@ -4,7 +4,7 @@ import {
   createUserFailed,
 } from '../actionCreators'
 
-function SendNewUserForm(inputEmail, inputName, selectValue) {
+function SendNewUserForm(inputName, inputEmail, selectValue) {
   return async (dispatch) => {
     dispatch(createUserRequest());
     try {
@@ -26,7 +26,7 @@ function SendNewUserForm(inputEmail, inputName, selectValue) {
       } else dispatch(createUserFailed(response.message))
     }
     catch {
-      dispatch(createUserFailed())
+      dispatch(createUserFailed('Something has been broken'))
     }
   }
 }
