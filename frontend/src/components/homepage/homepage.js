@@ -38,20 +38,27 @@ function HomePage() {
     dispatch(getDays(id))
   }
 
-
-
-  const PhaseButton = withStyles(() => ({
+  const PhaseButton = withStyles((theme) => ({
     root: {
+
       backgroundColor: 'rgb(63,37,166)',
       color: 'rgb(133, 227,251)',
-      marginBottom: '5%',
-      marginLeft: '10%',
-      height: '120px',
+      // marginBottom: '5%',
+      borderRadius: '20px',
+      margin: '5px',
+      height: '85.3px',
       width: '450px',
       fontFamily: 'Rostin',
       fontSize: '18px',
       border: '5px solid rgb(63,37,166)',
-      borderRadius: '20px',
+      [theme.breakpoints.down('sm')]: {
+        marginLeft: '5%',
+        width: '90%',
+      },
+      [theme.breakpoints.between('sm', 'md')]: {
+        // marginLeft: '25%',
+        width: '90%'
+      },
       '&:hover': {
         color: '#FFBC5B',
         backgroundColor: '#4520AB',
@@ -78,11 +85,9 @@ function HomePage() {
               )
             })}
           </div>
-          <Switch>
-            <Route path='/phases/weeks'>
-              <ShowWeeks></ShowWeeks>
-            </Route>
-          </Switch>
+          <Route path='/phases/weeks'>
+            <ShowWeeks></ShowWeeks>
+          </Route>
         </Router>
       </div >
     </>
