@@ -1,7 +1,10 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 import { UserModel } from '../Database/database.js';
+
+dotenv.config();
 
 const saltRounds = 10;
 const route = express.Router();
@@ -11,14 +14,13 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: 'boma385@gmail.com',
-    pass: 'Thunderbolt',
+    user: process.env.MAIL_NAME,
+    pass: process.env.MAIL_PASSWORD,
   },
 });
 
 route
   .get('/status', async (req, res) => {
-    // const allUsers = await UserModel.find({});
     if (req.session.user) {
       res.json({ status: req.session.user.status });
     } else res.json({ message: 'User is not logged in' });

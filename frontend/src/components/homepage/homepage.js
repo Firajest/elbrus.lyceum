@@ -42,7 +42,6 @@ function HomePage() {
   return (
     <>
       <div className="phaseContainer">
-        Привет!
         <Router>
           <div className='phases'>
             {phases[0] && phases[0].map((phase) => {

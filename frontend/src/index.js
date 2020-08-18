@@ -6,21 +6,32 @@ import 'semantic-ui-css/semantic.min.css';
 import { Provider } from 'react-redux'
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import reducer from './redux/reducers/IndexReducer';
-import thunk from 'redux-thunk'
-import {loadState, saveState} from './localStorage/localStorageMethods';
+import dataReducer from './redux/reducers/IndexReducer';
+import userReducer from './redux/reducers/userReducer';
+import thunk from 'redux-thunk';
 
-const persistedState = loadState();
-
+// const store = createStore(
+//   combineReducers({
+//     data: dataReducer,
+//     userInfo: userReducer,
+//   }),
+//   composeWithDevTools(applyMiddleware(thunk)),
+// )
 const store = createStore(
-  reducer,
-  persistedState,
-  composeWithDevTools(applyMiddleware(thunk))
+  dataReducer,
+  // persistedState,
+  composeWithDevTools(applyMiddleware(thunk)),
 )
 
 store.subscribe(() => {
-  saveState(store.getState());
+  const state = store.getState();
+  window.localStorage.setItem('state', JSON.stringify(state));
 });
+// store.subscribe(() => {
+//   saveState({
+//     state: store.getState().userState
+//   });
+// });
 
 ReactDOM.render(
   <React.StrictMode>
