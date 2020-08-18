@@ -46,10 +46,10 @@ function ShowDays() {
 
   const dispatch = useDispatch()
   const days = useSelector((state) => {
-    return state.data.days
+    return state.data.data.days
   })
   const singleDay = useSelector((state) => {
-    return state.singleDay
+    return state.data.singleDay
   })
 
 

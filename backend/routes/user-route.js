@@ -1,24 +1,28 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 import { UserModel } from '../Database/database.js';
+
+dotenv.config();
 
 const saltRounds = 10;
 const route = express.Router();
+const mail = process.env.MAIL_NAME.toString();
+const mailPass = process.env.MAIL_PASSWORD.toString();
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 465,
   secure: true,
   auth: {
-    user: 'boma385@gmail.com',
-    pass: 'Thunderbolt',
+    user: mail,
+    pass: mailPass,
   },
 });
 
 route
   .get('/status', async (req, res) => {
-    // const allUsers = await UserModel.find({});
     if (req.session.user) {
       res.json({ status: req.session.user.status });
     } else res.json({ message: 'User is not logged in' });
@@ -84,7 +88,7 @@ route
         await user.save();
         console.log(user);
         res.json({ message: 'User has been created.', user });
-      } else res.json({ message: 'Something went wrong.' });
+      } else res.json({ message: 'Something went wrong. Maybe this email is already used.' });
     } catch {
       res.json({ message: 'Something went wrong.' });
     }

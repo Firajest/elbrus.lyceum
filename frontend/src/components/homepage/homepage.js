@@ -30,10 +30,10 @@ function HomePage() {
 
   const [active, setActive] = useState('')
   const phases = useSelector((state) => {
-    return state.data.phases
+    return state.data.data.phases
   })
   const weeks = useSelector((state) => {
-    return state.phase
+    return state.data.phase
   })
   useEffect(() => {
     console.log(TestButton);

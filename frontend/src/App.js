@@ -78,8 +78,8 @@ function App() {
   //   dispatch(checkAllUsers());
   // }, [])
 
-  const userStatus = useSelector((state) => state.userStatus)
-  const errorMessage = useSelector((state) => state.errorMessage ? state.errorMessage : state.message);
+  const userStatus = useSelector((state) => state.userInfo.userStatus)
+  const errorMessage = useSelector((state) => state.userInfo.errorMessage ? state.userInfo.errorMessage : state.userInfo.message);
 
   function sendForm(event) {
     event.preventDefault();

@@ -13,7 +13,7 @@ import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material
 function ShowWeeks() {
   const dispatch = useDispatch()
   const weeks = useSelector((state) => {
-    return state.data.weeks
+    return state.data.data.weeks
   })
   const chosenWeek = useSelector((state) => {
     return state.week
