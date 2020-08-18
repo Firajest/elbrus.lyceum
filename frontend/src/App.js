@@ -49,6 +49,7 @@ function App() {
       </div>
       {/* Modals */}
       <LoginForm />
+      <NewUserForm />
     </>
   );
 }
