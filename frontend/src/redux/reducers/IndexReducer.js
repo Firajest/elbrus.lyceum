@@ -3,7 +3,9 @@ import {
   GET_DAYS_SUCCESS, GET_DAYS_FAILURE, GET_DAYS_REQUEST,
   CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY,
   GET_DAY_SUCCESS, GET_DAY_FAILURE, GET_DAY_REQUEST,
+
   GETALLDAYS_REQUEST, GETALLDAYS_SUCCESS, GETALLDAYS_FAILURE
+
 } from "../actionTypes"
 
 const initialState = {
@@ -12,8 +14,10 @@ const initialState = {
     phases: [],
     weeks: [],
     days: [],
+
     day: {},
     allDays: [],
+
   },
   loading: false,
   phase: '',
@@ -104,6 +108,7 @@ export default function ViewInfo(state = initialState, action) {
         ...state,
         day: payload.id
       }
+
     // case GETALLDAYS_REQUEST:
     //   return {
     //     ...state
@@ -112,6 +117,7 @@ export default function ViewInfo(state = initialState, action) {
     //   return {
     //     ...state,
     //   }
+
     default:
       return state
   }
