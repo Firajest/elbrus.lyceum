@@ -2,7 +2,7 @@ import {
   GET_PHASES_SUCCESS, GET_PHASES_FAILURE, GET_PHASES_REQUEST, GET_WEEKS_SUCCESS, GET_WEEKS_FAILURE, GET_WEEKS_REQUEST,
   GET_DAYS_SUCCESS, GET_DAYS_FAILURE, GET_DAYS_REQUEST,
   CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY,
-
+  STATUS_FAILURE, STATUS_SUCCESS, CREATEUSER_FAILURE, CREATEUSER_REQUEST, CREATEUSER_SUCCESS,
   GET_DAY_SUCCESS, GET_DAY_FAILURE, GET_DAY_REQUEST,
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
@@ -13,9 +13,6 @@ import {
 } from "../actionTypes"
 
 const initialState = { data: { phases: [], weeks: [], days: [], day: {} }, loading: false, phase: '', week: '', day: '', singleDay: {}, userStatus: '' }
-
-
-
 export default function ViewInfo(state = initialState, action) {
   const { type, payload } = action
   switch (type) {
@@ -92,18 +89,18 @@ export default function ViewInfo(state = initialState, action) {
         message: payload.message,
         errorMessage: '',
       }
-    // case STATUS_SUCCESS:
-    //   return {
-    //     ...state,
-    //     userStatus: payload.status,
-    //     message: payload.message,
-    //     errorMessage: '',
-    //   }
-    // case STATUS_FAILURE:
-    //   return {
-    //     ...state,
-    //     errorMessage: payload.message,
-    //   }
+    case STATUS_SUCCESS:
+      return {
+        ...state,
+        userStatus: payload.status,
+        message: payload.message,
+        errorMessage: '',
+      }
+    case STATUS_FAILURE:
+      return {
+        ...state,
+        errorMessage: payload.message,
+      }
     case CHOOSE_PHASE:
       return {
         ...state,
@@ -138,24 +135,24 @@ export default function ViewInfo(state = initialState, action) {
         errorMessage: payload.errorMessage,
         message: '',
       }
-    // case CREATEUSER_REQUEST:
-    //   return {
-    //     ...state,
-    //     message: payload.message,
-    //     errorMessage: '',
-    //   }
-    // case CREATEUSER_SUCCESS:
-    //   return {
-    //     ...state,
-    //     message: payload.message,
-    //     errorMessage: '',
-    //   }
-    // case CREATEUSER_FAILURE:
-    //   return {
-    //     ...state,
-    //     errorMessage: payload.message,
-    //     message: ''
-    //   }
+    case CREATEUSER_REQUEST:
+      return {
+        ...state,
+        message: payload.message,
+        errorMessage: '',
+      }
+    case CREATEUSER_SUCCESS:
+      return {
+        ...state,
+        message: payload.message,
+        errorMessage: '',
+      }
+    case CREATEUSER_FAILURE:
+      return {
+        ...state,
+        errorMessage: payload.message,
+        message: ''
+      }
     default:
       return state
   }
