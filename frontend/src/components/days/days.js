@@ -37,7 +37,7 @@ const TestButton = withStyles((theme) => ({
     '&:hover': {
       color: '#FFBC5B',
       backgroundColor: '#4520AB',
-      border: '5px solid #FFBC5B'
+      border: '3px solid #FFBC5B'
     },
   },
 }))(Button);
@@ -51,6 +51,7 @@ function ShowDays() {
   const singleDay = useSelector((state) => {
     return state.singleDay
   })
+
 
   const dayButt = (day) =>
     <Button id="dayButton" className="dayButton" onClick={() => handleClickOpen(day)}>
@@ -79,7 +80,8 @@ function ShowDays() {
             <Router>
               <Switch>
                 <div className='dayList'>
-                  <TestButton onClick={() => handleClickOpen(day)}>{day.name}</TestButton>
+                  <TestButton className={singleDay._id === day._id && "active"}
+                    onClick={() => handleClickOpen(day)}>{day.name}</TestButton>
                 </div>
               </Switch>
             </Router>
