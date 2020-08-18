@@ -74,7 +74,7 @@ function App() {
   // useEffect(() => {
   //   dispatch(StatusCheck());
   // })
-   // useEffect(() => {
+  // useEffect(() => {
   //   dispatch(checkAllUsers());
   // }, [])
 
@@ -97,7 +97,7 @@ function App() {
           {InputExampleIconProps()}
           {userStatus ?
             <Logout /> : //MODEREATE OUTFIT
-            <Button id="dayButton" className="dayButton" onClick={handleClickOpen}>
+            <Button id="loginButton" className="dayButton" onClick={handleClickOpen}>
               Login
           </Button>
           }

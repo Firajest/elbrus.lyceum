@@ -19,7 +19,6 @@ const initialState = {
   day: '',
   singleDay: {},
 }
-
 export default function ViewInfo(state = initialState, action) {
   const { type, payload } = action
   switch (type) {
