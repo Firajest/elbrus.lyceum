@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom'
 import { useDispatch, useSelector, } from 'react-redux'
 import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -42,8 +43,29 @@ const TestButton = withStyles((theme) => ({
   },
 }))(Button);
 
-function ShowDays() {
+const ButtonInModal = withStyles((theme) => ({
+  root: {
+    fontFamily: 'Rostin',
+    fontSize: '20px',
+    color: 'rgb(63,37,166)',
+  },
+}))(Button);
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    fontFamily: 'Rostin',
+    fontSize: '25px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
+
+function ShowDays() {
+  const classes = useStyles();
   const dispatch = useDispatch()
   const days = useSelector((state) => {
     return state.data.data.days
@@ -97,11 +119,16 @@ function ShowDays() {
           aria-labelledby="alert-dialog-slide-title"
           aria-describedby="alert-dialog-slide-description"
         >
-          <DialogTitle id="alert-dialog-slide-title">{singleDay.name}</DialogTitle>
+          <DialogTitle id="alert-dialog-slide-title"><strong>{singleDay.name}</strong></DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              <iframe width="560" height="315" src={singleDay.linkYT} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              <Link href={singleDay.linkPres}>Презентация</Link>
+              <iframe width="560" height="315" src={singleDay.linkYT} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen='true'></iframe>
+              <div className={classes.root}>
+                <ButtonGroup color="primary" aria-label="outlined primary button group">
+                  <Link className="buttoninmodal" href={singleDay.linkPres}><ButtonInModal className="buttoninmodal">Презентация</ButtonInModal></Link>
+                  {singleDay.linkFile === 'none yet' ? <></> : <Link className="buttoninmodal" href={singleDay.linkFile}><ButtonInModal className="buttoninmodal">Код лекции</ButtonInModal></Link>}
+                </ButtonGroup>
+              </div>
             </DialogContentText>
           </DialogContent>
           <DialogActions>

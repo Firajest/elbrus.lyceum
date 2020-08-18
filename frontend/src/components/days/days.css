@@ -14,6 +14,10 @@
   box-shadow: 10px 10px 8px #FFBC5B;
 
 }
+.buttoninmodal{
+  font-family: 'Rostin';
+  font-size: 22px;
+}
 
 .active {
   color: #FFBC5B !important;
