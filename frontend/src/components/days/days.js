@@ -16,7 +16,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import Link from '@material-ui/core/Link';
 import { chooseDay } from '../../redux/actionCreators';
 import getDay from '../../redux/thunks/day';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
