@@ -3,11 +3,8 @@ import {
   GET_WEEKS_REQUEST, GET_WEEKS_SUCCESS, GET_WEEKS_FAILURE,
   GET_DAYS_REQUEST, GET_DAYS_SUCCESS, GET_DAYS_FAILURE, STATUS_REQUEST, STATUS_SUCCESS, STATUS_FAILURE,
   CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY, LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE, CREATEUSER_REQUEST, CREATEUSER_SUCCESS, CREATEUSER_FAILURE,
-
   GET_DAY_REQUEST, GET_DAY_SUCCESS, GET_DAY_FAILURE,
-
-
-
+  GETALLDAYS_REQUEST, GETALLDAYS_SUCCESS, GETALLDAYS_FAILURE
 } from './actionTypes'
 
 export function getPhasesRequest() {
@@ -192,5 +189,23 @@ export function createUserFailed(message) {
     payload: {
       message,
     }
+  }
+}
+export function getAllDaysRequest() {
+  return {
+    type: GETALLDAYS_REQUEST,
+  }
+}
+export function getAllDaysSuccess(days) {
+  return {
+    type: GETALLDAYS_SUCCESS,
+    payload: {
+      days
+    }
+  }
+}
+export function getAllDaysFailure() {
+  return {
+    type: GETALLDAYS_FAILURE,
   }
 }

@@ -13,7 +13,7 @@ function LoginForm() {
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
   const dispatch = useDispatch();
-
+  
   function sendForm(event) {
     event.preventDefault();
     console.log(event.target, inputEmail, inputPassword);

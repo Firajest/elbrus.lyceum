@@ -418,3 +418,7 @@ export async function getUser(userID) {
   const user = await DayModel.findOne({ _id: userID });
   return user;
 }
+export async function getAllDays() {
+  const user = await DayModel.find();
+  return user;
+}
