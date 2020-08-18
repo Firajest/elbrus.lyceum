@@ -15,6 +15,9 @@ function ShowWeeks() {
   const weeks = useSelector((state) => {
     return state.data.weeks
   })
+  const chosenWeek = useSelector((state) => {
+    return state.week
+  })
   console.log(weeks)
 
   function daysInfo(id) {
@@ -55,7 +58,7 @@ function ShowWeeks() {
               return (
                 <span >
                   <Link to="/days">
-                    <TestButton onClick={() => daysInfo(week._id)}>{week.name}</TestButton>
+                    <TestButton className={chosenWeek === week._id && "active"} onClick={() => daysInfo(week._id)}>{week.name}</TestButton>
                   </Link>
                   <br></br>
                 </span>
