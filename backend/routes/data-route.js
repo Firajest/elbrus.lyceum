@@ -49,10 +49,12 @@ route.put('/newMaterials', async (req, res) => {
         linkFile: code,
         linkPres: presentation,
       });
+      await dbDay.save();
+      console.log(dbDay);
       res.json({ message: 'Materials has been added' });
     } else res.json({ errorMessage: 'Something went wrong' });
   } catch {
-    res.json({ errorMessage: 'Something wrong with info, maybe' });
+    res.json({ errorMessage: 'Something wrong with info' });
   }
 });
 
