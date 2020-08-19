@@ -1,0 +1,38 @@
+.footer{
+  line-height: 1;
+  font-family: RF Rostin,Arial,sans-serif;
+  color: #FFBC5B;
+  background-color: #4520ab;
+  padding-bottom: 20px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  margin-top: 100px;
+}
+
+#icon{
+  height: 30px;
+  margin: 10px 10px 0px 10px;
+}
+
+.icons{
+  padding: 20px 20px 0px 20px;
+  margin-left: 20%;
+}
+
+.footertextleft{
+  padding: 30px;
+  margin-left: 20%;
+}
+
+.ateg{
+  color: #FFBC5B;
+  font-family: 'Rostin';
+  font-size: 18px;
+}
+
+@font-face{
+  font-family: 'Rostin';
+  src: url('/RF-Rostin/RF-Rostin-Regular.ttf');
+}

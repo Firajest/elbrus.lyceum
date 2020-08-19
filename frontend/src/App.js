@@ -5,22 +5,29 @@ import './App.css'
 import { useSelector, useDispatch } from 'react-redux'
 import Navbar from './components/navbar/navbar'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { withStyles } from '@material-ui/core';
+import Footer from './components/Footer';
 
 function App() {
   const userStatus = useSelector((state) => state.userInfo.userStatus)
   return (
     <>
       <Router>
+
         <Navbar></Navbar>
         <br></br>
         <LoginForm />
         <Route path='/chieftain'>
           <adminPage />
+
         </Route>
         <Route exact path='/'>
           {userStatus && <HomePage />}
         </Route>
-      </Router >
+
+      </Router>
+      <Footer />
+
     </>
   );
 }
