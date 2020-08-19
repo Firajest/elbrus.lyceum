@@ -43,10 +43,19 @@ export default function UserProps(state = initialState, action) {
         errorMessage: '',
       }
     case LOGOUT_FAILURE:
-      return {
-        ...state,
-        errorMessage: payload.errorMessage,
-        message: '',
+      if (payload.errorMessage === 'Something went wrong') {
+        return {
+          ...state,
+          errorMessage: payload.errorMessage,
+          message: '',
+          userStatus: '',
+        }
+      } else {
+        return {
+          ...state,
+          errorMessage: payload.errorMessage,
+          message: '',
+        }
       }
     case CREATEUSER_REQUEST:
       return {

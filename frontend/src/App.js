@@ -8,7 +8,7 @@ import './App.css'
 import { Input } from 'semantic-ui-react';
 import Logo from './ElbrusBootCamp-logo-RGB.svg'
 import { useSelector, useDispatch } from 'react-redux'
-import { loginModalOn } from './redux/actionCreators'
+import { loginModalOn, clearMessages } from './redux/actionCreators'
 
 import Button from '@material-ui/core/Button';
 
@@ -26,6 +26,7 @@ function App() {
   const userStatus = useSelector((state) => state.userInfo.userStatus)
 
   const openLoginModal = () => {
+    dispatch(clearMessages());
     dispatch(loginModalOn())
   };
 
