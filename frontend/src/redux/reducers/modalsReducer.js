@@ -47,6 +47,7 @@ export default function ModalFlags(state = initialState, action) {
         materialsFlag: false,
       }
 
+
     default:
       return state
   }

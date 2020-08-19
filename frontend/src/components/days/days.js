@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ShowDays() {
+function ShowDays(props) {
   const classes = useStyles();
   const dispatch = useDispatch()
   const days = useSelector((state) => {
@@ -85,11 +85,11 @@ function ShowDays() {
   const singleDay = useSelector((state) => {
     return state.data.singleDay
   })
-  
+
   const userStatus = useSelector((state) => {
     return state.userInfo.userStatus
   })
-  
+
 
   const [open, setOpen] = React.useState(false);
 
@@ -112,18 +112,36 @@ function ShowDays() {
   return (
     <>
       <div className='daysList' >
-        {days && days.map((day) => {
-          return (
-            <Router>
-              <Switch>
-                <div className='dayList'>
-                  <DayButton className={singleDay._id === day._id && "active"}
-                    onClick={() => handleClickOpen(day)}>{day.name}</DayButton>
-                </div>
-              </Switch>
-            </Router>
-          )
-        })}
+        {props.props ? <>
+          {props.props && props.props.map((day) => {
+            return (
+              <Router>
+                <Switch>
+                  <div className='dayList'>
+                    <DayButton className={singleDay._id === day._id && "active"}
+                      onClick={() => handleClickOpen(day)}>{day.name}</DayButton>
+                  </div>
+                </Switch>
+              </Router>
+            )
+          })}
+        </> :
+          <>
+            {days && days.map((day) => {
+              return (
+                <Router>
+                  <Switch>
+                    <div className='dayList'>
+                      <DayButton className={singleDay._id === day._id && "active"}
+                        onClick={() => handleClickOpen(day)}>{day.name}</DayButton>
+                    </div>
+                  </Switch>
+                </Router>
+              )
+            })}
+          </>
+        }
+
       </div>
       <div>
         <Dialog
@@ -137,14 +155,20 @@ function ShowDays() {
           <DialogTitle id="alert-dialog-slide-title"><strong>{singleDay.name}</strong></DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-
-              <iframe width="560" height="315" src={singleDay.linkYT} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen='true'></iframe>
-              <div className={classes.root}>
-                <ButtonGroup color="primary" aria-label="outlined primary button group">
-                  <Link className="buttoninmodal" href={singleDay.linkPres}><ButtonInModal className="buttoninmodal">Презентация</ButtonInModal></Link>
-                  {singleDay.linkFile === 'none yet' ? <></> : <Link className="buttoninmodal" href={singleDay.linkFile}><ButtonInModal className="buttoninmodal">Код лекции</ButtonInModal></Link>}
-                </ButtonGroup>
-              </div>
+              {singleDay.newLink.map((teacher) => {
+                return (
+                  <>
+                    <h3>{teacher.name}</h3>
+                    <iframe width="560" height="315" src={teacher.linkYT} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen='true'></iframe>
+                    <div className={classes.root}>
+                      <ButtonGroup color="primary" aria-label="outlined primary button group">
+                        <Link className="buttoninmodal" href={teacher.linkPres}><ButtonInModal className="buttoninmodal">Презентация</ButtonInModal></Link>
+                        {teacher.linkFile === 'none yet' ? <></> : <Link className="buttoninmodal" href={teacher.linkFile}><ButtonInModal className="buttoninmodal">Код лекции</ButtonInModal></Link>}
+                      </ButtonGroup>
+                    </div>
+                  </>
+                )
+              })}
               {userStatus && <button type="button" onClick={addNewMaterial}>Add new material</button>}
             </DialogContentText>
           </DialogContent>
