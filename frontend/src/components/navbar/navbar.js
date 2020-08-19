@@ -6,6 +6,7 @@ import { loginModalOn } from '../../redux/actionCreators'
 import Logo from '../../ElbrusBootCamp-logo-RGB.svg'
 import Logout from '../logout/logout'
 import Button from '@material-ui/core/Button';
+import HomePage from '../homepage/homepage'
 
 import ShowDays, { handleClose, } from '../days/days'
 

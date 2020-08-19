@@ -43,10 +43,10 @@ route.put('/newMaterials', async (req, res) => {
     const currentAdmin = await UserModel.findOne({ _id: req.session.user._id });
     const dbDay = await DayModel.findOne({ _id: day });
     if (currentAdmin.status === ('chieftain' || 'teacher')) {
-      dbDay.newLinkYT.push({
+      dbDay.newLink.push({
         name: currentAdmin.name,
-        link: lection,
-        linkCode: code,
+        linkYT: lection,
+        linkFile: code,
         linkPres: presentation,
       });
       res.json({ message: 'Materials has been added' });

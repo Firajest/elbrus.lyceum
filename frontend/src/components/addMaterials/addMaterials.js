@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Input } from 'semantic-ui-react';
-import './newUserForm.css';
 import SendMaterialsForm from '../../redux/thunks/addMaterialsThunk'
 import { useDispatch, useSelector } from 'react-redux';
 import { addMaterialsModalOff, clearUploadMessages } from '../../redux/actionCreators'
@@ -18,7 +17,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-function CreateUserForm() {
+function AddMaterialForm() {
   const handleClose = () => {
     dispatch(addMaterialsModalOff())
   };
@@ -78,5 +77,5 @@ function CreateUserForm() {
     </>
   )
 }
-export default CreateUserForm;
+export default AddMaterialForm;
 
