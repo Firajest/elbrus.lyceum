@@ -25,7 +25,7 @@ export default function Footer() {
             <p>
               <a class="ateg" target="_blank" href="https://wa.me/74957860581">ЧАТ В WHATSAPP{' '}</a>
                 /
-            <a class="ateg" target="_blank" href="https://t.me/joinchat/CDWhPUyGEQ9Swb6z7-6UjQ">{' '}Elbrus familly</a>
+            <a class="ateg" target="_blank" href="https://t.me/joinchat/CDWhPUyGEQ9Swb6z7-6UjQ">{' '}Elbrus family</a>
             </p>
             <a class="ateg" href="tel:join@elbrusboot.camp">join@elbrusboot.camp</a>
             <p></p>
