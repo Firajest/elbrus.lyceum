@@ -33,4 +33,10 @@ route.get('/alldays', async (req, res) => {
   res.json({ allDays });
 });
 
+route.put('/newMaterials', async (req, res) => {
+  const { lection, presentation, code } = req.body;
+
+  res.json({ proto: 'starting' });
+});
+
 export default route;
