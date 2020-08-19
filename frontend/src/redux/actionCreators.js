@@ -150,6 +150,7 @@ export function logoutRequestFailed(errorMessage) {
     payload: {
       errorMessage,
       message: '',
+      status: '',
     },
 
   }
