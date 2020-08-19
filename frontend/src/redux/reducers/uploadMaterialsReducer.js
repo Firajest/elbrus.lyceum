@@ -1,5 +1,5 @@
 import {
-  
+  UPLOADING_REQUEST, UPLOADING_SUCCESS, UPLOADING_FAILURE, CLEAR_UPLOAD_MESSAGE
 } from "../actionTypes"
 
 const initialState = {
@@ -7,14 +7,34 @@ const initialState = {
   message: '',
   errorMessage: '',
 }
-export default function UserProps(state = initialState, action) {
-  const { type, payload } = action
+export default function UploadStatus(state = initialState, action) {
+  const { type } = action
   switch (type) {
 
-    case STATUS_REQUEST:
+    case UPLOADING_REQUEST:
       return {
         ...state,
-        message: payload.message,
+        uploadStatus: 'Uploading...'
+      }
+    case UPLOADING_SUCCESS:
+      return {
+        ...state,
+        uploadStatus: '',
+        message: action.message,
+        errorMessage: '',
+      }
+    case UPLOADING_FAILURE:
+      return {
+        ...state,
+        uploadStatus: '',
+        message: '',
+        errorMessage: action.errorMessage,
+      }
+    case CLEAR_UPLOAD_MESSAGE:
+      return {
+        ...state,
+        uploadStatus: '',
+        message: '',
         errorMessage: '',
       }
 

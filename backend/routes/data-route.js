@@ -1,5 +1,7 @@
+/* eslint-disable no-underscore-dangle */
 import express from 'express';
 import {
+  DayModel, UserModel, PhaseModel, WeekModel,
   getPh, getWeek, getDays, getDay, getAllDays,
 } from '../Database/database.js';
 
@@ -34,9 +36,24 @@ route.get('/alldays', async (req, res) => {
 });
 
 route.put('/newMaterials', async (req, res) => {
-  const { lection, presentation, code } = req.body;
-
-  res.json({ proto: 'starting' });
+  try {
+    const {
+      lection, presentation, code, day,
+    } = req.body;
+    const currentAdmin = await UserModel.findOne({ _id: req.session.user._id });
+    const dbDay = await DayModel.findOne({ _id: day });
+    if (currentAdmin.status === ('chieftain' || 'teacher')) {
+      dbDay.newLinkYT.push({
+        name: currentAdmin.name,
+        link: lection,
+        linkCode: code,
+        linkPres: presentation,
+      });
+      res.json({ message: 'Materials has been added' });
+    } else res.json({ errorMessage: 'Something went wrong' });
+  } catch {
+    res.json({ errorMessage: 'Something wrong with info, maybe' });
+  }
 });
 
 export default route;

@@ -3,7 +3,7 @@ import { Input } from 'semantic-ui-react';
 import './newUserForm.css';
 import SendMaterialsForm from '../../redux/thunks/addMaterialsThunk'
 import { useDispatch, useSelector } from 'react-redux';
-import { addMaterialsModalOff, clearMessages } from '../../redux/actionCreators'
+import { addMaterialsModalOff, clearUploadMessages } from '../../redux/actionCreators'
 
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -22,18 +22,21 @@ function CreateUserForm() {
   const handleClose = () => {
     dispatch(addMaterialsModalOff())
   };
+  const materialsFlag = useSelector((state) => state.modalFlags.materialsFlag);
+  const phase = useSelector((state) => state.data.phase);
+  const week = useSelector((state) => state.data.week);
+  const day = useSelector((state) => state.data.day);
   const dispatch = useDispatch();
   const [inputLection, setInputLection] = useState('');
   const [inputPresentation, setInputPresentation] = useState('');
   const [inputCode, setInputCode] = useState('');
   const errorMessage = useSelector((state) => state.userInfo.errorMessage ? state.userInfo.errorMessage : state.userInfo.message);
 
-  const materialsFlag = useSelector((state) => state.modalFlags.materialsFlag)
 
   function addMaterial(event) {
     event.preventDefault();
-    dispatch(clearMessages());
-    dispatch(SendMaterialsForm(inputLection, inputPresentation, inputCode));
+    dispatch(clearUploadMessages());
+    dispatch(SendMaterialsForm(inputLection, inputPresentation, inputCode, phase, week, day));
     setInputLection('');
     setInputPresentation('');
     setInputCode('');
@@ -50,7 +53,7 @@ function CreateUserForm() {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title">Please verify your identity</DialogTitle>
+        <DialogTitle id="alert-dialog-slide-title">Insert material's info</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
             <div id="newUserForm">
