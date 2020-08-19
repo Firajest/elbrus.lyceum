@@ -22,9 +22,9 @@ function AdminPage() {
   return (
     <>
       <ul>
-        <li><button type="button" onClick={createUser}>Создать нового пользователя</button></li>
-        <li><button type="button" onClick={showAllUsers}>Список пользователей</button></li>
-        <li><button type="button" onClick={addMaterials}>Добавить материал</button></li>
+        <li><button type="button" onClick={createUser}>Create new user</button></li>
+        <li><button type="button" onClick={showAllUsers}>User's list</button></li>
+        <li><button type="button" onClick={addMaterials}>Add new material</button></li>
       </ul>
     </>
   );

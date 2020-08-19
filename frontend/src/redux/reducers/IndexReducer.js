@@ -14,7 +14,6 @@ const initialState = {
     phases: [],
     weeks: [],
     days: [],
-
     day: {},
     allDays: [],
 
@@ -109,14 +108,15 @@ export default function ViewInfo(state = initialState, action) {
         day: payload.id
       }
 
-    // case GETALLDAYS_REQUEST:
-    //   return {
-    //     ...state
-    //   }
-    // case GETALLDAYS_SUCCESS:
-    //   return {
-    //     ...state,
-    //   }
+    case GETALLDAYS_REQUEST:
+      return {
+        ...state
+      }
+    case GETALLDAYS_SUCCESS:
+      return {
+        ...state,
+        data: { ...state.data, allDays: payload.days },
+      }
 
     default:
       return state

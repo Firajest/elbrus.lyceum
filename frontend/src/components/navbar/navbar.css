@@ -1,0 +1,41 @@
+.navbar{
+  display: flex;  
+  height: 120px;
+  width: 100%;
+  background-color: rgb(63,37,166);
+}
+.loginButton{
+margin-left: auto;
+}
+
+.searchBar{
+  align-self: center;
+  width: 30%;
+  background-color: rgb(63,37,166);
+  margin-left: 15%;
+}
+#searchBar{
+  border-radius: 50px;
+  font-family: 'Rostin';
+}
+#loginButton {
+  margin-top: 2%;
+  width: 13%;
+  color: #FFBC5B;
+  border: 1px solid #FFBC5B;
+  margin-left: auto;
+  margin-right: 5%;
+  height: 30%;
+  font-family: 'Rostin';
+}
+.logo {
+  vertical-align: top;
+  width: 10em;
+  height: 8.5em;
+}
+.searchField {
+  width: 35em;
+  height: auto;
+  color:#FFBC5B ;
+  overflow-y: scroll;
+}
