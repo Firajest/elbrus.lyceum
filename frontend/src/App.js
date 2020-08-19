@@ -1,36 +1,32 @@
-import React, { useState, } from 'react';
+import React from 'react';
 import HomePage from './components/homepage/homepage'
 import LoginForm from './components/loginForm/loginForm'
 import './App.css'
-import { useSelector, useDispatch } from 'react-redux'
-
-import { loginModalOn, clearMessages } from './redux/actionCreators'
-
-import Button from '@material-ui/core/Button';
+import { useSelector } from 'react-redux'
 import Navbar from './components/navbar/navbar'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
-import { withStyles } from '@material-ui/core';
 import Footer from './components/Footer';
+import AdminPage from './components/adminPage/chieftain';
+import NewUserForm from './components/newUserForm/newUserForm'
 
 function App() {
   const userStatus = useSelector((state) => state.userInfo.userStatus);
-  
-  const openLoginModal = () => {
-    dispatch(clearMessages());
-    dispatch(loginModalOn())
-  };
-  
+
   return (
     <>
       <Router>
 
-        <Navbar></Navbar>
+        <Navbar />
+        {userStatus === 'chieftain' &&
+          <Link to='/chieftain'>
+            Trom-ka, Warchief
+          </Link>
+        }
         <br></br>
-        <LoginForm />
-        <Route path='/chieftain'>
-          <adminPage />
-
+        <Route exact path='/chieftain'>
+          <AdminPage />
         </Route>
+
         <Route exact path='/'>
           {userStatus && <HomePage />}
         </Route>
@@ -38,6 +34,9 @@ function App() {
       </Router>
       <Footer />
 
+      <LoginForm />
+      <NewUserForm />
+      
     </>
   );
 }

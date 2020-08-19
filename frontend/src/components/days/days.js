@@ -19,6 +19,8 @@ import getDay from '../../redux/thunks/day';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { addMaterialsModalOn } from '../../redux/actionCreators'
 
+import AddNewMaterial from '../addMaterials/addMaterials'
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -154,6 +156,7 @@ function ShowDays() {
           </DialogActions>
         </Dialog>
       </div>
+      <AddNewMaterial />
     </>
   )
 }

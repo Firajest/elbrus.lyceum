@@ -9,6 +9,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import dataReducer from './redux/reducers/IndexReducer';
 import userReducer from './redux/reducers/userReducer';
 import modalReducer from './redux/reducers/modalsReducer';
+import UploadStatusReducer from './redux/reducers/uploadMaterialsReducer';
 import thunk from 'redux-thunk';
 import {loadState, saveState} from './localStorage/localStorageMethods'
 
@@ -19,6 +20,7 @@ const store = createStore(
     data: dataReducer,
     userInfo: userReducer,
     modalFlags: modalReducer,
+    uploadStatus: UploadStatusReducer,
   }),
   persistedState,
   composeWithDevTools(applyMiddleware(thunk)),

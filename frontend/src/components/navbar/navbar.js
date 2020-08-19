@@ -7,6 +7,7 @@ import { loginModalOn } from '../../redux/actionCreators'
 import Logo from '../../ElbrusBootCamp-logo-RGB.svg'
 import Logout from '../logout/logout'
 import Button from '@material-ui/core/Button';
+import HomePage from '../homepage/homepage'
 
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
@@ -30,7 +31,7 @@ function Navbar() {
     />
   )
   return (
-    <Router>
+    <>
       <div>
 
       </div>
@@ -64,7 +65,7 @@ function Navbar() {
           }
         </header>
       </div>
-    </Router>
+    </>
   )
 }
 
