@@ -17,6 +17,7 @@ import Link from '@material-ui/core/Link';
 import { chooseDay } from '../../redux/actionCreators';
 import getDay from '../../redux/thunks/day';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { addMaterialsModalOn } from '../../redux/actionCreators'
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -82,8 +83,11 @@ function ShowDays() {
   const singleDay = useSelector((state) => {
     return state.data.singleDay
   })
-
-
+  
+  const userStatus = useSelector((state) => {
+    return state.userInfo.userStatus
+  })
+  
 
   const [open, setOpen] = React.useState(false);
 
@@ -97,6 +101,10 @@ function ShowDays() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  function addNewMaterial() {
+    dispatch(addMaterialsModalOn());
+  }
 
 
   return (
@@ -135,7 +143,7 @@ function ShowDays() {
                   {singleDay.linkFile === 'none yet' ? <></> : <Link className="buttoninmodal" href={singleDay.linkFile}><ButtonInModal className="buttoninmodal">Код лекции</ButtonInModal></Link>}
                 </ButtonGroup>
               </div>
-
+              {userStatus && <button type="button" onClick={addNewMaterial}>Add new material</button>}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
