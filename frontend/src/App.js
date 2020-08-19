@@ -1,4 +1,4 @@
-import React, { useState, } from 'react';
+import React, { useState, dispatch} from 'react';
 import HomePage from './components/homepage/homepage'
 import LoginForm from './components/loginForm/loginForm'
 import './App.css'
@@ -14,12 +14,12 @@ import Footer from './components/Footer';
 
 function App() {
   const userStatus = useSelector((state) => state.userInfo.userStatus);
-  
+
   const openLoginModal = () => {
     dispatch(clearMessages());
     dispatch(loginModalOn())
   };
-  
+
   return (
     <>
       <Router>

@@ -392,20 +392,20 @@ async function addPhW() {
 
 addPhW();
 
-async function newParam() {
-  const days = await DayModel.find();
-  days.forEach(async (day) => {
-    const link = day.linkYT;
-    const linkF = day.linkFile;
-    const linkP = day.linkPres;
-    day.newLink.push({
-      name: 'Условно Игорь', linkYT: link, linkFile: linkF, linkPres: linkP,
-    });
-    console.log(day);
-    await day.save();
-  });
-}
-newParam();
+// async function newParam() {
+//   const days = await DayModel.find();
+//   days.forEach(async (day) => {
+//     const link = day.linkYT;
+//     const linkF = day.linkFile;
+//     const linkP = day.linkPres;
+//     day.newLink.push({
+//       name: 'Условно Игорь', linkYT: link, linkFile: linkF, linkPres: linkP,
+//     });
+//     console.log(day);
+//     await day.save();
+//   });
+// }
+// newParam();
 
 export async function getPh() {
   const ph = await PhaseModel.find();
