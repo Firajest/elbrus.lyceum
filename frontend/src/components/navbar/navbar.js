@@ -59,6 +59,7 @@ function Navbar() {
           <Link to='/'>
             <img src={Logo} alt="Tut budet logo" className="logo" />
           </Link>
+          <p className='projectName'>.lectorium</p>
           {Searchbar()}
           {userStatus ?
             <Logout /> :
@@ -67,7 +68,9 @@ function Navbar() {
           </Button>
           }
         </header>
-        <ShowDays props={allDays} />
+        <div className='searchField'>
+          <ShowDays props={allDays} />
+        </div>
       </div>
     </>
   )

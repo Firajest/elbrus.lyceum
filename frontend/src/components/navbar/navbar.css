@@ -10,7 +10,7 @@ margin-left: auto;
 
 .searchBar{
   align-self: center;
-  width: 30%;
+  width: 32%;
   background-color: rgb(63,37,166);
   margin-left: 15%;
 }
@@ -27,6 +27,7 @@ margin-left: auto;
   margin-right: 5%;
   height: 30%;
   font-family: 'Rostin';
+  border-radius: 20px;
 }
 .logo {
   vertical-align: top;
@@ -34,10 +35,24 @@ margin-left: auto;
   height: 8.5em;
 }
 .searchField {
-  
-  width: 35em;
+  position: absolute;
+  width: 34.1em;
   height: auto;
   color:#FFBC5B ;
-  overflow-y: scroll;
-  border:1px solid black
+  border: 4px ;
+  margin-top: 5.61em;
+  margin-left: 35.5em;
+  z-index: 10;
+  opacity: 0.96;
+  background-color: #FFBC5B;
+  border:  3px solid rgb(63,37,166);
+  border-radius: 0px 0px 20px 20px;
+}
+.projectName{
+  /* align-self: flex-end; */
+  font-size: 16px;
+  color: #FFBC5B;
+  position: absolute;
+  margin-left: 7.5em;
+  margin-top: 5.1em;
 }
