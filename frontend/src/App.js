@@ -19,6 +19,8 @@ import Slide from '@material-ui/core/Slide';
 import CancelIcon from '@material-ui/icons/Cancel';
 
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { withStyles } from '@material-ui/core';
+import Footer from './components/Footer';
 
 const InputExampleIconProps = () => (
   <Input className="searchBar"
@@ -135,6 +137,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      <Footer />
     </>
   );
 }
