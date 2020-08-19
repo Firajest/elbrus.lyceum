@@ -46,9 +46,9 @@ export default function UserProps(state = initialState, action) {
       if (payload.errorMessage === 'Something went wrong') {
         return {
           ...state,
-          userStatus: '',
           errorMessage: payload.errorMessage,
           message: '',
+          userStatus: '',
         }
       } else {
         return {
