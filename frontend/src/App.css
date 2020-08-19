@@ -1,23 +1,4 @@
 
-.navbar{
-  display: flex;  
-  height: 120px;
-  width: 100%;
-  background-color: rgb(63,37,166);
-}
-.loginButton{
-margin-left: auto;
-}
-.searchBar{
-  align-self: center;
-  width: 30%;
-  background-color: rgb(63,37,166);
-  margin-left: 15%;
-}
-#searchBar{
-  border-radius: 50px;
-  font-family: 'Rostin';
-}
 .App{
   display: flex;
   flex-direction: column;
@@ -28,21 +9,7 @@ margin-left: auto;
   width: 100%;
 
 }
-.logo {
-  vertical-align: top;
-  width: 10em;
-  height: 8.5em;
-}
-#loginButton {
-  margin-top: 6%;
-  width: 13%;
-  color: #FFBC5B;
-  border: 1px solid #FFBC5B;
-  margin-left: auto;
-  margin-right: 5%;
-  height: 30%;
-  font-family: 'Rostin';
-}
+
 *{
   font-family: 'Rostin';
 }

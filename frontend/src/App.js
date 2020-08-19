@@ -1,64 +1,26 @@
 import React, { useState, } from 'react';
 import HomePage from './components/homepage/homepage'
-import NewUserForm from './components/newUserForm/newUserForm'
 import LoginForm from './components/loginForm/loginForm'
-import Logout from './components/logout/logout'
-import AdminPage from './components/adminPage/chieftain'
 import './App.css'
-import { Input } from 'semantic-ui-react';
-import Logo from './ElbrusBootCamp-logo-RGB.svg'
 import { useSelector, useDispatch } from 'react-redux'
-import { loginModalOn } from './redux/actionCreators'
-
-import Button from '@material-ui/core/Button';
-
+import Navbar from './components/navbar/navbar'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 function App() {
-  const InputExampleIconProps = () => (
-    <Input className="searchBar"
-      icon={{ name: 'search', circular: true, link: true }}
-      placeholder='Search by tag'
-      id='searchBar'
-    />
-  )
-  const dispatch = useDispatch();
   const userStatus = useSelector((state) => state.userInfo.userStatus)
-
-  const openLoginModal = () => {
-    dispatch(loginModalOn())
-  };
-
   return (
     <>
-    <Router>
-      <div className="App">
-        {/* NAVBAR */}
-        <header className="navbar">
-    <Link to='/'>
-          <img src={Logo} alt="Tut budet logo" className="logo" />
-     </Link>
-          {InputExampleIconProps()}
-          {userStatus ?
-            <Logout /> :
-            <Button id="loginButton" className="dayButton" onClick={openLoginModal}>
-              Login
-          </Button>
-          }
-        </header>
-        {/* NAVBAR */}
+      <Router>
+        <Navbar></Navbar>
         <br></br>
-        {userStatus && <HomePage />}
-      </div>
-      {/* Modals */}
-      <LoginForm />
-            
-            <Switch>
-          <Route path='/chieftain'>
-            <adminPage />
-          </Route>
-        </Switch>
-      </Router>
+        <LoginForm />
+        <Route path='/chieftain'>
+          <adminPage />
+        </Route>
+        <Route exact path='/'>
+          {userStatus && <HomePage />}
+        </Route>
+      </Router >
     </>
   );
 }
