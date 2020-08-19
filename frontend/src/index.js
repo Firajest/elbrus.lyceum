@@ -8,6 +8,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import dataReducer from './redux/reducers/IndexReducer';
 import userReducer from './redux/reducers/userReducer';
+import modalReducer from './redux/reducers/modalsReducer';
 import thunk from 'redux-thunk';
 import {loadState, saveState} from './localStorage/localStorageMethods'
 
@@ -17,6 +18,7 @@ const store = createStore(
   combineReducers({
     data: dataReducer,
     userInfo: userReducer,
+    modalFlags: modalReducer,
   }),
   persistedState,
   composeWithDevTools(applyMiddleware(thunk)),
