@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ShowDays() {
+function ShowDays(props) {
   const classes = useStyles();
   const dispatch = useDispatch()
   const days = useSelector((state) => {
@@ -98,22 +98,39 @@ function ShowDays() {
     setOpen(false);
   };
 
-
   return (
     <>
       <div className='daysList' >
-        {days && days.map((day) => {
-          return (
-            <Router>
-              <Switch>
-                <div className='dayList'>
-                  <DayButton className={singleDay._id === day._id && "active"}
-                    onClick={() => handleClickOpen(day)}>{day.name}</DayButton>
-                </div>
-              </Switch>
-            </Router>
-          )
-        })}
+        {props.props ? <>
+          {props.props && props.props.map((day) => {
+            return (
+              <Router>
+                <Switch>
+                  <div className='dayList'>
+                    <DayButton className={singleDay._id === day._id && "active"}
+                      onClick={() => handleClickOpen(day)}>{day.name}</DayButton>
+                  </div>
+                </Switch>
+              </Router>
+            )
+          })}
+        </> :
+          <>
+            {days && days.map((day) => {
+              return (
+                <Router>
+                  <Switch>
+                    <div className='dayList'>
+                      <DayButton className={singleDay._id === day._id && "active"}
+                        onClick={() => handleClickOpen(day)}>{day.name}</DayButton>
+                    </div>
+                  </Switch>
+                </Router>
+              )
+            })}
+          </>
+        }
+
       </div>
       <div>
         <Dialog

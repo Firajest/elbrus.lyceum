@@ -34,6 +34,7 @@ export default function ModalFlags(state = initialState, action) {
         newUserFlag: false,
       }
 
+
     default:
       return state
   }

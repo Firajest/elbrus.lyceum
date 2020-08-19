@@ -34,8 +34,10 @@ margin-left: auto;
   height: 8.5em;
 }
 .searchField {
+  
   width: 35em;
   height: auto;
   color:#FFBC5B ;
   overflow-y: scroll;
+  border:1px solid black
 }
