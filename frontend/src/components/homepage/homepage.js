@@ -10,6 +10,7 @@ import ShowWeeks from '../weeks/weeks'
 import getPhases from '../../redux/thunks/phases'
 import { choosePhase } from '../../redux/actionCreators'
 import getWeeks from '../../redux/thunks/weeks'
+import getAllDays from '../../redux/thunks/getAllDays'
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -24,8 +25,10 @@ function HomePage() {
   const weeks = useSelector((state) => {
     return state.data.phase
   })
+
   useEffect(() => {
     dispatch(getPhases())
+    dispatch(getAllDays())
     return () => {
       console.log('!!!')
     }
