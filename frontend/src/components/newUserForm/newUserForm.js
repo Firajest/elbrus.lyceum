@@ -26,7 +26,7 @@ function CreateUserForm() {
   const [inputName, setInputName] = useState('');
   const [inputEmail, setInputEmail] = useState('');
   const [selectValue, setSelectValue] = useState('student');
-  const errorMessage = useSelector((state) => state.userInfo.errorMessage);
+  const errorMessage = useSelector((state) => state.userInfo.errorMessage ? state.userInfo.errorMessage : state.userInfo.message);
 
   const newUserFlag = useSelector((state) => state.modalFlags.newUserFlag)
 

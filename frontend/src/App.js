@@ -31,33 +31,39 @@ function App() {
 
   return (
     <>
-    <Router>
-      <div className="App">
-        {/* NAVBAR */}
-        <header className="navbar">
-    <Link to='/'>
-          <img src={Logo} alt="Tut budet logo" className="logo" />
-     </Link>
-          {InputExampleIconProps()}
-          {userStatus ?
-            <Logout /> :
-            <Button id="loginButton" className="dayButton" onClick={openLoginModal}>
-              Login
+      <Router>
+        <div className="App">
+          {/* NAVBAR */}
+          <header className="navbar">
+            <Link to='/'>
+              <img src={Logo} alt="Tut budet logo" className="logo" />
+            </Link>
+            {userStatus === 'chieftain' &&
+              <Link to="/chieftain">
+                Trom-ka, Warchief!
+            </Link>
+            }
+            {InputExampleIconProps()}
+            {userStatus ?
+              <Logout /> :
+              <Button id="loginButton" className="dayButton" onClick={openLoginModal}>
+                Login
           </Button>
-          }
-        </header>
-        {/* NAVBAR */}
-        <br></br>
-        {userStatus && <HomePage />}
-      </div>
-      {/* Modals */}
-      <LoginForm />
-            
-            <Switch>
-          <Route path='/chieftain'>
-            <adminPage />
-          </Route>
-        </Switch>
+            }
+          </header>
+          {/* NAVBAR */}
+          <br></br>
+        </div>
+        {/* Modals */}
+        <LoginForm />
+        <NewUserForm />
+
+        <Route path='/chieftain'>
+          {userStatus === 'chieftain' && <AdminPage />}
+        </Route>
+        <Route exact path='/'>
+          {userStatus && <HomePage />}
+        </Route>
       </Router>
     </>
   );

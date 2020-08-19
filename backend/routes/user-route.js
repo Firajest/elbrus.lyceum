@@ -34,7 +34,7 @@ route
       req.session.user.password = '';
       console.log(req.session.user);
       res.json({ message: 'Successful login', user: req.session.user });
-    } else res.json({ message: 'Something went wrong. Check please whether your username or password is correct.' });
+    } else res.json({ message: 'Something went wrong. Check pleasewhether your username or password is correct.' });
   })
   .post('/logout', (req, res) => {
     if (req.session.user) {

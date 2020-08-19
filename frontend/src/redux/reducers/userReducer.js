@@ -1,5 +1,5 @@
 import {
-  LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE, STATUS_REQUEST, STATUS_SUCCESS, STATUS_FAILURE, CREATEUSER_REQUEST, CREATEUSER_SUCCESS, CREATEUSER_FAILURE,
+  LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE, STATUS_REQUEST, STATUS_SUCCESS, STATUS_FAILURE, CREATEUSER_REQUEST, CREATEUSER_SUCCESS, CREATEUSER_FAILURE, CLEAR_MESSAGE,
 } from "../actionTypes"
 
 const initialState = {
@@ -65,6 +65,12 @@ export default function UserProps(state = initialState, action) {
         ...state,
         errorMessage: payload.message,
         message: ''
+      }
+    case CLEAR_MESSAGE:
+      return {
+        ...state,
+        message: '',
+        errorMessage: '',
       }
 
     default:
