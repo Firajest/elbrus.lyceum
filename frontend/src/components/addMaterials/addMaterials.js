@@ -19,6 +19,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 function AddMaterialForm() {
   const handleClose = () => {
+    dispatch(clearUploadMessages())
     dispatch(addMaterialsModalOff())
   };
   const materialsFlag = useSelector((state) => state.modalFlags.materialsFlag);
@@ -29,7 +30,7 @@ function AddMaterialForm() {
   const [inputLection, setInputLection] = useState('');
   const [inputPresentation, setInputPresentation] = useState('');
   const [inputCode, setInputCode] = useState('');
-  const errorMessage = useSelector((state) => state.userInfo.errorMessage ? state.userInfo.errorMessage : state.userInfo.message);
+  const errorMessage = useSelector((state) => state.uploadStatus.errorMessage ? state.uploadStatus.errorMessage : state.uploadStatus.message);
 
 
   function addMaterial(event) {
@@ -56,7 +57,11 @@ function AddMaterialForm() {
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
             <div id="newUserForm">
-              <p>Add new material</p>
+              <h3>Add new material</h3>
+              <h3>Instruction for lection links:</h3>
+              <p> 1) Open video on youtube and press "share" button.</p>
+              <p> 2) Copy this link and moderate it to "youtube.com" view.</p>
+              <p> 3) After it, add "/embed" after ".com" ... should be like this: "https://www.youtube.com/embed/watch?v=XXXXXXXX".</p>
               <form onSubmit={(event) => addMaterial(event)}>
                 <Input name="lection" type="text" placeholder="Link to lection on youtube" onChange={(event) => setInputLection(event.target.value)} value={inputLection} />
                 <Input name="presentation" type="text" placeholder="Link to presentation on drive" onChange={(event) => setInputPresentation(event.target.value)} value={inputPresentation} />

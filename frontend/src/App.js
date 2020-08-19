@@ -28,7 +28,7 @@ function App() {
         </Route>
 
         <Route exact path='/'>
-          {userStatus && <HomePage />}
+          {userStatus ? <HomePage /> : <h1>Welcome to Elbrus Lyceum! Please log in to see information.</h1>}
         </Route>
 
       </Router>
