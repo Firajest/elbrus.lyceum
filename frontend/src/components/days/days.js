@@ -83,11 +83,11 @@ function ShowDays() {
   const singleDay = useSelector((state) => {
     return state.data.singleDay
   })
-  
+
   const userStatus = useSelector((state) => {
     return state.userInfo.userStatus
   })
-  
+
 
   const [open, setOpen] = React.useState(false);
 
@@ -135,14 +135,20 @@ function ShowDays() {
           <DialogTitle id="alert-dialog-slide-title"><strong>{singleDay.name}</strong></DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-
-              <iframe width="560" height="315" src={singleDay.linkYT} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen='true'></iframe>
-              <div className={classes.root}>
-                <ButtonGroup color="primary" aria-label="outlined primary button group">
-                  <Link className="buttoninmodal" href={singleDay.linkPres}><ButtonInModal className="buttoninmodal">Презентация</ButtonInModal></Link>
-                  {singleDay.linkFile === 'none yet' ? <></> : <Link className="buttoninmodal" href={singleDay.linkFile}><ButtonInModal className="buttoninmodal">Код лекции</ButtonInModal></Link>}
-                </ButtonGroup>
-              </div>
+              {singleDay.newLink.map((teacher) => {
+                return (
+                  <>
+                    <h3>{teacher.name}</h3>
+                    <iframe width="560" height="315" src={teacher.linkYT} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen='true'></iframe>
+                    <div className={classes.root}>
+                      <ButtonGroup color="primary" aria-label="outlined primary button group">
+                        <Link className="buttoninmodal" href={teacher.linkPres}><ButtonInModal className="buttoninmodal">Презентация</ButtonInModal></Link>
+                        {teacher.linkFile === 'none yet' ? <></> : <Link className="buttoninmodal" href={teacher.linkFile}><ButtonInModal className="buttoninmodal">Код лекции</ButtonInModal></Link>}
+                      </ButtonGroup>
+                    </div>
+                  </>
+                )
+              })}
               {userStatus && <button type="button" onClick={addNewMaterial}>Add new material</button>}
             </DialogContentText>
           </DialogContent>
