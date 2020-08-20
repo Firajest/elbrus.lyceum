@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import './userList.css'
+import React from 'react';
+import './userList.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import User from '../User/user';
-
-
 import { newUserModalOn, clearMessages } from '../../redux/actionCreators';
 
 const BeautifulButton = withStyles((theme) => ({

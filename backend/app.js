@@ -27,11 +27,8 @@ app.use(session({
 app.use((req, res, next) => {
   if (req.session.user) {
     res.locals.login = req.session.user.login;
-    // console.log(res.locals);
-    // next();
   }
   next();
-  // return res.redirect(401, '/login');
 });
 
 /// ////////////////////////////////////here will be ROUTES

@@ -1,8 +1,8 @@
 import React from 'react';
-import './user.css'
-import { useSelector, useDispatch } from 'react-redux';
-import deleteThunk from '../../redux/thunks/deleteUserThunk'
-import { clearDeleteMessages } from '../../redux/actionCreators'
+import './user.css';
+import { useDispatch } from 'react-redux';
+import deleteThunk from '../../redux/thunks/deleteUserThunk';
+import { clearDeleteMessages } from '../../redux/actionCreators';
 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -18,10 +18,9 @@ const BeautifulButton = withStyles((theme) => ({
 
 function CurrentUser({ name, email, status, id }) {
   const dispatch = useDispatch();
+  // function updateUser() {
 
-  function updateUser() {
-
-  };
+  // };
 
   function deleteUser() {
     dispatch(clearDeleteMessages());
@@ -31,7 +30,7 @@ function CurrentUser({ name, email, status, id }) {
   return (
     <>
       <li>{name}, {email}, <strong>{status}</strong> </li>
-      <BeautifulButton type="button" onClick={updateUser}>Update</BeautifulButton>
+      {/* <BeautifulButton type="button" onClick={updateUser}>Update</BeautifulButton> */}
       <BeautifulButton type="button" onClick={deleteUser}>Delete</BeautifulButton>
     </>
   );

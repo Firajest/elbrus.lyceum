@@ -5,7 +5,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const uri = `mongodb+srv://Elbrus:${process.env.DATABASE_PASSWORD}@lectoryi.pmshi.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`;
-console.log(process.env.DATABASE_PASSWORD);
 try {
   mongoose.connect(uri, {
     useNewUrlParser: true,

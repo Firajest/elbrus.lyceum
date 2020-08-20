@@ -1,7 +1,8 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-underscore-dangle */
 import express from 'express';
 import {
-  DayModel, UserModel, PhaseModel, WeekModel,
+  DayModel, UserModel,
   getPh, getWeek, getDays, getDay, getAllDays,
 } from '../Database/database.js';
 
@@ -50,7 +51,6 @@ route.put('/newMaterials', async (req, res) => {
         linkPres: presentation,
       });
       await dbDay.save();
-      console.log(dbDay);
       res.json({ message: 'Materials has been added' });
     } else res.json({ errorMessage: 'Something went wrong' });
   } catch {
