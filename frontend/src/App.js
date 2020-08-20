@@ -16,29 +16,27 @@ function App() {
 
   return (
     <>
+      <div className='warvsfooter'>
+        <Router>
 
-      <Router>
+          <Navbar />
+          <br></br>
+          <Route exact path='/chieftain'>
+            <AdminPage />
+          </Route>
+          <Route exact path='/allUsers'>
+            {userStatus === 'chieftain' && <UsersList />}
+          </Route>
 
-        <Navbar />
-        <br></br>
-        <Route exact path='/chieftain'>
-          <AdminPage />
-        </Route>
-        <Route exact path='/allUsers'>
-          {userStatus === 'chieftain' && <UsersList />}
-        </Route>
+          <Route exact path='/'>
+            {userStatus ? <HomePage /> : <h1 className='welcome'>Добро пожаловать в elbrus.лекторий. Войдите для получения доступа к контенту.</h1>}
+          </Route>
 
-        <Route exact path='/'>
-          {userStatus ? <HomePage /> : <h1 className='welcome'>Добро пожаловать в elbrus.лекторий. Войдите для получения доступа к контенту.</h1>}
-        </Route>
-
-      </Router>
-
-      <LoginForm />
-      <NewUserForm />
-
+        </Router>
+        <LoginForm />
+        <NewUserForm />
+      </div>
       <Footer />
-
     </>
   );
 }
