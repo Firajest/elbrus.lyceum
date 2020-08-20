@@ -18,11 +18,6 @@ function App() {
       <Router>
 
         <Navbar />
-        {userStatus === 'chieftain' &&
-          <Link to='/chieftain'>
-            Trom-ka, Warchief
-          </Link>
-        }
         <br></br>
         <Route exact path='/chieftain'>
           <AdminPage />
