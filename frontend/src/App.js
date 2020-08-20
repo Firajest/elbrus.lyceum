@@ -29,7 +29,7 @@ function App() {
         </Route>
 
         <Route exact path='/'>
-          {userStatus ? <HomePage /> : <h1>Welcome to Elbrus Lyceum! Please log in to see information.</h1>}
+          {userStatus ? <HomePage /> : <h1 className='welcome'>Добро пожаловать в elbrus.лекторий. Войдите для получения доступа к контенту.</h1>}
         </Route>
 
       </Router>
