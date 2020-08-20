@@ -1,16 +1,29 @@
 .footer{
   line-height: 1;
+  display: flex;
   font-family: RF Rostin,Arial,sans-serif;
   color: #FFBC5B;
   background-color: #4520ab;
   padding-bottom: 20px;
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 0;
   left: 0;
   margin-top: 100px;
-
 }
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .footer {
+      display: flex;
+      height: 80px;
+      flex-direction: column;
+    }
+    .footertextleft{
+      display: none;
+    }
+  }
 
 #icon{
   height: 30px;
@@ -25,6 +38,9 @@
 .footertextleft{
   padding: 30px;
   margin-left: 20%;
+}
+.footertextright{
+  /* margin-left: 50%; */
 }
 
 .ateg{

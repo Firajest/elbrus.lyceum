@@ -1,4 +1,4 @@
-import React, { useState, dispatch} from 'react';
+import React, { useState, dispatch } from 'react';
 import HomePage from './components/homepage/homepage'
 import LoginForm from './components/loginForm/loginForm'
 import './App.css'
@@ -32,11 +32,11 @@ function App() {
         </Route>
 
       </Router>
-      <Footer />
 
       <LoginForm />
       <NewUserForm />
-      
+
+      <Footer />
     </>
   );
 }
