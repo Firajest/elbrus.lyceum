@@ -3,6 +3,7 @@ import './days.css'
 import {
   BrowserRouter as Router, Switch,
 } from 'react-router-dom'
+import DayButton from './DayButton'
 import { useDispatch, useSelector, } from 'react-redux'
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
@@ -26,34 +27,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const DayButton = withStyles((theme) => ({
-  root: {
-    backgroundColor: 'rgb(63,37,166)',
-    color: 'rgb(133, 227,251)',
-    // marginBottom: '5%',
-    borderRadius: '20px',
-    margin: '5px',
-    height: '85.3px',
-    width: '450px',
-    fontFamily: 'Rostin',
-    fontSize: '18px',
-    border: '5px solid rgb(63,37,166)',
-    [theme.breakpoints.down('sm')]: {
-      marginLeft: '5%',
-      width: '90%',
-    },
 
-    [theme.breakpoints.between('sm', 'md')]: {
-      // marginLeft: '25%',
-      width: '90%'
-    },
-    '&:hover': {
-      color: '#FFBC5B',
-      backgroundColor: '#4520AB',
-      border: '3px solid #FFBC5B'
-    },
-  },
-}))(Button);
 
 const ButtonInModal = withStyles((theme) => ({
   root: {
@@ -90,7 +64,6 @@ function ShowDays(props) {
     return state.userInfo.userStatus
   })
 
-
   const [open, setOpen] = React.useState(false);
 
   function handleClickOpen(day) {
@@ -107,7 +80,6 @@ function ShowDays(props) {
   function addNewMaterial() {
     dispatch(addMaterialsModalOn());
   }
-
 
   return (
     <>
@@ -141,7 +113,6 @@ function ShowDays(props) {
             })}
           </>
         }
-
       </div>
       <div>
         <Dialog
@@ -155,7 +126,8 @@ function ShowDays(props) {
           <DialogTitle id="alert-dialog-slide-title"><strong>{singleDay.name}</strong></DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              {singleDay.newLink && singleDay.newLink.map((teacher) => {
+              {userStatus && <ButtonInModal type="button" onClick={addNewMaterial}>Add new material</ButtonInModal>}
+              {singleDay.newLink !== undefined && singleDay.newLink.map((teacher) => {
                 return (
                   <>
                     <h3>{teacher.name}</h3>
@@ -169,7 +141,6 @@ function ShowDays(props) {
                   </>
                 )
               })}
-              {userStatus && <button type="button" onClick={addNewMaterial}>Add new material</button>}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
