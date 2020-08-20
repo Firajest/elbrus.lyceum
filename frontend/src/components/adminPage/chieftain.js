@@ -14,7 +14,6 @@ const BeautifulButton = withStyles((theme) => ({
   },
 }))(Button);
 
-
 function AdminPage() {
   const dispatch = useDispatch();
 

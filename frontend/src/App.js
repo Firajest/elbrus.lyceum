@@ -1,14 +1,14 @@
-import React, { useState, dispatch } from 'react';
-import HomePage from './components/homepage/homepage'
-import LoginForm from './components/loginForm/loginForm'
-import './App.css'
-import { useSelector } from 'react-redux'
-import Navbar from './components/navbar/navbar'
+import React from 'react';
+import HomePage from './components/homepage/homepage';
+import LoginForm from './components/loginForm/loginForm';
+import './App.css';
+import { useSelector } from 'react-redux';
+import Navbar from './components/navbar/navbar';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Footer from './components/Footer';
 import AdminPage from './components/adminPage/chieftain';
-import NewUserForm from './components/newUserForm/newUserForm'
-import UsersList from './components/usersList/userList'
+import NewUserForm from './components/newUserForm/newUserForm';
+import UsersList from './components/usersList/userList';
 
 function App() {
   const userStatus = useSelector((state) => state.userInfo.userStatus);

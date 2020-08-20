@@ -1,16 +1,16 @@
 import {
   UPLOADING_REQUEST, UPLOADING_SUCCESS, UPLOADING_FAILURE, CLEAR_UPLOAD_MESSAGE
-} from "../actionTypes"
+} from "../actionTypes";
 
 const initialState = {
   uploadStatus: '',
   message: '',
   errorMessage: '',
-}
+};
+
 export default function UploadStatus(state = initialState, action) {
   const { type } = action
   switch (type) {
-
     case UPLOADING_REQUEST:
       return {
         ...state,
@@ -41,4 +41,4 @@ export default function UploadStatus(state = initialState, action) {
     default:
       return state
   }
-}
+};

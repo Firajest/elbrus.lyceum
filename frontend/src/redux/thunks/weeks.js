@@ -1,19 +1,18 @@
 import {
   getWeeksRequest, getWeeksSuccess, getWeeksFailure,
-} from '../actionCreators'
+} from '../actionCreators';
 
 function getWeeks(weekId) {
   return async (dispatch) => {
-    dispatch(getWeeksRequest())
+    dispatch(getWeeksRequest());
     try {
-      const response = await (await fetch(`/data/phases/${weekId}`)).json()
-      // console.log(await response.weeks)
-      dispatch(getWeeksSuccess(response.weeks))
+      const response = await (await fetch(`/data/phases/${weekId}`)).json();
+      dispatch(getWeeksSuccess(response.weeks));
     }
     catch (e) {
-      dispatch(getWeeksFailure(e))
+      dispatch(getWeeksFailure(e));
     }
-  }
-}
+  };
+};
 
 export default getWeeks

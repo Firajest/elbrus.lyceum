@@ -2,7 +2,7 @@ import {
   statusRequest,
   statusSucceeded,
   statusFailed,
-} from '../actionCreators'
+} from '../actionCreators';
 
 function statusCheck() {
   return async (dispatch) => {
@@ -10,15 +10,14 @@ function statusCheck() {
     try {
       const data = await fetch('/user/status');
       const response = await data.json();
-      console.log(response.status);
       if (response.status) {
         dispatch(statusSucceeded(response.status));
-      } else dispatch(statusFailed(response.message))
+      } else dispatch(statusFailed(response.message));
     }
     catch {
-      dispatch(statusFailed())
+      dispatch(statusFailed());
     }
-  }
-}
+  };
+};
 
 export default statusCheck

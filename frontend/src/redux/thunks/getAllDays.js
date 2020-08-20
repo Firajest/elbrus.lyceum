@@ -1,18 +1,18 @@
 import {
   getAllDaysRequest, getAllDaysSuccess, getAllDaysFailure,
-} from '../actionCreators'
+} from '../actionCreators';
 
 function getAllDays() {
   return async (dispatch) => {
-    dispatch(getAllDaysRequest())
+    dispatch(getAllDaysRequest());
     try {
-      const response = await (await fetch('/data/alldays')).json()
-      dispatch(getAllDaysSuccess(response.allDays))
+      const response = await (await fetch('/data/alldays')).json();
+      dispatch(getAllDaysSuccess(response.allDays));
     }
     catch (e) {
-      dispatch(getAllDaysFailure(e))
+      dispatch(getAllDaysFailure(e));
     }
-  }
-}
+  };
+};
 
 export default getAllDays

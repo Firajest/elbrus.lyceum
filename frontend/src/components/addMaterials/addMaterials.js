@@ -12,9 +12,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import CancelIcon from '@material-ui/icons/Cancel';
-
 import { withStyles } from '@material-ui/core/styles';
-
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -30,8 +28,8 @@ const BeautifulButton = withStyles((theme) => ({
 
 function AddMaterialForm() {
   const handleClose = () => {
-    dispatch(clearUploadMessages())
-    dispatch(addMaterialsModalOff())
+    dispatch(clearUploadMessages());
+    dispatch(addMaterialsModalOff());
   };
   const materialsFlag = useSelector((state) => state.modalFlags.materialsFlag);
   const phase = useSelector((state) => state.data.phase);
@@ -42,7 +40,6 @@ function AddMaterialForm() {
   const [inputPresentation, setInputPresentation] = useState('');
   const [inputCode, setInputCode] = useState('');
   const errorMessage = useSelector((state) => state.uploadStatus.errorMessage ? state.uploadStatus.errorMessage : state.uploadStatus.message);
-
 
   function addMaterial(event) {
     event.preventDefault();

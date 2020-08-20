@@ -16,7 +16,6 @@ const BeautifulButton = withStyles((theme) => ({
 
 function AllUsers() {
   const dispatch = useDispatch();
-
   const users = useSelector((state) => state.userInfo.allUsers);
 
   function createUser() {

@@ -2,7 +2,7 @@ import {
   logoutRequest,
   logoutRequestSuccessed,
   logoutRequestFailed,
-} from '../actionCreators'
+} from '../actionCreators';
 
 function LogoutFunc() {
   return async (dispatch) => {
@@ -10,23 +10,16 @@ function LogoutFunc() {
     try {
       const data = await fetch('/user/logout', {
         method: "POST",
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify({
-          // cookie,
-        }),
       });
       const response = await data.json();
-      console.log(response);
       if (response.message === 'Successful logout') {
         dispatch(logoutRequestSuccessed(response.message));
-      } else dispatch(logoutRequestFailed(response.message))
+      } else dispatch(logoutRequestFailed(response.message));
     }
     catch {
-      dispatch(logoutRequestFailed('Cannot log out'))
+      dispatch(logoutRequestFailed('Cannot log out'));
     }
-  }
-}
+  };
+};
 
 export default LogoutFunc

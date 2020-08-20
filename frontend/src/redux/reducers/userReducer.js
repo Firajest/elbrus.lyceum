@@ -1,22 +1,19 @@
 import {
-  LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE, STATUS_REQUEST, STATUS_SUCCESS, STATUS_FAILURE, CREATEUSER_REQUEST, CREATEUSER_SUCCESS, CREATEUSER_FAILURE, CLEAR_MESSAGE,
-  DELETE_USER_REQUEST,
-  DELETE_USER_SUCCESS,
-  DELETE_USER_FAILURE,
-  CLEAR_DELETE_MESSAGE,
-  GET_ALL_USERS_REQUEST,
-  GET_ALL_USERS_SUCCESS,
-  GET_ALL_USERS_FAILURE,
-} from "../actionTypes"
+  LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE, STATUS_REQUEST, STATUS_SUCCESS, STATUS_FAILURE,
+  CREATEUSER_REQUEST, CREATEUSER_SUCCESS, CREATEUSER_FAILURE, CLEAR_MESSAGE, DELETE_USER_REQUEST,
+  DELETE_USER_SUCCESS, DELETE_USER_FAILURE, CLEAR_DELETE_MESSAGE, GET_ALL_USERS_REQUEST,
+  GET_ALL_USERS_SUCCESS, GET_ALL_USERS_FAILURE,
+} from "../actionTypes";
 
 const initialState = {
   userStatus: '',
   message: '',
   errorMessage: '',
   allUsers: [],
-}
+};
+
 export default function UserProps(state = initialState, action) {
-  const { type, payload } = action
+  const { type, payload } = action;
   switch (type) {
 
     case STATUS_REQUEST:
@@ -141,5 +138,5 @@ export default function UserProps(state = initialState, action) {
     default:
       return state
   }
-}
+};
 

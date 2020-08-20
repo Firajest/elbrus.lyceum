@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Input } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
-import SendLoginForm from '../../redux/thunks/sendLoginForm'
-import { loginModalOff, clearMessages } from '../../redux/actionCreators'
+import SendLoginForm from '../../redux/thunks/sendLoginForm';
+import { loginModalOff, clearMessages } from '../../redux/actionCreators';
 
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -17,7 +17,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-
 function LoginForm() {
 
   const handleClose = () => {
@@ -25,7 +24,7 @@ function LoginForm() {
     dispatch(clearMessages());
   };
   const errorMessage = useSelector((state) => state.userInfo.errorMessage ? state.userInfo.errorMessage : state.userInfo.message);
-  const loginFlag = useSelector((state) => state.modalFlags.loginFlag)
+  const loginFlag = useSelector((state) => state.modalFlags.loginFlag);
 
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
@@ -33,14 +32,13 @@ function LoginForm() {
 
   function sendForm(event) {
     event.preventDefault();
-    console.log(event.target, inputEmail, inputPassword);
     dispatch(SendLoginForm(inputEmail, inputPassword));
     setInputEmail('');
     setInputPassword('');
   }
 
   if (errorMessage === 'Successful login') {
-    handleClose()
+    handleClose();
   }
 
   return (
@@ -60,7 +58,7 @@ function LoginForm() {
               <Input name="email" type="email" placeholder="Email" value={inputEmail} onChange={(event) => setInputEmail(event.target.value)} />
               <Input name="password" type="password" placeholder="Password" value={inputPassword} onChange={(event) => setInputPassword(event.target.value)} />
               <Button type="submit" id="loginSubmitButton" className="loginButton" >Log in</Button>
-              {errorMessage && <p><strong>{errorMessage}</strong></p>}
+              {errorMessage && <strong>{errorMessage}</strong>}
             </form>
           </DialogContentText>
         </DialogContent>

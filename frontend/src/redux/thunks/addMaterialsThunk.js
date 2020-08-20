@@ -1,6 +1,6 @@
 import {
   uploadingMaterialStarts, uploadingMaterialSuceeded, uploadingMaterialFailed
-} from '../actionCreators'
+} from '../actionCreators';
 
 function SendMaterialsForm(lection, presentation, code, phaseID, weekID, dayID) {
   return async (dispatch) => {
@@ -24,12 +24,12 @@ function SendMaterialsForm(lection, presentation, code, phaseID, weekID, dayID) 
       console.log(response);
       if (response.message === 'Materials has been added') {
         dispatch(uploadingMaterialSuceeded(response.message));
-      } else dispatch(uploadingMaterialFailed(response.errorMessage))
+      } else dispatch(uploadingMaterialFailed(response.errorMessage));
     }
     catch {
-      dispatch(uploadingMaterialFailed('Oooops, something went wrong...'))
-    }
-  }
-}
+      dispatch(uploadingMaterialFailed('Oooops, something went wrong...'));
+    };
+  };
+};
 
 export default SendMaterialsForm

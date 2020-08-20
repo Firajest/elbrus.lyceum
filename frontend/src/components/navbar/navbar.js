@@ -6,12 +6,8 @@ import { loginModalOn, searchFlag, clearMessages } from '../../redux/actionCreat
 import Logo from '../../ElbrusBootCamp-logo-RGB.svg';
 import Logout from '../logout/logout';
 import Button from '@material-ui/core/Button';
-import HomePage from '../homepage/homepage';
-
-import ShowDays, { handleClose, } from '../days/days';
-
-
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import ShowDays from '../days/days';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -28,29 +24,25 @@ function Navbar() {
   let allDays = useSelector((state) => {
     return state.data.data.allDays
   })
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
 
   function mapDays() {
     allDays = allDays.filter((day) => {
       let check = false;
-      day.tags.forEach((tag) => {
-        if (tag.toLowerCase().includes(search.toLowerCase())) {
-          check = true;
-        }
-      });
       if (check === true) {
         return day;
       }
+      return day.tags.forEach((tag) => {
+        if (tag.toLowerCase().includes(search.toLowerCase())) {
+          return check = true;
+        }
+      });
     })
     if (allDays.length > 0 && allDays.length !== 26) {
-      dispatch(searchFlag(true))
-      console.log(allDays);
-      console.log(flag);
+      dispatch(searchFlag(true));
     }
     else {
-      dispatch(searchFlag(false))
-      console.log(allDays);
-      console.log(flag);
+      dispatch(searchFlag(false));
     }
   }
 
@@ -61,16 +53,15 @@ function Navbar() {
       placeholder='Search by tag'
       id='searchBar'
       onChange={event => {
-        setSearch(event.target.value)
-        mapDays()
+        setSearch(event.target.value);
+        mapDays();
       }}
     />
-  )
+  );
 
   return (
     <>
       <div className="App">
-        {/* NAVBAR */}
         <header className="navbar">
           <Link to='/'>
             <img src={Logo} alt="Tut budet logo" className="logo" />
@@ -79,7 +70,7 @@ function Navbar() {
           {userStatus ? Searchbar() : <></>}
           {userStatus === 'chieftain' &&
             <Link to='/chieftain'>
-              <div class="ButtonAdminInterface">
+              <div className="ButtonAdminInterface">
                 <Button id="ButtonAdminInterface">
                   Я тут главный
                 </Button>

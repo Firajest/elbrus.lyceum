@@ -3,7 +3,7 @@ import {
   deleteUserSucceeded,
   deleteUserFailed,
   clearDeleteMessages,
-} from '../actionCreators'
+} from '../actionCreators';
 
 function deleteCurrentUser(email, status, id) {
   return async (dispatch) => {
@@ -27,7 +27,7 @@ function deleteCurrentUser(email, status, id) {
       }
     }
     catch {
-      dispatch(deleteUserFailed('Couldn\'t delete user.'))
+      dispatch(deleteUserFailed('Couldn\'t delete user.'));
     }
   }
 }

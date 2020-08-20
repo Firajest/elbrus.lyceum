@@ -1,12 +1,8 @@
 import {
   GET_PHASES_SUCCESS, GET_PHASES_FAILURE, GET_PHASES_REQUEST, GET_WEEKS_SUCCESS, GET_WEEKS_FAILURE, GET_WEEKS_REQUEST,
-  GET_DAYS_SUCCESS, GET_DAYS_FAILURE, GET_DAYS_REQUEST,
-  CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY,
-  GET_DAY_SUCCESS, GET_DAY_FAILURE, GET_DAY_REQUEST,
-
-  GETALLDAYS_REQUEST, GETALLDAYS_SUCCESS, GETALLDAYS_FAILURE, SEARCH_FLAG
-
-} from "../actionTypes"
+  GET_DAYS_SUCCESS, GET_DAYS_FAILURE, GET_DAYS_REQUEST, CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY,
+  GET_DAY_SUCCESS, GET_DAY_FAILURE, GET_DAY_REQUEST, GETALLDAYS_REQUEST, GETALLDAYS_SUCCESS, SEARCH_FLAG
+} from "../actionTypes";
 
 const initialState = {
   data:
@@ -23,7 +19,8 @@ const initialState = {
   day: '',
   flag: false,
   singleDay: {},
-}
+};
+
 export default function ViewInfo(state = initialState, action) {
   const { type, payload } = action
   switch (type) {
@@ -125,7 +122,7 @@ export default function ViewInfo(state = initialState, action) {
     default:
       return state
   }
-}
+};
 
 // import {
 //   GET_PHASES_REQUEST,
