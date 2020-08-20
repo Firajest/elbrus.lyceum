@@ -36,11 +36,11 @@ function App() {
         </Route>
 
       </Router>
-      <Footer />
 
       <LoginForm />
       <NewUserForm />
 
+      <Footer />
     </>
   );
 }

@@ -28,7 +28,6 @@ function Navbar() {
   const [search, setSearch] = useState('')
 
   function mapDays() {
-
     allDays = allDays.filter((day) => {
       if ((day.tags).includes(search)) {
         return day
@@ -60,7 +59,7 @@ function Navbar() {
             <img src={Logo} alt="Tut budet logo" className="logo" />
           </Link>
           <p className='projectName'>.lectorium</p>
-          {Searchbar()}
+          {userStatus ? Searchbar() : <></>}
           {userStatus ?
             <Logout /> :
             <Button id="loginButton" className="dayButton" onClick={openLoginModal}>
