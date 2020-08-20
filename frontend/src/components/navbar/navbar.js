@@ -2,7 +2,7 @@ import React, { useState, } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Input } from 'semantic-ui-react';
 import './navbar.css'
-import { loginModalOn } from '../../redux/actionCreators'
+import { loginModalOn, clearMessages } from '../../redux/actionCreators'
 import Logo from '../../ElbrusBootCamp-logo-RGB.svg'
 import Logout from '../logout/logout'
 import Button from '@material-ui/core/Button';
@@ -19,6 +19,7 @@ function Navbar() {
 
   const userStatus = useSelector((state) => state.userInfo.userStatus)
   const openLoginModal = () => {
+    dispatch(clearMessages());
     dispatch(loginModalOn())
   };
 
@@ -67,6 +68,7 @@ function Navbar() {
           </Button>
           }
         </header>
+        
         <div className='searchField'>
           <ShowDays props={allDays} />
         </div>

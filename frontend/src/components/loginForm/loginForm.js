@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Input } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import SendLoginForm from '../../redux/thunks/sendLoginForm'
-import { loginModalOff } from '../../redux/actionCreators'
+import { loginModalOff, clearMessages } from '../../redux/actionCreators'
 
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -21,7 +21,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 function LoginForm() {
 
   const handleClose = () => {
-    dispatch(loginModalOff())
+    dispatch(loginModalOff());
+    dispatch(clearMessages());
   };
   const errorMessage = useSelector((state) => state.userInfo.errorMessage ? state.userInfo.errorMessage : state.userInfo.message);
   const loginFlag = useSelector((state) => state.modalFlags.loginFlag)
