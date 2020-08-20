@@ -35,9 +35,9 @@ export default function Footer() {
             </p>
           </div>
           <div class='footertextright'>
-            <p>1</p>
+            {/* <p>1</p>
             <p>2</p>
-            <p>3</p>
+            <p>3</p> */}
           </div>
           <div>
 

@@ -10,11 +10,13 @@ import AdminPage from './components/adminPage/chieftain';
 import NewUserForm from './components/newUserForm/newUserForm'
 import UsersList from './components/usersList/userList'
 
+
 function App() {
   const userStatus = useSelector((state) => state.userInfo.userStatus);
 
   return (
     <>
+
       <Router>
 
         <Navbar />
@@ -41,6 +43,7 @@ function App() {
       <NewUserForm />
 
       <Footer />
+
     </>
   );
 }
