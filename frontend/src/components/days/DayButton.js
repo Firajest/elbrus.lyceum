@@ -13,11 +13,12 @@ const DayButton = withStyles((theme) => ({
     fontSize: '18px',
     border: '5px solid rgb(63,37,166)',
     [theme.breakpoints.down('sm')]: {
-      marginLeft: '5%',
-      width: '90%',
+      marginLeft: '13%',
+      width: '74%',
     },
     [theme.breakpoints.between('sm', 'md')]: {
-      width: '90%'
+      marginLeft: '13%',
+      width: '74%'
     },
     '&:hover': {
       color: '#FFBC5B',
