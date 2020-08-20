@@ -80,8 +80,8 @@ function Navbar() {
             <Link to='/chieftain'>
               <div class="ButtonAdminInterface">
                 <Button id="ButtonAdminInterface">
-                  Trom-ka, Warchief
-              </Button>
+                  Я тут главный
+                </Button>
               </div>
             </Link>
           }
