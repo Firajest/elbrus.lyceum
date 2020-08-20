@@ -1,24 +1,25 @@
 import React, { useState, } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 import { Input } from 'semantic-ui-react';
-import './navbar.css'
-import { loginModalOn, searchFlag } from '../../redux/actionCreators'
-import Logo from '../../ElbrusBootCamp-logo-RGB.svg'
-import Logout from '../logout/logout'
+import './navbar.css';
+import { loginModalOn, searchFlag, clearMessages } from '../../redux/actionCreators';
+import Logo from '../../ElbrusBootCamp-logo-RGB.svg';
+import Logout from '../logout/logout';
 import Button from '@material-ui/core/Button';
-import HomePage from '../homepage/homepage'
+import HomePage from '../homepage/homepage';
 
-import ShowDays, { handleClose, } from '../days/days'
+import ShowDays, { handleClose, } from '../days/days';
 
 
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 function Navbar() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const userStatus = useSelector((state) => state.userInfo.userStatus)
+  const userStatus = useSelector((state) => state.userInfo.userStatus);
   const openLoginModal = () => {
-    dispatch(loginModalOn())
+    dispatch(clearMessages());
+    dispatch(loginModalOn());
   };
   const flag = useSelector((state) => {
     return state.data.flag

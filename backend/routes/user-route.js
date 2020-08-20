@@ -115,7 +115,7 @@ route
       || ((adminStatus === 'chieftain') && (userToDelete.status === 'teacher' || 'student'))) {
       await UserModel.findOneAndRemove({ _id: id });
       res.json({ message: 'User has been deleted.' });
-    } else res.json({ message: 'Something went wrong.' });
+    } else res.json({ message: 'Couldn\'t delete user.' });
   });
 
 export default route;

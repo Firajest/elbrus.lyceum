@@ -1,10 +1,10 @@
 import React from 'react';
 import './chieftain.css'
 import { useDispatch } from 'react-redux';
-import { newUserModalOn, clearMessages } from '../../redux/actionCreators';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import getAllUsers from '../../redux/thunks/getAllUsers'
 
 const BeautifulButton = withStyles((theme) => ({
   root: {
@@ -18,20 +18,14 @@ const BeautifulButton = withStyles((theme) => ({
 function AdminPage() {
   const dispatch = useDispatch();
 
-  function createUser() {
-    dispatch(clearMessages());
-    dispatch(newUserModalOn());
-  };
-
-  function showAllUsers() {
-
-  };
+  function seedUserState(){
+    dispatch(getAllUsers())
+  }
 
   return (
     <>
       <ul>
-        <li><BeautifulButton type="button" onClick={createUser}>Create new user</BeautifulButton></li>
-        <li><Link to="/allUsers"><BeautifulButton type="button" onClick={showAllUsers}>User's list</BeautifulButton></Link></li>
+        <li><Link to="/allUsers"><BeautifulButton type="button" onClick={seedUserState}>User's list</BeautifulButton></Link></li>
       </ul>
     </>
   );

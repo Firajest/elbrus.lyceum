@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './userList.css'
-// import { useSelector, useDispatch } from 'react-redux';
-// import { newUserModalOn, clearMessages, clearUploadMessages, addMaterialsModalOn } from '../../redux/actionCreators';
+import { useSelector, useDispatch } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import User from '../User/user'
+import User from '../User/user';
+
+
+import { newUserModalOn, clearMessages } from '../../redux/actionCreators';
 
 const BeautifulButton = withStyles((theme) => ({
   root: {
@@ -13,25 +15,24 @@ const BeautifulButton = withStyles((theme) => ({
     color: 'rgb(63,37,166)',
   },
 }))(Button);
-function AllUsers() {
-  const [users, SetUsers] = useState([]);
-  // const dispatch = useDispatch();
-  useEffect(() => {
-    (async () => {
-      const data = await fetch('/user/allUsers');
-      const response = await data.json();
-      SetUsers(response.users);
-    })()
-  }, [SetUsers])
-  console.log(users);
 
+function AllUsers() {
+  const dispatch = useDispatch();
+
+  const users = useSelector((state) => state.userInfo.allUsers);
+
+  function createUser() {
+    dispatch(clearMessages());
+    dispatch(newUserModalOn());
+  };
 
   return (
     <>
+      <BeautifulButton type="button" onClick={createUser}>Create new user</BeautifulButton>
       <ul>
-        {users.map((user) => {
+        {(users !== undefined && users !== []) && users.map((user) => {
           return (
-           <User key={user._id} name={user.name} email={user.email} status={user.status} id={user._id}/>
+            <User key={user._id} name={user.name} email={user.email} status={user.status} id={user._id} />
           )
         })}
       </ul>

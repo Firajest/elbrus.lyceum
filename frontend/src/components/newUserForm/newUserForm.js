@@ -3,7 +3,7 @@ import { Input } from 'semantic-ui-react';
 import './newUserForm.css';
 import SendNewUserForm from '../../redux/thunks/newUserThunk'
 import { useDispatch, useSelector } from 'react-redux';
-import { newUserModalOff } from '../../redux/actionCreators'
+import { newUserModalOff, clearMessages } from '../../redux/actionCreators'
 
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -21,6 +21,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 function CreateUserForm() {
   const handleClose = () => {
     dispatch(newUserModalOff())
+    dispatch(clearMessages())
   };
   const dispatch = useDispatch();
   const [inputName, setInputName] = useState('');

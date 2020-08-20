@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './user.css'
-// import { useSelector, useDispatch } from 'react-redux';
-// import { newUserModalOn, clearMessages, clearUploadMessages, addMaterialsModalOn } from '../../redux/actionCreators';
+import { useSelector, useDispatch } from 'react-redux';
+import deleteThunk from '../../redux/thunks/deleteUserThunk'
+import { clearDeleteMessages } from '../../redux/actionCreators'
+
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-// import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 const BeautifulButton = withStyles((theme) => ({
   root: {
@@ -16,14 +17,15 @@ const BeautifulButton = withStyles((theme) => ({
 
 
 function CurrentUser({ name, email, status, id }) {
-  const [message, setMessage] = useState('');
-  
+  const dispatch = useDispatch();
+
   function updateUser() {
 
   };
-  
+
   function deleteUser() {
-    
+    dispatch(clearDeleteMessages());
+    dispatch(deleteThunk(email, status, id));
   };
 
   return (

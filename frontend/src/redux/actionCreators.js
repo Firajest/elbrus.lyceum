@@ -1,5 +1,49 @@
 import {
-  GET_PHASES_REQUEST, GET_PHASES_SUCCESS, GET_PHASES_FAILURE, GET_WEEKS_REQUEST, GET_WEEKS_SUCCESS, GET_WEEKS_FAILURE, GET_DAYS_REQUEST, GET_DAYS_SUCCESS, GET_DAYS_FAILURE, STATUS_REQUEST, STATUS_SUCCESS, STATUS_FAILURE, CHOOSE_PHASE, CHOOSE_WEEK, CHOOSE_DAY, LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE, CREATEUSER_REQUEST, CREATEUSER_SUCCESS, CREATEUSER_FAILURE, GET_DAY_REQUEST, GET_DAY_SUCCESS, GET_DAY_FAILURE, GETALLDAYS_REQUEST, GETALLDAYS_SUCCESS, GETALLDAYS_FAILURE, LOGIN_MODAL_FLAG_ON, LOGIN_MODAL_FLAG_OFF, NEWUSER_MODAL_FLAG_ON, NEWUSER_MODAL_FLAG_OFF, CLEAR_MESSAGE, ADD_MATERIALS_MODAL_FLAG_ON, ADD_MATERIALS_MODAL_FLAG_OFF, UPLOADING_REQUEST, UPLOADING_SUCCESS, UPLOADING_FAILURE, CLEAR_UPLOAD_MESSAGE, SEARCH_FLAG
+  GET_PHASES_REQUEST, GET_PHASES_SUCCESS,
+  GET_PHASES_FAILURE,
+  GET_WEEKS_REQUEST,
+  GET_WEEKS_SUCCESS,
+  GET_WEEKS_FAILURE,
+  GET_DAYS_REQUEST,
+  GET_DAYS_SUCCESS,
+  GET_DAYS_FAILURE, 
+  STATUS_REQUEST,
+  STATUS_SUCCESS,
+  STATUS_FAILURE,
+  CHOOSE_PHASE,
+  CHOOSE_WEEK,
+  CHOOSE_DAY,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILURE,
+  CREATEUSER_REQUEST,
+  CREATEUSER_SUCCESS,
+  CREATEUSER_FAILURE,
+  GET_DAY_REQUEST,
+  GET_DAY_SUCCESS,
+  GET_DAY_FAILURE,
+  GETALLDAYS_REQUEST,
+  GETALLDAYS_SUCCESS,
+  GETALLDAYS_FAILURE,
+  LOGIN_MODAL_FLAG_ON,
+  LOGIN_MODAL_FLAG_OFF,
+  NEWUSER_MODAL_FLAG_ON,
+  NEWUSER_MODAL_FLAG_OFF,
+  CLEAR_MESSAGE,
+  ADD_MATERIALS_MODAL_FLAG_ON,
+  ADD_MATERIALS_MODAL_FLAG_OFF,
+  UPLOADING_REQUEST,
+  UPLOADING_SUCCESS,
+  UPLOADING_FAILURE,
+  CLEAR_UPLOAD_MESSAGE,
+  SEARCH_FLAG,
+  DELETE_USER_REQUEST, 
+  DELETE_USER_SUCCESS,
+  DELETE_USER_FAILURE, 
+  CLEAR_DELETE_MESSAGE,
+  GET_ALL_USERS_REQUEST,
+  GET_ALL_USERS_SUCCESS,
+  GET_ALL_USERS_FAILURE,
 } from './actionTypes'
 
 export function getPhasesRequest() {
@@ -163,22 +207,15 @@ export function createUserRequest() {
     }
   }
 }
-export function createUserSucceeded(message) {
-  return {
-    type: CREATEUSER_SUCCESS,
-    payload: {
-      message,
-    }
-  }
-}
-export function createUserFailed(message) {
-  return {
-    type: CREATEUSER_FAILURE,
-    payload: {
-      message,
-    }
-  }
-}
+
+export const createUserSucceeded = (message, newUser) => ({ type: CREATEUSER_SUCCESS, payload: { message, newUser} })
+export const createUserFailed = (message) => ({ type: CREATEUSER_FAILURE, payload: { message, } })
+
+export const deleteUserRequest = () => ({ type: DELETE_USER_REQUEST, payload: { message: 'Deleting user...', } })
+export const deleteUserSucceeded = (message, id) => ({ type: DELETE_USER_SUCCESS, payload: { message, id} })
+export const deleteUserFailed = (message) => ({ type: DELETE_USER_FAILURE, payload: { message, } })
+export const clearDeleteMessages = () => ({ type: CLEAR_DELETE_MESSAGE })
+
 export function getAllDaysRequest() {
   return {
     type: GETALLDAYS_REQUEST,
@@ -218,3 +255,7 @@ export const clearUploadMessages = () => ({ type: CLEAR_UPLOAD_MESSAGE })
 export const uploadingMaterialStarts = () => ({ type: UPLOADING_REQUEST })
 export const uploadingMaterialSuceeded = (message) => ({ type: UPLOADING_SUCCESS, message })
 export const uploadingMaterialFailed = (errorMessage) => ({ type: UPLOADING_FAILURE, errorMessage })
+
+export const getAllUsersRequest = () => ({ type: GET_ALL_USERS_REQUEST })
+export const getAllUsersRequestSuceeded = (users, message) => ({ type: GET_ALL_USERS_SUCCESS, payload: { users, message } })
+export const getAllUsersRequestFailed = (errorMessage) => ({ type: GET_ALL_USERS_FAILURE, payload : {errorMessage }})
