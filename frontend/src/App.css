@@ -1,4 +1,7 @@
-
+html,body {
+  height: 100%;
+  margin: 0;
+}
 .App{
   display: flex;
   flex-direction: column;
@@ -17,6 +20,9 @@
 }
 *{
   font-family: 'Rostin';
+}
+.warvsfooter{
+  min-height: 80vh;
 }
 body{
   font-family: 'Rostin';

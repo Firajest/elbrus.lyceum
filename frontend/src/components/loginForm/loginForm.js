@@ -39,6 +39,10 @@ function LoginForm() {
     setInputPassword('');
   }
 
+  if (errorMessage === 'Successful login') {
+    handleClose()
+  }
+
   return (
     <>
       <Dialog
