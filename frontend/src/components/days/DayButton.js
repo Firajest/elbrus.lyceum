@@ -8,7 +8,7 @@ const DayButton = withStyles((theme) => ({
     borderRadius: '20px',
     margin: '5px',
     height: '85.3px',
-    width: '450px',
+    width: '350px',
     fontFamily: 'Rostin',
     fontSize: '18px',
     border: '5px solid rgb(63,37,166)',
@@ -18,7 +18,16 @@ const DayButton = withStyles((theme) => ({
     },
     [theme.breakpoints.between('sm', 'md')]: {
       marginLeft: '13%',
-      width: '74%'
+      width: '74%',
+      backgroundColor: 'rgb(63,37,166)',
+      color: 'rgb(133, 227,251)',
+      borderRadius: '20px',
+      margin: '5px',
+      height: '85.3px',
+      // width: '350px',
+      fontFamily: 'Rostin',
+      fontSize: '18px',
+      border: '5px solid rgb(63,37,166)',
     },
     '&:hover': {
       color: '#FFBC5B',
