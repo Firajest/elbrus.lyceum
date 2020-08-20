@@ -89,7 +89,7 @@ function Navbar() {
             <Logout /> :
             <Button id="loginButton" className="dayButton" onClick={openLoginModal}>
               Login
-          </Button>
+            </Button>
           }
         </header>
       </div>
