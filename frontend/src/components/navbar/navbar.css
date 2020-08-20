@@ -42,3 +42,19 @@ margin-left: auto;
   margin-left: 7.5em;
   margin-top: 5.1em;
 }
+
+#ButtonAdminInterface{
+  /* margin-top: 2%; */
+  /* width: 13%; */
+  color: #FFBC5B;
+  border: 1px solid #FFBC5B;
+  /* margin-left: auto; */
+  /* margin-right: 5%; */
+  /* height: 30%; */
+  padding:20px 20px 20px 20px;
+  font-family: 'Rostin';
+  border-radius: 20px;
+}
+.ButtonAdminInterface{
+  margin: 25px;
+}
