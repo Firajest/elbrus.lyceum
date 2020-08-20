@@ -35,6 +35,7 @@ store.subscribe(() => {
 
 ReactDOM.render(
   <React.StrictMode>
+
     <SetColor />
     <Provider store={store}>
       <App />
