@@ -1,7 +1,18 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { newUserModalOn, clearMessages, clearUploadMessages, addMaterialsModalOn  } from '../../redux/actionCreators';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import './chieftain.css'
+import { useDispatch } from 'react-redux';
+import { newUserModalOn, clearMessages } from '../../redux/actionCreators';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
+
+const BeautifulButton = withStyles((theme) => ({
+  root: {
+    fontFamily: 'Rostin',
+    fontSize: '30px',
+    color: 'rgb(63,37,166)',
+  },
+}))(Button);
 
 
 function AdminPage() {
@@ -16,19 +27,12 @@ function AdminPage() {
 
   };
 
-  function addMaterials() {
-    dispatch(clearUploadMessages());
-    dispatch(addMaterialsModalOn());
-  };
-
   return (
     <>
       <ul>
-        <li><button type="button" onClick={createUser}>Create new user</button></li>
-        <li><button type="button" onClick={showAllUsers}>User's list</button></li>
-        {/* <li><button type="button" onClick={addMaterials}>Add new material</button></li> */}
+        <li><BeautifulButton type="button" onClick={createUser}>Create new user</BeautifulButton></li>
+        <li><Link to="/allUsers"><BeautifulButton type="button" onClick={showAllUsers}>User's list</BeautifulButton></Link></li>
       </ul>
-      
     </>
   );
 }

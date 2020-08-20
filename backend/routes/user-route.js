@@ -21,7 +21,23 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// (async () => {
+//   const user = new UserModel({
+//     name: 'admin', // ФИО
+//     email: 'boma385@gmail.com',
+//     status: 'chieftain',
+//     password: await bcrypt.hash('admin', saltRounds),
+//   });
+//   await user.save();
+// })();
+
 route
+  .get('/allUsers', async (req, res) => {
+    if (req.session.user.status === 'chieftain') {
+      const users = await UserModel.find();
+      res.json({ users, message: 'Request succeeded' });
+    } else res.json({ message: 'You\'re not a chieftain' });
+  })
   .get('/status', async (req, res) => {
     if (req.session.user) {
       res.json({ status: req.session.user.status });
@@ -47,13 +63,6 @@ route
   // create user
   .put('/new', async (req, res) => {
     try {
-      // const user = new UserModel({
-      //   name: 'admin', // ФИО
-      //   email: 'boma385@gmail.com',
-      //   status: 'chieftain',
-      //   password: await bcrypt.hash('admin', saltRounds),
-      // });
-      // await user.save();
       const {
         password, status, name, email,
       } = req.body;
@@ -96,15 +105,15 @@ route
   })
   // delete user
   .delete('/', async (req, res) => {
-    const { email, status } = req.body;
+    const { email, status, id } = req.body;
     const userToDelete = {
       email,
       status,
     };
     const adminStatus = req.session.user.status;
-    if (((adminStatus === ('teacher' || 'chieftain') && userToDelete.status === 'student'))
+    if (((adminStatus === ('teacher' || 'chieftain') && (userToDelete.status === 'student')))
       || ((adminStatus === 'chieftain') && (userToDelete.status === 'teacher' || 'student'))) {
-      await UserModel.findOneAndRemove({ email: userToDelete.email });
+      await UserModel.findOneAndRemove({ _id: id });
       res.json({ message: 'User has been deleted.' });
     } else res.json({ message: 'Something went wrong.' });
   });

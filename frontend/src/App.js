@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Footer from './components/Footer';
 import AdminPage from './components/adminPage/chieftain';
 import NewUserForm from './components/newUserForm/newUserForm'
+import UsersList from './components/usersList/userList'
 
 function App() {
   const userStatus = useSelector((state) => state.userInfo.userStatus);
@@ -25,6 +26,9 @@ function App() {
         <br></br>
         <Route exact path='/chieftain'>
           <AdminPage />
+        </Route>
+        <Route exact path='/allUsers'>
+          {userStatus === 'chieftain' && <UsersList />}
         </Route>
 
         <Route exact path='/'>
