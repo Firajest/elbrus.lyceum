@@ -155,7 +155,7 @@ function ShowDays(props) {
           <DialogTitle id="alert-dialog-slide-title"><strong>{singleDay.name}</strong></DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              {singleDay.newLink.map((teacher) => {
+              {singleDay.newLink && singleDay.newLink.map((teacher) => {
                 return (
                   <>
                     <h3>{teacher.name}</h3>
