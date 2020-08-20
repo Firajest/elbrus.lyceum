@@ -1,14 +1,12 @@
 .footer{
   line-height: 1;
-  display: flex;
+  /* display: flex; */
   font-family: RF Rostin,Arial,sans-serif;
   color: #FFBC5B;
   background-color: #4520ab;
   padding-bottom: 20px;
-  position: fixed;
+  position: sticky;
   width: 100%;
-  bottom: 0;
-  left: 0;
   margin-top: 100px;
 }
 @media only screen 
@@ -16,9 +14,9 @@
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
     .footer {
-      display: flex;
       height: 80px;
       flex-direction: column;
+      position: sticky !important;
     }
     .footertextleft{
       display: none;

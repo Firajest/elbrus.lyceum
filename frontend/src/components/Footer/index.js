@@ -24,6 +24,7 @@ export default function Footer() {
             <a class="ateg" href="tel:+74957860581">+7 495 786-05-81</a>
             <p>
               <a class="ateg" target="_blank" href="https://wa.me/74957860581">ЧАТ В WHATSAPP{' '}</a>
+              /
               <a class="ateg" target="_blank" href="https://t.me/joinchat/CDWhPUyGEQ9Swb6z7-6UjQ">{' '}Elbrus family</a>
             </p>
             <p>
@@ -35,9 +36,9 @@ export default function Footer() {
             </p>
           </div>
           <div class='footertextright'>
-            <p>1</p>
+            {/* <p>1</p>
             <p>2</p>
-            <p>3</p>
+            <p>3</p> */}
           </div>
           <div>
 

@@ -22,6 +22,11 @@ function HomePage(props) {
   const weeks = useSelector((state) => {
     return state.data.phase
   })
+  const flag = useSelector((state) => {
+    return state.data.flag
+  })
+  console.log('flag:' + flag);
+
   useEffect(() => {
     dispatch(getPhases())
     dispatch(getAllDays())
@@ -37,26 +42,33 @@ function HomePage(props) {
 
   return (
     <>
-      <div className="phaseContainer">
-        <Router>
-          <div className='phases'>
+      {flag === true ?
+        <>
+        </>
+        :
+        <>
+          <div className="phaseContainer">
+            <Router>
+              <div className='phases'>
 
-            {phases && phases.map((phase) => {
-              return (
-                <span className='weekElement' key={phase._id}>
-                  <Link to={`/phases/weeks`}>
-                    <PhaseButton className={weeks === phase._id && "active"} id={phase._id} onClick={() => weeksInfo(phase._id)}>{phase.name}</PhaseButton>
-                  </Link>
-                  <br></br>
-                </span>
-              )
-            })}
-          </div>
-          <Route path='/phases/weeks'>
-            <ShowWeeks></ShowWeeks>
-          </Route>
-        </Router>
-      </div >
+                {phases && phases.map((phase) => {
+                  return (
+                    <span className='weekElement' key={phase._id}>
+                      <Link to={`/phases/weeks`}>
+                        <PhaseButton className={weeks === phase._id && "active"} id={phase._id} onClick={() => weeksInfo(phase._id)}>{phase.name}</PhaseButton>
+                      </Link>
+                      <br></br>
+                    </span>
+                  )
+                })}
+              </div>
+              <Route path='/phases/weeks'>
+                <ShowWeeks></ShowWeeks>
+              </Route>
+            </Router>
+          </div >
+        </>}
+
     </>
   )
 }

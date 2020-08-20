@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ShowDays(props) {
+function ShowDays({ props }) {
   const classes = useStyles();
   const dispatch = useDispatch()
   const days = useSelector((state) => {
@@ -64,6 +64,7 @@ function ShowDays(props) {
     return state.userInfo.userStatus
   })
 
+  console.log(props);
   const [open, setOpen] = React.useState(false);
 
   function handleClickOpen(day) {
@@ -84,8 +85,8 @@ function ShowDays(props) {
   return (
     <>
       <div className='daysList' >
-        {props.props ? <>
-          {props.props && props.props.map((day) => {
+        {props ? <>
+          {props && props.map((day) => {
             return (
               <Router>
                 <Switch>

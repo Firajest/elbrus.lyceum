@@ -10,19 +10,16 @@ import AdminPage from './components/adminPage/chieftain';
 import NewUserForm from './components/newUserForm/newUserForm'
 import UsersList from './components/usersList/userList'
 
+
 function App() {
   const userStatus = useSelector((state) => state.userInfo.userStatus);
 
   return (
     <>
+
       <Router>
 
         <Navbar />
-        {userStatus === 'chieftain' &&
-          <Link to='/chieftain'>
-            Trom-ka, Warchief
-          </Link>
-        }
         <br></br>
         <Route exact path='/chieftain'>
           <AdminPage />
@@ -32,7 +29,7 @@ function App() {
         </Route>
 
         <Route exact path='/'>
-          {userStatus ? <HomePage /> : <h1>Welcome to Elbrus Lyceum! Please log in to see information.</h1>}
+          {userStatus ? <HomePage /> : <h1 className='welcome'>Добро пожаловать в elbrus.лекторий. Войдите для получения доступа к контенту.</h1>}
         </Route>
 
       </Router>
@@ -41,6 +38,7 @@ function App() {
       <NewUserForm />
 
       <Footer />
+
     </>
   );
 }
