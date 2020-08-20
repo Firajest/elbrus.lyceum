@@ -31,7 +31,7 @@ export default function Footer() {
               <a class="ateg" href="tel:join@elbrusboot.camp">join@elbrusboot.camp</a>
               <p></p>
               <a class="ateg" target="_blank" href="/contract.pdf">Договор-Оферта</a>
-              <br />
+              {' '}
               <a class="ateg" target="_blank" href="/confidentiality_agreements.pdf">Политика конфиденциальности</a>
             </p>
           </div>

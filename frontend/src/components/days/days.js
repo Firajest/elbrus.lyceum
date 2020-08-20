@@ -21,6 +21,7 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { addMaterialsModalOn } from '../../redux/actionCreators'
 
 import AddNewMaterial from '../addMaterials/addMaterials'
+import Footer from '../Footer'
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
