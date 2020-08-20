@@ -1,43 +1,39 @@
-import React, { useEffect } from 'react'
-import './homepage.css'
-import '../weeks/weeks.css'
+import React, { useEffect } from 'react';
+import './homepage.css';
+import '../weeks/weeks.css';
 import {
-  Link, BrowserRouter as Router, Switch, Route,
-} from 'react-router-dom'
-import { useDispatch, useSelector, } from 'react-redux'
-import ShowWeeks from '../weeks/weeks'
-import getPhases from '../../redux/thunks/phases'
-import { choosePhase } from '../../redux/actionCreators'
-import getWeeks from '../../redux/thunks/weeks'
-import getAllDays from '../../redux/thunks/getAllDays'
-import PhaseButton from './PhaseButton'
-import getDays from '../../redux/thunks/days'
-
+  Link, BrowserRouter as Router, Route,
+} from 'react-router-dom';
+import { useDispatch, useSelector, } from 'react-redux';
+import ShowWeeks from '../weeks/weeks';
+import getPhases from '../../redux/thunks/phases';
+import { choosePhase } from '../../redux/actionCreators';
+import getWeeks from '../../redux/thunks/weeks';
+import getAllDays from '../../redux/thunks/getAllDays';
+import PhaseButton from './PhaseButton';
+import getDays from '../../redux/thunks/days';
 
 function HomePage(props) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const phases = useSelector((state) => {
     return state.data.data.phases
-  })
+  });
   const weeks = useSelector((state) => {
     return state.data.phase
-  })
+  });
   const flag = useSelector((state) => {
     return state.data.flag
-  })
-  console.log('flag:' + flag);
+  });
 
   useEffect(() => {
-    dispatch(getPhases())
-    dispatch(getAllDays())
-    return () => {
-      console.log('!!!')
-    }
-  }, [dispatch])
+    dispatch(getPhases());
+    dispatch(getAllDays());
+  }, [dispatch]);
+
   function weeksInfo(id) {
-    dispatch(choosePhase(id))
-    dispatch(getWeeks(id))
-    dispatch(getDays(id))
+    dispatch(choosePhase(id));
+    dispatch(getWeeks(id));
+    dispatch(getDays(id));
   }
 
   return (
@@ -68,7 +64,6 @@ function HomePage(props) {
             </Router>
           </div >
         </>}
-
     </>
   )
 }

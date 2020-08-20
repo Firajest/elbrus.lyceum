@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Input } from 'semantic-ui-react';
 import './newUserForm.css';
-import SendNewUserForm from '../../redux/thunks/newUserThunk'
+import SendNewUserForm from '../../redux/thunks/newUserThunk';
 import { useDispatch, useSelector } from 'react-redux';
-import { newUserModalOff, clearMessages } from '../../redux/actionCreators'
+import { newUserModalOff, clearMessages } from '../../redux/actionCreators';
 
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -19,24 +19,23 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 function CreateUserForm() {
-  const handleClose = () => {
-    dispatch(newUserModalOff())
-    dispatch(clearMessages())
-  };
   const dispatch = useDispatch();
+  const handleClose = () => {
+    dispatch(newUserModalOff());
+    dispatch(clearMessages());
+  };
   const [inputName, setInputName] = useState('');
   const [inputEmail, setInputEmail] = useState('');
   const [selectValue, setSelectValue] = useState('student');
   const errorMessage = useSelector((state) => state.userInfo.errorMessage ? state.userInfo.errorMessage : state.userInfo.message);
-
-  const newUserFlag = useSelector((state) => state.modalFlags.newUserFlag)
+  const newUserFlag = useSelector((state) => state.modalFlags.newUserFlag);
 
   function createUser(event) {
     event.preventDefault();
     dispatch(SendNewUserForm(inputName, inputEmail, selectValue));
     setInputEmail('');
     setInputName('');
-  }
+  };
 
 
   return (
@@ -49,16 +48,15 @@ function CreateUserForm() {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title">Please verify your identity</DialogTitle>
+        <DialogTitle id="alert-dialog-slide-title">Add new user</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
             <div id="newUserForm">
-              <p>Add new user</p>
               <form onSubmit={(event) => createUser(event)}>
                 <Input name="name" type="text" placeholder="ФИО" onChange={(event) => setInputName(event.target.value)} value={inputName} />
                 <Input name="email" type="email" placeholder="Email" onChange={(event) => setInputEmail(event.target.value)} value={inputEmail} />
                 <select placeholder="Select user's status" onChange={(event) => setSelectValue(event.target.value)}>
-                  <option value='student' selected='selected'>Student</option>
+                  <option value='student' defaultValue>Student</option>
                   <option value='teacher'>Teacher</option>
                 </select>
                 <button type="submit" id="createUserButton" className="createUserButton" >Create user</button>

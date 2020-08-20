@@ -1,11 +1,11 @@
-import React from 'react'
-import './index.css'
+import React from 'react';
+import './index.css';
 
 export default function Footer() {
   return (
     <>
-      <footer class="footer">
-        <div class='icons'>
+      <footer className="footer">
+        <div className='icons'>
           <a target="_blank" href="https://www.facebook.com/elbrusbootcamp">
             <img id='icon' src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIyLjAuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAxMS4xIDIyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxMS4xIDIyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6I0ZGQkM1Qjt9Cjwvc3R5bGU+CjxnPgoJPHBhdGggY2xhc3M9InN0MCIgZD0iTTcuNiwyMkgxLjhWMTEuNUgwVjdoMS44VjUuMkMxLjgsMS43LDMuNSwwLDcsMGg0djQuNUg4LjVjLTAuOSwwLTAuOSwwLjEtMC45LDFsMCwxLjVoMy4zbC0wLjUsNC41SDcuNlYyMnoKCQkgTTIuOCwyMWgzLjdWMTAuNWgyLjlMOS43LDhINi42bDAtMi41YzAtMSwwLjEtMS45LDEuOS0xLjloMS41VjFIN2MtMywwLTQuMiwxLjMtNC4yLDQuMlY4SDF2Mi41aDEuOFYyMXoiLz4KPC9nPgo8L3N2Zz4K" alt="Facebook" />
           </a>
@@ -19,30 +19,25 @@ export default function Footer() {
             <img id='icon' src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzMiIGhlaWdodD0iMjMiIHZpZXdCb3g9IjAgMCAzMyAyMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE2LjIgMjNDMTUuOCAyMyA2LjMgMjMgMy44IDIyLjNDMi4zIDIxLjkgMS4xIDIwLjcgMC43IDE5LjJDMCAxNi43IDAgMTEuNyAwIDExLjVDMCAxMS4zIDAgNi4zIDAuNyAzLjhDMS4xIDIuMyAyLjMgMS4xIDMuOCAwLjdDNi4zIDAgMTUuOCAwIDE2LjIgMEMxNi42IDAgMjYuMSAwIDI4LjYgMC43QzMwLjEgMS4xIDMxLjMgMi4zIDMxLjcgMy44QzMyLjQgNi4zIDMyLjQgMTEuMyAzMi40IDExLjVDMzIuNCAxMS43IDMyLjQgMTYuNyAzMS43IDE5LjJDMzEuMyAyMC43IDMwLjEgMjEuOSAyOC42IDIyLjNDMjYuMSAyMyAxNi42IDIzIDE2LjIgMjNaTTE2LjIgMUMxNi4xIDEgNi40IDEgNCAxLjZDMi45IDEuOSAxLjkgMi45IDEuNiA0LjFDMSA2LjQgMSAxMS40IDEgMTEuNUMxIDExLjYgMSAxNi42IDEuNiAxOC45QzEuOSAyMC4xIDIuOSAyMSA0IDIxLjNDNi40IDIyIDE2LjEgMjIgMTYuMiAyMkMxNi4zIDIyIDI2IDIyIDI4LjQgMjEuNEMyOS42IDIxLjEgMzAuNSAyMC4yIDMwLjggMTlDMzEuNCAxNi42IDMxLjQgMTEuNiAzMS40IDExLjZDMzEuNCAxMS41IDMxLjQgNi41IDMwLjggNC4xQzMwLjUgMi45IDI5LjYgMiAyOC40IDEuN0MyNiAxIDE2LjMgMSAxNi4yIDFaIiBmaWxsPSIjRkZCQzVCIi8+CjxwYXRoIGQ9Ik0xMi42IDE3LjFWNS45TDIyLjMgMTEuNUwxMi42IDE3LjFaTTEzLjYgNy43VjE1LjRMMjAuMyAxMS42TDEzLjYgNy43WiIgZmlsbD0iI0ZGQkM1QiIvPgo8L3N2Zz4K" alt="Youtube" />
           </a>
         </div>
-        <div class='footertext'>
-          <div class="footertextleft">
-            <a class="ateg" href="tel:+74957860581">+7 495 786-05-81</a>
+        <div className='footertext'>
+          <div className="footertextleft">
+            <a className="ateg" href="tel:+74957860581">+7 495 786-05-81</a>
             <p>
-              <a class="ateg" target="_blank" href="https://wa.me/74957860581">ЧАТ В WHATSAPP{' '}</a>
+              <a className="ateg" target="_blank" href="https://wa.me/74957860581">ЧАТ В WHATSAPP{' '}</a>
               /
-              <a class="ateg" target="_blank" href="https://t.me/joinchat/CDWhPUyGEQ9Swb6z7-6UjQ">{' '}Elbrus family</a>
+              <a className="ateg" target="_blank" href="https://t.me/joinchat/CDWhPUyGEQ9Swb6z7-6UjQ">{' '}Elbrus family</a>
             </p>
             <p>
-              <a class="ateg" href="tel:join@elbrusboot.camp">join@elbrusboot.camp</a>
+              <a className="ateg" href="tel:join@elbrusboot.camp">join@elbrusboot.camp</a>
               <p></p>
-              <a class="ateg" target="_blank" href="/contract.pdf">Договор-Оферта</a>
+              <a className="ateg" target="_blank" href="/contract.pdf">Договор-Оферта</a>
               {' '}
-              <a class="ateg" target="_blank" href="/confidentiality_agreements.pdf">Политика конфиденциальности</a>
+              <a className="ateg" target="_blank" href="/confidentiality_agreements.pdf">Политика конфиденциальности</a>
             </p>
           </div>
-          <div class='footertextright'>
-            {/* <p>1</p>
-            <p>2</p>
-            <p>3</p> */}
+          <div className='footertextright'>
           </div>
           <div>
-
-
           </div>
         </div>
       </footer>

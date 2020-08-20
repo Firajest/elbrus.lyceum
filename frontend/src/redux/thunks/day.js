@@ -1,19 +1,18 @@
 import {
   getDayRequest, getDaySuccess, getDayFailure,
-} from '../actionCreators'
+} from '../actionCreators';
 
 function getDay(dayId) {
   return async (dispatch) => {
-    dispatch(getDayRequest())
+    dispatch(getDayRequest());
     try {
-      const response = await (await fetch(`/data/day/${dayId}`)).json()
-      console.log(await response.day)
-      dispatch(getDaySuccess(response.day))
+      const response = await (await fetch(`/data/day/${dayId}`)).json();
+      dispatch(getDaySuccess(response.day));
     }
     catch (e) {
-      dispatch(getDayFailure(e))
+      dispatch(getDayFailure(e));
     }
-  }
-}
+  };
+};
 
 export default getDay

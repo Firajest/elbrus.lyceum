@@ -2,7 +2,7 @@ import {
   statusRequest,
   statusSucceeded,
   statusFailed,
-} from '../actionCreators'
+} from '../actionCreators';
 
 function SendLoginForm(inputEmail, inputPassword) {
   return async (dispatch) => {
@@ -19,7 +19,6 @@ function SendLoginForm(inputEmail, inputPassword) {
         }),
       });
       const response = await data.json();
-      console.log(response);
       if (response.user) {
         dispatch(statusSucceeded(response.user.status, response.message));
       } else dispatch(statusFailed(response.message));
@@ -27,7 +26,7 @@ function SendLoginForm(inputEmail, inputPassword) {
     catch {
       dispatch(statusFailed('Oooops, something went wrong...'));
     }
-  }
-}
+  };
+};
 
 export default SendLoginForm

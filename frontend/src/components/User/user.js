@@ -18,9 +18,6 @@ const BeautifulButton = withStyles((theme) => ({
 
 function CurrentUser({ name, email, status, id }) {
   const dispatch = useDispatch();
-  // function updateUser() {
-
-  // };
 
   function deleteUser() {
     dispatch(clearDeleteMessages());
@@ -29,8 +26,7 @@ function CurrentUser({ name, email, status, id }) {
 
   return (
     <>
-      <li>{name}, {email}, <strong>{status}</strong> </li>
-      {/* <BeautifulButton type="button" onClick={updateUser}>Update</BeautifulButton> */}
+      <li>{name}, {email}, <strong>{status}</strong></li>
       <BeautifulButton type="button" onClick={deleteUser}>Delete</BeautifulButton>
     </>
   );

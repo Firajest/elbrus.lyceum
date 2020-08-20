@@ -1,16 +1,16 @@
-import React from 'react'
-import './weeks.css'
+import React from 'react';
+import './weeks.css';
 import {
   Link, BrowserRouter as Router, Route,
-} from 'react-router-dom'
-import { useDispatch, useSelector, } from 'react-redux'
-import ShowDays from '../days/days'
-import getDays from '../../redux/thunks/days'
-import { chooseWeek } from '../../redux/actionCreators'
-import WeekButton from './WeekButton'
+} from 'react-router-dom';
+import { useDispatch, useSelector, } from 'react-redux';
+import ShowDays from '../days/days';
+import getDays from '../../redux/thunks/days';
+import { chooseWeek } from '../../redux/actionCreators';
+import WeekButton from './WeekButton';
 
 function ShowWeeks() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const weeks = useSelector((state) => {
     return state.data.data.weeks
   })
@@ -18,8 +18,8 @@ function ShowWeeks() {
     return state.data.week
   })
   function daysInfo(id) {
-    dispatch(chooseWeek(id))
-    dispatch(getDays(id))
+    dispatch(chooseWeek(id));
+    dispatch(getDays(id));
   }
 
   return (
@@ -29,7 +29,7 @@ function ShowWeeks() {
           <div>
             {weeks && weeks.map((week) => {
               return (
-                <span >
+                <span key={week._id}>
                   <Link to="/days">
                     <WeekButton className={chosenWeek === week._id && "active"} onClick={() => daysInfo(week._id)}>{week.name}</WeekButton>
                   </Link>
@@ -46,6 +46,5 @@ function ShowWeeks() {
     </>
   )
 }
-
 
 export default ShowWeeks

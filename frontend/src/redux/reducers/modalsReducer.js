@@ -5,13 +5,14 @@ import {
   NEWUSER_MODAL_FLAG_OFF,
   ADD_MATERIALS_MODAL_FLAG_ON,
   ADD_MATERIALS_MODAL_FLAG_OFF,
-} from "../actionTypes"
+} from "../actionTypes";
 
 const initialState = {
   loginFlag: false,
   newUserFlag: false,
   materialsFlag: false,
-}
+};
+
 export default function ModalFlags(state = initialState, action) {
   const { type } = action
   switch (type) {
@@ -46,9 +47,7 @@ export default function ModalFlags(state = initialState, action) {
         ...state,
         materialsFlag: false,
       }
-
-
     default:
       return state
   }
-}
+};

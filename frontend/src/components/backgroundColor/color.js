@@ -1,5 +1,5 @@
-import React from 'react'
-import BodyBackgroundColor from 'react-body-backgroundcolor'
+import React from 'react';
+import BodyBackgroundColor from 'react-body-backgroundcolor';
 
 function setColor() {
   return (

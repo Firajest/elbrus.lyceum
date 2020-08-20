@@ -1,10 +1,10 @@
-import React from 'react'
-import './days.css'
+import React from 'react';
+import './days.css';
 import {
   BrowserRouter as Router, Switch,
-} from 'react-router-dom'
-import DayButton from './DayButton'
-import { useDispatch, useSelector, } from 'react-redux'
+} from 'react-router-dom';
+import DayButton from './DayButton';
+import { useDispatch, useSelector, } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Dialog from '@material-ui/core/Dialog';
@@ -18,17 +18,12 @@ import Link from '@material-ui/core/Link';
 import { chooseDay } from '../../redux/actionCreators';
 import getDay from '../../redux/thunks/day';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { addMaterialsModalOn } from '../../redux/actionCreators'
-
-import AddNewMaterial from '../addMaterials/addMaterials'
-import Footer from '../Footer'
-
+import { addMaterialsModalOn } from '../../redux/actionCreators';
+import AddNewMaterial from '../addMaterials/addMaterials';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-
-
 
 const ButtonInModal = withStyles((theme) => ({
   root: {
@@ -53,19 +48,17 @@ const useStyles = makeStyles((theme) => ({
 
 function ShowDays({ props }) {
   const classes = useStyles();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const days = useSelector((state) => {
     return state.data.data.days
-  })
+  });
   const singleDay = useSelector((state) => {
     return state.data.singleDay
-  })
+  });
 
   const userStatus = useSelector((state) => {
     return state.userInfo.userStatus
-  })
-
-  console.log(props);
+  });
   const [open, setOpen] = React.useState(false);
 
   function handleClickOpen(day) {
@@ -128,12 +121,12 @@ function ShowDays({ props }) {
           <DialogTitle id="alert-dialog-slide-title"><strong>{singleDay.name}</strong></DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              {userStatus && <ButtonInModal type="button" onClick={addNewMaterial}>Add new material</ButtonInModal>}
+              {(userStatus === ('chieftain' || 'teacher')) ? <ButtonInModal type="button" onClick={addNewMaterial}>Add new material</ButtonInModal> : <></>}
               {singleDay.newLink !== undefined && singleDay.newLink.map((teacher) => {
                 return (
                   <>
                     <h3>{teacher.name}</h3>
-                    <iframe width="560" height="315" src={teacher.linkYT} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen='true'></iframe>
+                    <iframe title="days" width="560" height="315" src={teacher.linkYT} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen='true'></iframe>
                     <div className={classes.root}>
                       <ButtonGroup color="primary" aria-label="outlined primary button group">
                         <Link className="buttoninmodal" href={teacher.linkPres}><ButtonInModal className="buttoninmodal">Презентация</ButtonInModal></Link>
