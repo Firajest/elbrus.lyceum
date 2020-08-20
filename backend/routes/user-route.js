@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import express from 'express';
 import bcrypt from 'bcrypt';
 import nodemailer from 'nodemailer';
@@ -48,7 +49,6 @@ route
     if ((user) && (await bcrypt.compare(req.body.password, user.password))) {
       req.session.user = user;
       req.session.user.password = '';
-      console.log(req.session.user);
       res.json({ message: 'Successful login', user: req.session.user });
     } else res.json({ message: 'Something went wrong. Check pleasewhether your username or password is correct.' });
   })
@@ -70,7 +70,6 @@ route
       const userCheck = await UserModel.findOne({ email });
       if ((!userCheck && (adminStatus === 'chieftain' || 'teacher') && status === 'student' && req.session.user)
         || (!userCheck && adminStatus === 'chieftain' && req.session.user)) {
-        // ДОБАВИТЬ РАССЫЛКУ ПИСЕМ НОВЫМ ЮЗЕРАМ---------------------------------------------------
         const send = {
           from: `"Elbrus admin" <${req.session.user.email}>`,
           to: `${email}`,
@@ -88,7 +87,6 @@ route
             console.log(`email sent ${info.response}`);
           }
         });
-        // ДОБАВИТЬ РАССЫЛКУ ПИСЕМ НОВЫМ ЮЗЕРАМ---------------------------------------------------
         const user = new UserModel({
           name, // ФИО
           email,
@@ -96,7 +94,6 @@ route
           password: await bcrypt.hash(password, saltRounds),
         });
         await user.save();
-        console.log(user);
         res.json({ message: 'User has been created.', user });
       } else res.json({ message: 'Something went wrong. Maybe this email is already used.' });
     } catch {

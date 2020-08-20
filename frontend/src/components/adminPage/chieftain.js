@@ -1,10 +1,10 @@
 import React from 'react';
-import './chieftain.css'
+import './chieftain.css';
 import { useDispatch } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
-import getAllUsers from '../../redux/thunks/getAllUsers'
+import getAllUsers from '../../redux/thunks/getAllUsers';
 
 const BeautifulButton = withStyles((theme) => ({
   root: {
@@ -19,7 +19,7 @@ function AdminPage() {
   const dispatch = useDispatch();
 
   function seedUserState(){
-    dispatch(getAllUsers())
+    dispatch(getAllUsers());
   }
 
   return (

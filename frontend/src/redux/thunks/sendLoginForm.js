@@ -22,10 +22,10 @@ function SendLoginForm(inputEmail, inputPassword) {
       console.log(response);
       if (response.user) {
         dispatch(statusSucceeded(response.user.status, response.message));
-      } else dispatch(statusFailed(response.message))
+      } else dispatch(statusFailed(response.message));
     }
     catch {
-      dispatch(statusFailed('Oooops, something went wrong...'))
+      dispatch(statusFailed('Oooops, something went wrong...'));
     }
   }
 }

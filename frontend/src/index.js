@@ -11,8 +11,8 @@ import userReducer from './redux/reducers/userReducer';
 import modalReducer from './redux/reducers/modalsReducer';
 import UploadStatusReducer from './redux/reducers/uploadMaterialsReducer';
 import thunk from 'redux-thunk';
-import { loadState, saveState } from './localStorage/localStorageMethods'
-import SetColor from './components/backgroundColor/color'
+import { loadState, saveState } from './localStorage/localStorageMethods';
+import SetColor from './components/backgroundColor/color';
 
 const persistedState = loadState();
 
@@ -29,7 +29,9 @@ const store = createStore(
 store.subscribe(() => {
   saveState({
     userInfo: store.getState().userInfo,
-    data: store.getState().data
+    data: store.getState().data,
+    // modalFlags: store.getState().modalFlags,
+    // uploadStatus: store.getState().uploadStatus,
   });
 });
 
