@@ -11,7 +11,8 @@ import userReducer from './redux/reducers/userReducer';
 import modalReducer from './redux/reducers/modalsReducer';
 import UploadStatusReducer from './redux/reducers/uploadMaterialsReducer';
 import thunk from 'redux-thunk';
-import {loadState, saveState} from './localStorage/localStorageMethods'
+import { loadState, saveState } from './localStorage/localStorageMethods'
+import SetColor from './components/backgroundColor/color'
 
 const persistedState = loadState();
 
@@ -34,9 +35,10 @@ store.subscribe(() => {
 
 ReactDOM.render(
   <React.StrictMode>
+    <SetColor />
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode >,
   document.getElementById('root')
 );
