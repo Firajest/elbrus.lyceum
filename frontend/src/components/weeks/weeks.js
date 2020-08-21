@@ -40,7 +40,7 @@ function ShowWeeks() {
           </div>
         </div>
         <Route path='/days'>
-          <ShowDays></ShowDays>
+          <ShowDays />
         </Route>
       </Router>
     </>
