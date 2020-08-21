@@ -4,9 +4,11 @@ import sessionFileStore from 'session-file-store';
 import cookieParser from 'cookie-parser';
 import userRoute from './routes/user-route.js';
 import dataRoute from './routes/data-route.js';
+import path from 'path';
 
 const app = express();
 
+app.use(express.static(path.resolve('../frontend/build')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
