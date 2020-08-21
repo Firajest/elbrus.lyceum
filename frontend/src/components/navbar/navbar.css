@@ -1,0 +1,108 @@
+.navbar{
+  display: flex;  
+  height: 120px;
+  width: 100%;
+  background-color: rgb(69,31,171);
+}
+.loginButton{
+margin-left: auto;
+}
+
+.searchBar{
+  align-self: center;
+  width: 32%;
+  background-color: rgb(69,31,171);
+  margin-left: 15%;
+}
+#searchBar{
+  border-radius: 50px;
+  font-family: 'Rostin';
+}
+#loginButton {
+  margin-top: 2%;
+  width: 13%;
+  color: #FFBC5B;
+  border: 1px solid #FFBC5B;
+  margin-left: auto;
+  margin-right: 5%;
+  height: 30%;
+  font-family: 'Rostin';
+  border-radius: 20px;
+}
+.logo {
+  vertical-align: top;
+  width: 10em;
+  height: 8.5em;
+}
+
+.projectName{
+  font-size: 16px;
+  color: #FFBC5B;
+  position: absolute;
+  margin-left: 7.5em;
+  margin-top: 5.1em;
+}
+
+#ButtonAdminInterface{
+  /* margin-top: 2%; */
+  /* width: 13%; */
+  color: #FFBC5B;
+  border: 1px solid #FFBC5B;
+  /* margin-left: auto; */
+  /* margin-right: 5%; */
+  /* height: 30%; */
+  padding:20px 20px 20px 20px;
+  font-family: 'Rostin';
+  border-radius: 20px;
+}
+.ButtonAdminInterface{
+  margin: 25px;
+}
+
+#logoutButton {
+  background-color: rgb(69,31,171) ;
+  margin-top: 2%;
+  width: 13%;
+  color: #FFBC5B;
+  border: 1px solid #FFBC5B;
+  margin-left: auto;
+  margin-right: 5%;
+  height: 30%;
+  font-family: 'Rostin';
+  border-radius: 20px;
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .navbar{
+      height: 80px;
+    }
+    .logo {
+      margin: 1.2em 0em 2em 0em;
+      width: 5em;
+      height: 3.5em;
+    }
+    .projectName{
+      margin: 4.20em 0em 0em 4.8em;
+      font-size: 11px;
+    }
+    .searchBar{
+      margin:6.5em 0em 6.5em 4.2em;
+    }
+    #loginButton{
+      margin:2em 3em 3em 18.5em;
+      height: 3em;
+    }
+    #ButtonAdminInterface{
+      margin: 0em -10em 8em 2em;
+      padding: 0px;
+      font-size: 6px;
+    }
+    #logoutButton{
+      margin:4.5em 2em 6.5em 0.7em;
+      width: 100em;
+      font-size: 10px;
+    }
+}

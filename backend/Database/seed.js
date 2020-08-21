@@ -1,6 +1,9 @@
+import bcrypt from 'bcrypt';
 import {
   UserModel, PhaseModel, WeekModel, DayModel,
 } from './database';
+
+const saltRounds = 10;
 
 async function addPhW() {
   const ph1 = await PhaseModel.create({ name: 'Phase 1' });
@@ -17,11 +20,9 @@ async function addPhW() {
   const ph3w2 = await WeekModel.create({ name: 'Week 2', phase: ph3._id });
   const ph3w3 = await WeekModel.create({ name: 'Week 3', phase: ph3._id });
   const user = await UserModel.create({
-    name: 'Tembot', login: 'admin', password: 'admin', status: 'superadmin',
+    name: 'admin', email: 'boma385@gmail.com', password: bcrypt.hash('admin', saltRounds), status: 'chieftain',
   });
   // const ph1w1day1 = await DayModel.create({ name: 'Day 1 - DOM Events' });
 }
 
 addPhW();
-
-

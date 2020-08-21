@@ -2,9 +2,9 @@ import {
   createUserRequest,
   createUserSucceeded,
   createUserFailed,
-} from '../actionCreators'
+} from '../actionCreators';
 
-function SendNewUserForm(inputEmail, inputName, selectValue) {
+function SendNewUserForm(inputName, inputEmail, selectValue) {
   return async (dispatch) => {
     dispatch(createUserRequest());
     try {
@@ -22,13 +22,13 @@ function SendNewUserForm(inputEmail, inputName, selectValue) {
       });
       const response = await data.json();
       if (response.user) {
-        dispatch(createUserSucceeded(response.message, response.cookie));
-      } else dispatch(createUserFailed())
+        dispatch(createUserSucceeded(response.message, response.user));
+      } else dispatch(createUserFailed(response.message));
     }
     catch {
-      dispatch(createUserFailed())
+      dispatch(createUserFailed('Something has been broken'));
     }
-  }
-}
+  };
+};
 
 export default SendNewUserForm

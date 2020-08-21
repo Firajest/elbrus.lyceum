@@ -1,16 +1,18 @@
 import React from 'react';
-// import Button from '@material-ui/core/Button';
-import { useDispatch, useSelector } from 'react-redux';
-import logoutThunk from '../../redux/thunks/logoutThunk'
+
+import { useDispatch } from 'react-redux';
+import logoutThunk from '../../redux/thunks/logoutThunk';
+import '../navbar/navbar.css';
 
 function Logout() {
-  // const cookie = useSelector(state => state.cookie)
   const dispatch = useDispatch();
+
   function logoutFunc() {
     dispatch(logoutThunk());
   }
+
   return (
-    <button type='button' onClick={logoutFunc}>Log out</button>
+    <button id="logoutButton" type='button' onClick={logoutFunc}>Log out</button>
   )
 }
 

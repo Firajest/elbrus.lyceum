@@ -1,5 +1,6 @@
 .daysList{
   justify-content: space-between;
+  /* margin-top: px; */
 }
 
 #dayButton {
@@ -14,6 +15,13 @@
   box-shadow: 10px 10px 8px #FFBC5B;
 
 }
-#dayButton :hover {
-  border: 1px solid black;
+.buttoninmodal{
+  font-family: 'Rostin';
+  font-size: 22px;
+}
+
+.active {
+  color: #FFBC5B !important;
+  background-color: #4520AB !important;
+  border: 5px solid #FFBC5B !important;
 }

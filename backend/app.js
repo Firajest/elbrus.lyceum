@@ -2,8 +2,6 @@ import express from 'express';
 import session from 'express-session';
 import sessionFileStore from 'session-file-store';
 import cookieParser from 'cookie-parser';
-// import mongoose from 'mongoose';
-// import path from 'path';
 import userRoute from './routes/user-route.js';
 import dataRoute from './routes/data-route.js';
 
@@ -19,7 +17,7 @@ const FileStore = sessionFileStore(session);
 app.use(session({
   store: new FileStore(),
   key: 'user_sid',
-  secret: 'qwer1tyuiop2asdfgh3jklzxc4vbnmASDQW5EZXCRF6VBGTYHNM78JUIKL9OP0',
+  secret: process.env.SECRET.toString(),
   maxAge: 1000 * 60 * 60 * 24 * 30 * 12,
   resave: false,
   saveUninitialized: false,
@@ -29,11 +27,8 @@ app.use(session({
 app.use((req, res, next) => {
   if (req.session.user) {
     res.locals.login = req.session.user.login;
-    // console.log(res.locals);
-    // next();
   }
   next();
-  // return res.redirect(401, '/login');
 });
 
 /// ////////////////////////////////////here will be ROUTES

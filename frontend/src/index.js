@@ -6,27 +6,41 @@ import 'semantic-ui-css/semantic.min.css';
 import { Provider } from 'react-redux'
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import reducer from './redux/reducers/IndexReducer';
-import thunk from 'redux-thunk'
-import {loadState, saveState} from './localStorage/localStorageMethods';
+import dataReducer from './redux/reducers/IndexReducer';
+import userReducer from './redux/reducers/userReducer';
+import modalReducer from './redux/reducers/modalsReducer';
+import UploadStatusReducer from './redux/reducers/uploadMaterialsReducer';
+import thunk from 'redux-thunk';
+import { loadState, saveState } from './localStorage/localStorageMethods';
+import SetColor from './components/backgroundColor/color';
 
 const persistedState = loadState();
 
 const store = createStore(
-  reducer,
+  combineReducers({
+    data: dataReducer,
+    userInfo: userReducer,
+    modalFlags: modalReducer,
+    uploadStatus: UploadStatusReducer,
+  }),
   persistedState,
-  composeWithDevTools(applyMiddleware(thunk))
+  composeWithDevTools(applyMiddleware(thunk)),
 )
-
 store.subscribe(() => {
-  saveState(store.getState());
+  saveState({
+    userInfo: store.getState().userInfo,
+    data: store.getState().data,
+    // modalFlags: store.getState().modalFlags,
+    // uploadStatus: store.getState().uploadStatus,
+  });
 });
 
 ReactDOM.render(
   <React.StrictMode>
+    <SetColor />
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode >,
   document.getElementById('root')
 );

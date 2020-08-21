@@ -5,14 +5,12 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const uri = `mongodb+srv://Elbrus:${process.env.DATABASE_PASSWORD}@lectoryi.pmshi.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`;
-console.log(process.env.DATABASE_PASSWORD);
 try {
   mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
 } catch (error) {
-  console.log(error);
 }
 
 mongoose.pluralize(null);
@@ -61,9 +59,7 @@ const Day = new mongoose.Schema({
     type: String,
     required: true,
   },
-  linkYT: String,
-  linkFile: String,
-  linkPres: String,
+  newLink: [],
   tags: [],
   phase: {
     type: mongoose.Schema.Types.ObjectId,
@@ -394,6 +390,21 @@ async function addPhW() {
 
 addPhW();
 
+// async function newParam() {
+//   const days = await DayModel.find();
+//   days.forEach(async (day) => {
+//     const link = day.linkYT;
+//     const linkF = day.linkFile;
+//     const linkP = day.linkPres;
+//     day.newLink.push({
+//       name: 'Условно Игорь', linkYT: link, linkFile: linkF, linkPres: linkP,
+//     });
+//     console.log(day);
+//     await day.save();
+//   });
+// }
+// newParam();
+
 export async function getPh() {
   const ph = await PhaseModel.find();
   return ph;
@@ -416,5 +427,9 @@ export async function getDay(dayID) {
 
 export async function getUser(userID) {
   const user = await DayModel.findOne({ _id: userID });
+  return user;
+}
+export async function getAllDays() {
+  const user = await DayModel.find();
   return user;
 }

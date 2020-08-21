@@ -1,21 +1,6 @@
-
-.navbar{
-  display: flex;  
-  height: 120px;
-  width: 100%;
-  background-color: rgb(63,37,166);
-}
-.loginButton{
-margin-left: auto;
-}
-.searchBar{
-  align-self: center;
-  width: 30%;
-  background-color: rgb(63,37,166);
-  margin-left: 15%;
-}
-#searchBar{
-  border-radius: 50px;
+html,body {
+  height: 100%;
+  margin: 0;
 }
 .App{
   display: flex;
@@ -27,27 +12,34 @@ margin-left: auto;
   width: 100%;
 
 }
-.logo {
-  vertical-align: top;
-  width: 10em;
-}
-#loginButton {
-  margin-top: 2%;
-  width: 13%;
-  color: #FFBC5B;
-  border: 1px solid #FFBC5B;
-  margin-left: auto;
-  margin-right: 5%;
-  height: 30%;
+.welcome{
   font-family: 'Rostin';
+  margin-left: 10%;
+  margin-right: 10%;
+  color: rgb(63,37,166);
 }
 *{
+  font-family: 'Rostin';
+}
+.warvsfooter{
+  min-height: 80vh;
+}
+body{
   font-family: 'Rostin';
 }
 @font-face{
   font-family: 'Rostin';
   src: url('/RF-Rostin/RF-Rostin-Bold.ttf');
 }
-body{
-  font-family: 'Rostin';
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .searchBar{
+      align-self: center;
+      width: 30%;
+      background-color: rgb(63,37,166);
+      margin-left: 5%;
+    }
 }

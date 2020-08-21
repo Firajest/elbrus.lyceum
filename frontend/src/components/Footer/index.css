@@ -1,0 +1,58 @@
+.footer{
+  line-height: 1;
+  /* display: flex; */
+  justify-content: flex-end;
+  font-family: RF Rostin,Arial,sans-serif;
+  color: #FFBC5B;
+  background-color: #4520ab;
+  padding-bottom: 20px;
+  /* position: sticky;
+  left: 0;
+  bottom: 0; */
+  margin-top: 100px;
+  min-height: 25vh; 
+  width: 100%;
+}
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .footer {
+      position: absolute;
+      min-height: 10vh;
+      flex-direction: column;
+
+    }
+    .footertextleft{
+      display: none;
+    }
+  }
+
+#icon{
+  height: 30px;
+  margin: 10px 10px 0px 10px;
+}
+
+.icons{
+  padding: 20px 20px 0px 20px;
+  margin-left: 20%;
+}
+
+.footertextleft{
+  padding: 30px;
+  margin-left: 20%;
+}
+.footertextright{
+  /* margin-left: 50%; */
+}
+
+.ateg{
+  color: #FFBC5B;
+  font-family: 'Rostin';
+  font-size: 18px;
+}
+
+@font-face{
+  font-family: 'Rostin';
+  src: url('/RF-Rostin/RF-Rostin-Regular.ttf');
+}
