@@ -129,7 +129,7 @@ function ShowDays({ props }) {
                     <iframe title="days" width="560" height="315" src={teacher.linkYT} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen='true'></iframe>
                     <div className={classes.root}>
                       <ButtonGroup color="primary" aria-label="outlined primary button group">
-                        <Link className="buttoninmodal" href={teacher.linkPres}><ButtonInModal className="buttoninmodal">Презентация</ButtonInModal></Link>
+                        {teacher.linkPres !== (undefined || '') ? <Link className="buttoninmodal" href={teacher.linkPres}><ButtonInModal className="buttoninmodal">Презентация</ButtonInModal></Link> : <></>}
                         {teacher.linkFile === 'none yet' ? <></> : <Link className="buttoninmodal" href={teacher.linkFile}><ButtonInModal className="buttoninmodal">Код лекции</ButtonInModal></Link>}
                       </ButtonGroup>
                     </div>

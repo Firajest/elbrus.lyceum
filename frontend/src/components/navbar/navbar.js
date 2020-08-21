@@ -29,14 +29,14 @@ function Navbar() {
   function mapDays() {
     allDays = allDays.filter((day) => {
       let check = false;
-      if (check === true) {
-        return day;
-      }
-      return day.tags.forEach((tag) => {
+      day.tags.forEach((tag) => {
         if (tag.toLowerCase().includes(search.toLowerCase())) {
-          return check = true;
+          check = true;
         }
       });
+      if (check === true) {
+        return day;
+      };
     })
     if (allDays.length > 0 && allDays.length !== 26) {
       dispatch(searchFlag(true));
