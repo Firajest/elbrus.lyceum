@@ -19,7 +19,7 @@
   and (-webkit-min-device-pixel-ratio: 2) {
     .footer {
       position: absolute;
-      height: 80px;
+      min-height: 10vh;
       flex-direction: column;
 
     }

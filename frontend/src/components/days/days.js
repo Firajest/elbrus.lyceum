@@ -126,7 +126,7 @@ function ShowDays({ props }) {
                 return (
                   <>
                     <h3>{teacher.name}</h3>
-                    <iframe title="days" width="560" height="315" src={teacher.linkYT} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen='true'></iframe>
+                    <iframe title="days" width="300" height="200" src={teacher.linkYT} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen='true'></iframe>
                     <div className={classes.root}>
                       <ButtonGroup color="primary" aria-label="outlined primary button group">
                         <Link className="buttoninmodal" href={teacher.linkPres}><ButtonInModal className="buttoninmodal">Презентация</ButtonInModal></Link>

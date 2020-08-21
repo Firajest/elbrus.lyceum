@@ -11,7 +11,6 @@ try {
     useUnifiedTopology: true,
   });
 } catch (error) {
-  console.log(error);
 }
 
 mongoose.pluralize(null);

@@ -27,17 +27,8 @@ export default function Footer() {
               /
               <a className="ateg" target="_blank" href="https://t.me/joinchat/CDWhPUyGEQ9Swb6z7-6UjQ">{' '}Elbrus family</a>
             </p>
-            <p>
-              <a className="ateg" href="tel:join@elbrusboot.camp">join@elbrusboot.camp</a>
-              <p></p>
-              <a className="ateg" target="_blank" href="/contract.pdf">Договор-Оферта</a>
-              {' '}
-              <a className="ateg" target="_blank" href="/confidentiality_agreements.pdf">Политика конфиденциальности</a>
-            </p>
           </div>
           <div className='footertextright'>
-          </div>
-          <div>
           </div>
         </div>
       </footer>

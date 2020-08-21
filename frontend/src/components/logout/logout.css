@@ -1,5 +1,5 @@
 #logoutButton {
-  background-color: #4520AB ;
+  background-color: rgb(69,31,171) ;
   margin-top: 2%;
   width: 13%;
   color: #FFBC5B;
@@ -10,3 +10,12 @@
   font-family: 'Rostin';
   border-radius: 20px;
 }
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    #logoutButton{
+      margin:2em 1em 6.5em 0.7em;
+      width: 100em;
+    }
+  }

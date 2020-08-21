@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 
 const WeekButton = withStyles((theme) => ({
   root: {
-    backgroundColor: 'rgb(63,37,166)',
+    backgroundColor: 'rgb(69,31,171)',
     color: 'rgb(133, 227,251)',
     borderRadius: '20px',
     margin: '5px',
@@ -11,7 +11,7 @@ const WeekButton = withStyles((theme) => ({
     width: '350px',
     fontFamily: 'Rostin',
     fontSize: '18px',
-    border: '5px solid rgb(63,37,166)',
+    border: '5px solid rgb(69,31,171)',
     [theme.breakpoints.down('sm')]: {
       marginLeft: '9%',
       width: '82%',

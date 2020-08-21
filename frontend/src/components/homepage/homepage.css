@@ -14,7 +14,7 @@
   and (-webkit-min-device-pixel-ratio: 2) {
     .phaseContainer {
       display: flex;
-      flex-direction: column;
+      flex-direction: column-reverse;
       justify-content:center;
       width: 10px;
       position: relative;
@@ -25,7 +25,7 @@
 
 .active {
   color: #FFBC5B !important;
-  background-color: #4520AB !important;
+  background-color: rgb(69,31,171) !important;
   border: 5px solid #FFBC5B !important;
 }
 
