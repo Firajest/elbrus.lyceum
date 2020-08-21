@@ -121,7 +121,7 @@ function ShowDays({ props }) {
           <DialogTitle id="alert-dialog-slide-title"><strong>{singleDay.name}</strong></DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              {(userStatus === ('chieftain' || 'teacher')) ? <ButtonInModal type="button" onClick={addNewMaterial}>Add new material</ButtonInModal> : <></>}
+              {((userStatus === 'chieftain') || (userStatus === 'teacher')) ? <ButtonInModal type="button" onClick={addNewMaterial}>Add new material</ButtonInModal> : <></>}
               {singleDay.newLink !== undefined && singleDay.newLink.map((teacher) => {
                 return (
                   <>

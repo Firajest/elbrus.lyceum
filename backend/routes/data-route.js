@@ -43,7 +43,7 @@ route.put('/newMaterials', async (req, res) => {
     } = req.body;
     const currentAdmin = await UserModel.findOne({ _id: req.session.user._id });
     const dbDay = await DayModel.findOne({ _id: day });
-    if (currentAdmin.status === ('chieftain' || 'teacher')) {
+    if ((currentAdmin.status === 'chieftain') || (currentAdmin.status === 'teacher')) {
       dbDay.newLink.push({
         name: currentAdmin.name,
         linkYT: lection,
