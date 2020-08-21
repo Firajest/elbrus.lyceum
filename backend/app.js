@@ -8,7 +8,7 @@ import dataRoute from './routes/data-route.js';
 
 const app = express();
 
-app.use(express.static(path.resolve('../frontend/build')));
+app.use(express.static(path.resolve('../frontend/build/')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
