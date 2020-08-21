@@ -36,6 +36,9 @@ app.use((req, res, next) => {
 /// ////////////////////////////////////here will be ROUTES
 app.use('/user', userRoute);
 app.use('/data', dataRoute);
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve('../frontend/build/index/html'));
+});
 /// ///////////////////////////////////////ROUTES end here
 
 // start server
