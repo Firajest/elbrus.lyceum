@@ -2,11 +2,11 @@ import React from 'react';
 
 import { useDispatch } from 'react-redux';
 import logoutThunk from '../../redux/thunks/logoutThunk';
-import './logout.css';
+import '../navbar/navbar.css';
 
 function Logout() {
   const dispatch = useDispatch();
-  
+
   function logoutFunc() {
     dispatch(logoutThunk());
   }

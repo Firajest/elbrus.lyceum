@@ -27,6 +27,7 @@ function Navbar() {
   const [search, setSearch] = useState('');
 
   function mapDays() {
+    console.log(allDays);
     allDays = allDays.filter((day) => {
       let check = false;
       day.tags.forEach((tag) => {
@@ -38,12 +39,14 @@ function Navbar() {
         return day;
       };
     })
+
     if (allDays.length > 0 && allDays.length !== 26) {
       dispatch(searchFlag(true));
     }
     else {
       dispatch(searchFlag(false));
     }
+    console.log(flag);
   }
 
   mapDays()
