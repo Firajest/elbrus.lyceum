@@ -130,7 +130,7 @@ function ShowDays({ props }) {
                     <div className={classes.root}>
                       <ButtonGroup color="primary" aria-label="outlined primary button group">
                         {teacher.linkPres !== (undefined || '') ? <Link className="buttoninmodal" href={teacher.linkPres}><ButtonInModal className="buttoninmodal">Презентация</ButtonInModal></Link> : <></>}
-                        {teacher.linkFile === 'none yet' ? <></> : <Link className="buttoninmodal" href={teacher.linkFile}><ButtonInModal className="buttoninmodal">Код лекции</ButtonInModal></Link>}
+                        {teacher.linkFile === (undefined || '') ? <></> : <Link className="buttoninmodal" href={teacher.linkFile}><ButtonInModal className="buttoninmodal">Код лекции</ButtonInModal></Link>}
                       </ButtonGroup>
                     </div>
                   </>
