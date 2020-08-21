@@ -37,7 +37,7 @@ function Navbar() {
       });
       if (check === true) {
         return day;
-      }
+      };
     })
 
     if (allDays.length > 0 && allDays.length !== 26) {

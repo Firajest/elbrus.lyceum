@@ -17,7 +17,7 @@ const FileStore = sessionFileStore(session);
 app.use(session({
   store: new FileStore(),
   key: 'user_sid',
-  secret: 'qwer1tyuiop2asdfgh3jklzxc4vbnmASDQW5EZXCRF6VBGTYHNM78JUIKL9OP0',
+  secret: process.env.SECRET.toString(),
   maxAge: 1000 * 60 * 60 * 24 * 30 * 12,
   resave: false,
   saveUninitialized: false,

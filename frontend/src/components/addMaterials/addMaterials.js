@@ -71,7 +71,7 @@ function AddMaterialForm() {
               <h4> 3) After it, add "/embed" after ".com" ... should be like this: "https://www.youtube.com/embed/watch?v=XXXXXXXX".</h4>
               <form onSubmit={(event) => addMaterial(event)}>
                 <label>Link to lection on youtube:</label>
-                <Input name="lection" type="text" placeholder="Link to lection on youtube" onChange={(event) => setInputLection(event.target.value)} value={inputLection} />
+                <Input name="lection" type="text" placeholder="Link to lection on youtube" onChange={(event) => setInputLection(event.target.value)} value={inputLection} required/>
                 <br/>
                 <label>Link to presentation on drive:</label>
                 <Input name="presentation" type="text" placeholder="Link to presentation on drive" onChange={(event) => setInputPresentation(event.target.value)} value={inputPresentation} />
