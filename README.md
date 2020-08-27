@@ -16,6 +16,8 @@
 •Модальное окно с видео и ссылками на код лекции и презентацию
 ![main](https://github.com/Firajest/elbrus.lyceum/blob/master/readme-assets/4.png)
 
+
+
 Также на сайте присутствует роль администратора, который может
 
 •Добавлять новых студентов
@@ -23,3 +25,9 @@
 
 •Добавлять обучающие материалы
 ![main](https://github.com/Firajest/elbrus.lyceum/blob/master/readme-assets/6.png)
+
+
+###Создатели
+[Fullstack, Русеев Никита](https://github.com/falconbow)
+[Fullstack, Тембот Маремшаов](https://github.com/tixon337)
+[Fullstack, Сергей Терешин](https://github.com/Firajest)
