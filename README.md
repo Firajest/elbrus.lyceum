@@ -4,6 +4,7 @@
  
 Интерфейс студента:
 
+
 •Выбор фазы
 
 ![main](https://github.com/Firajest/elbrus.lyceum/blob/master/readme-assets/1.png)
