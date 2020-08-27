@@ -27,7 +27,10 @@
 ![main](https://github.com/Firajest/elbrus.lyceum/blob/master/readme-assets/6.png)
 
 
-###Создатели
+###Создатели:
+
 [Fullstack, Русеев Никита](https://github.com/falconbow)
+
 [Fullstack, Тембот Маремшаов](https://github.com/tixon337)
+
 [Fullstack, Сергей Терешин](https://github.com/Firajest)
